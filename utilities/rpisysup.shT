@@ -553,6 +553,9 @@ Bname="rpi4.64-snapshot-27006-3.5.139-21-r18086-ext4-sys.img.gz"
 Fsub="builds/rpi-4_snapshot_3.5.315-3_r18325_extra"
 Bname="rpi4.64-snapshot-27120-3.5.315-3-r18325-ext4-sys.img.gz"
 
+#has php7_pleaseorPHP7ini
+Fsub="builds/rpi-4_snapshot_3.5.315-11_r18325_extra"
+Bname="rpi4.64-snapshot-27129-3.5.315-11-r18325-ext4-sys.img.gz"
 
 
 
@@ -601,6 +604,9 @@ Bname="rpi4.64-snapshot-27115-3.5.305-19-r18270-ext4-sys.img.gz"
 Fsub="builds/rpi-4_snapshot_3.5.315-3_r18325_extra"
 Bname="rpi4.64-snapshot-27120-3.5.315-3-r18325-ext4-sys.img.gz"
 
+#php8withphp7pleaseadPHP7ini
+Fsub="builds/rpi-4_snapshot_3.5.315-11_r18325_extra"
+Bname="rpi4.64-snapshot-27129-3.5.315-11-r18325-ext4-sys.img.gz"
 
 
 
