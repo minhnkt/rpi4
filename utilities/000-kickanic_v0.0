@@ -1,0 +1,295 @@
+#!/bin/sh
+
+#credits: bobafett vgaetera ...tba
+
+
+
+
+
+
+
+############################################################################## this is how it works...
+
+
+
+#####################################################step1 ### enable the logic as a whole
+#uci set network.globals.persistent_nic='1'
+#uci commit network
+
+######################################################step2 ### for every usb nic
+#uci set network.rummy.mac_original='00:00:e8:00:44:bf'
+#uci commit network
+
+################################################ update the uci logical interface underlying device eth+last6chars
+#uci set network.rummy.device="eth0044bf"
+#uci commit network
+
+
+###so you can leave the first wan untouched(probably needs testing)... and for extra wan interfaces repeat step2...#################################################################3caveats:
+#no device bridges etc. for now
+#usb only
+
+
+
+
+
+
+###################################### EXAMPLE config format
+#config globals 'globals'
+#	option persistent_nic '1'
+
+#config interface 'rummy'
+#	option device 'eth0044bf'
+#	option mac_original '00:00:e8:00:44:bf'
+#	option proto 'dhcp'
+
+#config interface 'wan'
+#	option device 'ethdc03bf'
+#	option mac_original '00:00:e8:dc:03:bf'
+#	option proto 'dhcp'
+
+
+
+
+
+
+
+
+
+
+
+nicmove_enabled() {
+	local nmENABLED
+	nmENABLED=$(uci -q get network.globals.persistent_nic)
+	case "$nmENABLED" in
+		1) return 0; ;;
+		*) return 1; ;;
+	esac
+}
+
+
+
+uci_nic_find() {
+
+	local FN="uci_nic_find"
+	case "${1}" in
+		interfaces_all) #<network>.THIS(shortname)
+			uci show network | grep '=interface$' | cut -d'.' -f1,2 | cut -d'=' -f1 | cut -d'.' -f2
+		;;
+		ucidev) #takes single word network.WORD.device
+			local uciDEVWORD="${2}"
+			local ucidevONE=$(uci -q get network.${uciDEVWORD}.device)
+			echV "$FN> devONE: $ucidevONE"
+			if ifconfig | grep -E "[a-z]" | awk '{print $1}' | grep -q "${2}"; then
+				echV "$FN> rawdevpresent: ${2}"
+			fi
+			if [ ! -z "$(uci show network | grep 'ports=' | grep "${2}'$")" ]; then
+				echV "$FN> THIS HAS A DEVICE SECTION"
+			fi #network.@device[0].ports='eth0' #uci show network | grep 'ports=' | grep "'"eth0"'$")
+			echo "$ucidevONE"
+		;;
+	esac
+
+}
+
+
+
+
+
+nic_has_interface() {
+	
+	local lookupMAC="${1}"
+	local netdev_CUR="${2}"
+	local uciLINE #uciPFX
+	local netdev_MATCHES #means all is good AKA dev matches
+
+	local FN="nic_has_interface"
+	echV "$FN> 222 net+add checking for uci+network interface $lookupMAC" debug
+
+	if [ "$(uci show network | grep 'mac_original=' | wc -l)" -eq 0 ]; then
+		echV "$FN> no mac_originals setup" debug; return 1
+	fi
+
+	while read uciLINE; do
+		[ -z "$uciLINE" ] && continue #echV "uciLINE: $uciLINE"	
+
+		if [ ! -z "$(uci -q get network.${uciLINE}.mac_original)" ] && \
+			[ "$(uci -q get network.${uciLINE}.mac_original)" = "${lookupMAC}" ]; then
+
+
+			if [ "$(uci_nic_find ucidev "${uciLINE}")" != "$netdev_CUR" ]; then
+				echV "devmanagedNOTmatch: uci:$(uci_nic_find ucidev "${uciLINE}") cur:$netdev_CUR"
+				KICKME="${uciLINE}"			
+
+				if [ ! -z "$(uci -q get network."${uciLINE}".macaddr)" ]; then
+					HASMACADDR="${uciLINE}"
+					UCIMACADDR="$(uci -q get network."${uciLINE}".macaddr)"
+				fi
+
+			else
+				netdev_MATCHES=1 #@!> ifdown X; ifup X; if macaddr
+			fi
+
+		fi
+done <<CCC
+$(uci_nic_find interfaces_all)
+CCC
+
+
+if [ ! -z "$netdev_MATCHES" ]; then
+	echV "MATCHES: $netdev_MATCHES"; return 0
+elif [ ! -z "$KICKME" ]; then
+	return 0
+fi
+
+return 1
+
+}
+
+
+
+
+
+
+
+kick_a_nic() {
+	
+	local FN="kick_a_nic"
+	local dNAME="${1}"
+	local dNAMEto="${2}"
+
+	echV "$FN $1 > $2" #debug
+
+	###################	echV "hasmac: ${HASMACADDR}" WHEN CHANGE TO STATIC DID NOT APPLY JUST TRY ifdown and ifup
+	ifdown ${KICKME}
+
+
+	echV "$(ip link set ${dNAME} down)"
+	echV "$(ip link set ${dNAME} name $dNAMEto)"
+	sleep 2 #NEEDED!
+
+	if [ ! -z "${UCIMACADDR}" ]; then
+		echV "setmacddr: $UCIMACADDR"
+		ip link set dev $dNAMEto address $UCIMACADDR
+		#sleep 1
+	fi
+
+	#HMMM maybe try just ifup? or its network restart :(
+	echV "$(ip link set ${dNAMEto} up)"
+	sleep 2
+	#sleep 6
+
+	#echV "TRYWITHNOIFUP(nexthplug)"
+	ifup ${KICKME}
+
+}
+
+
+
+
+
+
+
+
+
+
+echV() {
+
+	DDm=$(date +%Y%m%d-%H%M%S)
+	if [ "$2" = "debug" ] && [ -z "$TDEBUG" ]; then return 0; fi
+
+	logger -t "$SNAME" "echV> ${1}"
+
+	if [ ! -z "$TDEBUG" ]; then
+		echo "${DDm}-$SNAME: ${1}" >/dev/kmsg
+	fi
+	#echo "${DDm}-$SNAME: ${1}" >>$SLOG
+	#echo "${DDm}-$SNAME: ${1}" >>$SLOGa
+	#############echo "${DDm}-$SNAME: ${1}" >&2 ###echo "${DDm}-$SNAME: ${1}" >/dev/console
+
+}
+
+
+
+
+
+
+
+
+
+
+TMPd="/tmp/NMOVE"; mkdir -p "${TMPd}" #storeonrootfswhiletesting... powerremovedidnotcomeupright #TMPd="/tmp"
+###########################
+SNAME="NICMOVE_${HOTPLUG_TYPE}_${ACTION}_$(date +%Y%m%d-%H%M%S)"
+SLOG="${TMPd}/$SNAME-$IFACE-$DEVICENAME-$INTERFACE-$DEVICE"
+SLOGa="${TMPd}/NICMOVE_all"
+
+###########################
+SDERIVED="000-nicmove3.1SHuntTOtmpTEST>KICKANIC"
+SVERSION="5.2.3-1.11"
+DDD=$(date +%Y%m%d-%H%M%S)
+ACT="${ACTION:-"none"}"
+HT="$HOTPLUG_TYPE"
+sFROM=$(basename $(dirname $script))
+####################################### ISNEW
+
+
+
+
+#TDEBUG=1
+if grep -q 'DC:A6:32:56:31:77' /proc/cmdline 2>/dev/null; then TDEBUG=1; fi
+
+[ ! -z "$TDEBUG" ] && DBGSLEEP=2
+
+
+
+
+
+
+
+
+
+if ! nicmove_enabled; then
+	echV "nicmove is not enabled" debug; exit 0
+else
+	echV "nicmove is enabled" debug
+fi #sleep ${DBGSLEEP:-"0"}
+
+
+if ! grep -q "^/etc/hotplug.d/net/000-kickanic" /etc/sysupgrade.conf; then
+	echo "/etc/hotplug.d/net/000-kickanic" >> /etc/sysupgrade.conf
+fi
+
+
+
+if [ "$ACTION" = "add" ] && [ "$SUBSYSTEM" = "net" ]; then
+
+
+	case "$DEVPATH" in
+		*"/usb1"*|*"/usb2"*) :; ;;
+		*) echV "NOTUSB: $INTERFACE d:$DEVPATH"; exit 0; ;;
+	esac
+
+
+
+	netdev_MAC_presented="$(cat /sys/"$DEVPATH"/address)"
+	if nic_has_interface "$netdev_MAC_presented" "$INTERFACE"; then
+		echV "INTERFACE:$INTERFACE $netdev_MAC_presented is mac_original known to /etc/config/network"
+		if [ ! -z "$KICKME" ]; then
+			netdev_MAC_moveto="$(echo $netdev_MAC_presented | sed 's|:||g')"
+			netdev_MAC_moveto="$(echo $netdev_MAC_moveto | tail -c7)"
+			echo "000-kickanic_rename> ${INTERFACE} eth${netdev_MAC_moveto}" >/dev/kmsg
+			kick_a_nic "${INTERFACE}" "eth${netdev_MAC_moveto}"
+			exit 0
+		fi
+	else
+		echV "INTERFACE:$INTERFACE $netdev_MAC_presented is mac_original unknown to /etc/config/network" debug
+		exit 0
+	fi
+fi
+
+
+
+
+exit 0
+

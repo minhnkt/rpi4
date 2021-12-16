@@ -1,0 +1,397 @@
+#!/bin/sh
+# This file is heavily based on code from https://github.com/Xentrk/netflix-vpn-bypass/blob/master/IPSET_Netflix.sh
+# Credits to https://forum.openwrt.org/u/dscpl for api.hackertarget.com code.
+# Credits to https://github.com/kkeker and https://github.com/tophirsch for api.bgpview.io code.
+# stangri
+
+
+
+
+
+
+
+
+handle_ipset_names() {
+
+
+#########################################################
+# DEFINE YOUR VALUES here mostly add or remove lines and
+# change the second value to the logical interface link name
+#########################################################
+
+
+cat <<'TTT'
+################################### feild_one/asn can be changed #secondparameter must match interface logical name/ipset
+netflix vpn_usa asn 2906
+disney vpn_usa asn 8137
+disney2 vpn_usa asn 30224
+################################### feild_one cannot be changed asn ignored
+### aws wan_fake asn 0
+TTT
+
+}
+
+
+
+
+
+
+intV="$(date +%Y%W)"				#CACHE interval 1 week
+
+CACHEdU="/usbstick/wulfy23/cache"		#cache dir change to /tmp for less writes
+
+
+
+#####################################
+# END USER CONFIGURABLE OPTIONS
+#####################################
+
+
+
+
+
+
+if [ -d /usbstick/vpn-pbr ]; then
+	CACHEd="/usbstick/vpn-pbr/cache"
+else
+	CACHEd="${CACHEdU}"
+fi
+
+mkdir -p $CACHEd
+
+
+
+
+
+
+
+
+DB_SOURCE='api.bgpview.io'
+_ret=1
+
+
+
+
+
+
+
+if ! type vprlog 1>/dev/null 2>/dev/null; then
+vprlog() {
+
+	if [ -z "$VPRDEBUG" ] && [ "${2}" = "debug" ]; then return 0; fi
+
+	echo "${*}"
+	#sleep 1
+}
+fi
+
+
+
+
+
+
+
+
+
+
+###############################################
+# CREATE ipsets if script is run manually
+###############################################
+
+while read sIFACE; do
+	
+	[ -z "$sIFACE" ] && continue
+	
+	if ipset -L -n | grep -q "^${sIFACE}$"; then
+		vprlog "flushandcreate ${sIFACE} ipset [skip]" debug
+	else
+		vprlog "flushandcreate ${sIFACE} ipset"
+		ipset -exist create ${sIFACE} 'hash:net' && ipset flush ${sIFACE}
+	fi
+
+done <<CCC
+$(handle_ipset_names | grep -Ev '(^$|^#)' | awk '{print $2}' | sort | uniq)
+CCC
+
+
+
+
+
+
+
+while read sNAME sIFACE sMETHOD sASN; do
+
+	[ -z "$sNAME" ] && continue
+
+
+SKIPMETHANKS() {
+cat <<PPP
+
+fNAME="${sNAME}"
+
+TARGET_IPSET="${sNAME}"
+TARGET_ASN="${sASN}"
+TARGET_FNAME="$CACHEd/vpn-policy-routing_tmp_${fNAME}_AS${TARGET_ASN}_${intV}"
+TARGET_sNAME="$CACHEd/vpn-policy-routing_tmp_${fNAME}_AS${TARGET_ASN}_${intV}_addcmds"
+###########################################################################################
+PPP
+#TARGET_IFACE="${sIFACE}"
+
+}
+
+
+
+
+
+fNAME="${sNAME}"
+TARGET_IPSET="${sNAME}"
+TARGET_ASN="${sASN}"
+TARGET_FNAME="$CACHEd/vpn-policy-routing_tmp_${fNAME}_filtered_AS${TARGET_ASN}_${intV}"
+TARGET_sNAME="$CACHEd/vpn-policy-routing_tmp_${fNAME}_addcmd_AS${TARGET_ASN}_${intV}"
+TARGET_bNAME="$CACHEd/vpn-policy-routing_tmp_${fNAME}_fallback_AS${TARGET_ASN}"
+
+#sleep 1
+
+
+
+
+
+
+
+#@case METHOD in asn
+
+
+
+
+
+
+
+
+
+
+dl_is_valid() {
+
+	local DL_FILE="${1}"
+	local DL_FILE_cnt
+
+	DL_FILE_cnt="$(cat "$DL_FILE" | wc -l)"
+
+}
+
+
+
+
+
+
+
+
+
+
+
+curl_raw_setinfo() {
+
+	local crsERR crsRET TARGETF_PREV
+	local FN="curl_raw_setinfo"
+
+
+
+	fGOT=
+
+	#vprlog "curl_raw_setinfo() {"
+
+#cat <<TTT
+
+	if [ -z "$TARGET_ASN" ]; then crsERR="${crsERR} ASN[empty]"; fi
+	if [ -z "$DB_SOURCE" ]; then crsERR="${crsERR} DB_SOURCE[empty]"; fi
+	if [ -z "$TARGET_FNAME" ]; then crsERR="${crsERR} TARGET_FNAME[empty]"; fi
+
+	if [ ! -z "$crsERR" ]; then vprlog "$FN> oops $crsERR"; return 1; fi
+
+
+
+	if [ -s "$TARGET_FNAME" ]; then
+		#vprlog "$FN> n:$sNAME asn:$TARGET_ASN f:$TARGET_FNAME [cache:$(cat $TARGET_FNAME | wc -l)]"
+		vprlog "$FN> n:$sNAME asn:$TARGET_ASN f:$TARGET_FNAME [cache:$(cat $TARGET_FNAME | wc -l)]" debug
+		fGOT="cache"
+		return 0
+	fi
+	
+
+
+
+	[ -n "$VPRDEBUG" ] && vprlog "$FN> get ($sNAME:$1) $TARGET_ASN to $TARGET_FNAME"
+
+
+case "${1}" in
+	aws)
+
+		#TARGET_IPSET='wan'
+		TARGET_URL="https://ip-ranges.amazonaws.com/ip-ranges.json"
+		if [ ! -s "$TARGET_FNAME" ]; then
+			curl "$TARGET_URL" 2>/dev/null | grep "ip_prefix" | sed 's/^.*\"ip_prefix\": \"//; s/\",//' > "$TARGET_FNAME"
+		fi
+		#return $_ret
+	;;
+
+
+	*)
+
+
+
+	if [ "$DB_SOURCE" = "ipinfo.io" ]; then
+		TARGET_URL="https://ipinfo.io/AS${TARGET_ASN}"
+		curl "$TARGET_URL" 2>/dev/null | grep -E "a href.*${TARGET_ASN}\/" | grep -v ":" | sed "s/^.*<a href=\"\/AS${TARGET_ASN}\///; s/\" >//" > "$TARGET_FNAME"
+	fi
+
+	if [ "$DB_SOURCE" = "api.hackertarget.com" ]; then
+		TARGET_URL="https://api.hackertarget.com/aslookup/?q=AS${TARGET_ASN}"
+		curl "$TARGET_URL" 2>/dev/null | sed '1d' > "$TARGET_FNAME"
+	fi
+
+	if [ "$DB_SOURCE" = "api.bgpview.io" ]; then
+		TARGET_URL="https://api.bgpview.io/asn/${TARGET_ASN}/prefixes"
+
+		#echo "curl_url: $TARGET_URL"
+
+		curl -s "$TARGET_URL" 2>/dev/null | jsonfilter -e '@.data.ipv4_prefixes[*].prefix' > "$TARGET_FNAME"
+		
+		#if [ "$retcurl" != "0" ]; then
+		#	echo "oops"; echo "rm $TARGET_FNAME"
+		#	rm $TARGET_FNAME
+		#	#exit 0
+		#fi
+
+	fi
+
+	;;
+
+
+esac
+
+
+
+
+	#############@@@CURLRET=$?
+
+	#if [ "$crsRET" -eq 0 ]; then
+		crsCNT="$(cat $TARGET_FNAME 2>/dev/null | wc -l)"
+	#fi
+
+	if [ "$crsCNT" -eq 0 ]; then
+		echo "oops no entries> rm $TARGET_FNAME"
+		rm $TARGET_FNAME 2>/dev/null
+		crsRET=77
+	else
+		#crsRET=$?
+		crsRET=0
+		sleep 2 #"api.bgpview.io" fails on multiquick dl
+		fGOT="dl"
+	fi
+
+
+
+	if [ -f "$TARGET_FNAME" ]; then #if [ ! -f "$TARGET_bNAME" ]; then
+		vprlog "updatingfallback: $TARGET_bNAME" debug
+		cp -a "$TARGET_FNAME" "$TARGET_bNAME"
+	fi
+
+
+
+
+
+
+
+	#look for a prev file
+	if [ ! -f "$TARGET_FNAME" ]; then
+
+
+		#TARGET_FPREV=$(find "$CACHEd" | grep "_${sNAME}_" | grep -Ev '(addcmd|fallback)' | tail -n1)
+		TARGET_FPREV=$(find "$CACHEd" | grep "_${sNAME}_filtered" | grep -Ev '(addcmd|fallback)' | tail -n1)
+		if [ ! -z "$TARGET_FPREV" ] && [ "$(cat "$TARGET_FPREV" | wc -l)" -gt 0 ]; then
+			fGOT="prev"
+			vprlog "re-download failed: using prev $TARGET_FPREV"
+			TARGET_FNAME="$TARGET_FPREV"
+			crsRET=0
+		fi
+	fi
+
+
+
+
+	echo "result $crsRET [$crsCNT] $1 $TARGET_URL"
+	return $crsRET
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+	if curl_raw_setinfo "${sNAME}"; then #vprlog "curl_raw_setinfo() {"
+		#NOTE flush at start #TOTOP ipset -exist create ${sIFACE} 'hash:net' && ipset flush ${sIFACE}
+
+		awk -v ipset="$sIFACE" '{print "add " ipset " " $1}' "$TARGET_FNAME" | ipset restore -! && _ret=0
+		
+		ipsetENTRIES=
+		ipsetENTRIES="$(ipset -L ${sIFACE} 2>/dev/null | grep -E '^[0-9]' | wc -l)"
+		vprlog "populating ${sIFACE} ipset from ${sNAME} [$(cat $TARGET_FNAME | wc -l):${ipsetENTRIES}]${fGOT}"
+
+	fi
+	#MOVEDtoDLio...repeats fail # sleep 2 #sleep 2 disney2 fails first time everytime with no sleep
+
+
+done <<CCC
+$(handle_ipset_names | grep -Ev '(^$|^#)')
+CCC
+
+
+
+
+
+
+
+
+exit 0
+
+
+
+
+
+
+
+
+
+
+
+
+return $_ret
+
+
+exit 0
+
+
+
+#CACHEd="/tmp/vpn-policy-routing/cache"
+################################### /usbstick/wulfy23/cache/vpn-policy-routing_tmp_netflix_AS2906_202143_addcmds
+#TARGET_IPSET='wan'
+######################!!! NOTTESTED mayneedto match vpn_usa aka no ipset create here
+#if ips 'create' "${iface}" 'hash:net comment' && ips 'flush' "${iface}"; then
+#if ips 'create' "${iface}_ip" 'hash:net comment' && ips 'flush' "${iface}_ip"; then
+#if ips 'create' "${iface}_mac" 'hash:mac comment' && ips 'flush' "${iface}_mac"; then
+
+
+
+
+
+
+
+
+
+

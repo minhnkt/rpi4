@@ -1,0 +1,1562 @@
+
+
+
+# https://cateee.net/lkddb/web-lkddb/USB_RTL8150.html
+
+
+
+
+USB
+Numeric ID (from LKDDb) and names (from usb.ids) of recognized devices:
+
+device class: 02 ("Communications"), subclass: 00, protocol: 00
+interface class: 02 ("Communications"), subclass: 02 ("Abstract (modem)"), protocol: ff ("Vendor Specific (MSFT RNDIS?)")
+interface class: 02 ("Communications"), subclass: 02 ("Abstract (modem)"), protocol: ff ("Vendor Specific (MSFT RNDIS?)")
+interface class: 02 ("Communications"), subclass: 02 ("Abstract (modem)"), protocol: ff ("Vendor Specific (MSFT RNDIS?)")
+interface class: 02 ("Communications"), subclass: 02 ("Abstract (modem)"), protocol: ff ("Vendor Specific (MSFT RNDIS?)")
+interface class: 02 ("Communications"), subclass: 02 ("Abstract (modem)"), protocol: ff ("Vendor Specific (MSFT RNDIS?)")
+interface class: 02 ("Communications"), subclass: 02 ("Abstract (modem)"), protocol: ff ("Vendor Specific (MSFT RNDIS?)")
+interface class: 02 ("Communications"), subclass: 02 ("Abstract (modem)"), protocol: ff ("Vendor Specific (MSFT RNDIS?)")
+interface class: 02 ("Communications"), subclass: 02 ("Abstract (modem)"), protocol: ff ("Vendor Specific (MSFT RNDIS?)")
+interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+interface class: 02 ("Communications"), subclass: 0c ("Ethernet Emulation"), protocol: 07 ("Ethernet Emulation (EEM)")
+interface class: 02 ("Communications"), subclass: 0c ("Ethernet Emulation"), protocol: 07 ("Ethernet Emulation (EEM)")
+interface class: 02 ("Communications"), subclass: 0c ("Ethernet Emulation"), protocol: 07 ("Ethernet Emulation (EEM)")
+interface class: 02 ("Communications"), subclass: 0d, protocol: 00
+interface class: 02 ("Communications"), subclass: 0d, protocol: 00
+interface class: 02 ("Communications"), subclass: 0d, protocol: 00
+interface class: 02 ("Communications"), subclass: 0e, protocol: 00
+interface class: e0 ("Wireless"), subclass: 01 ("Radio Frequency"), protocol: 03 ("RNDIS")
+interface class: e0 ("Wireless"), subclass: 01 ("Radio Frequency"), protocol: 03 ("RNDIS")
+interface class: e0 ("Wireless"), subclass: 01 ("Radio Frequency"), protocol: 03 ("RNDIS")
+interface class: ef ("Miscellaneous Device"), subclass: 01 ("?"), protocol: 01 ("Microsoft ActiveSync")
+interface class: ef ("Miscellaneous Device"), subclass: 01 ("?"), protocol: 01 ("Microsoft ActiveSync")
+interface class: ef ("Miscellaneous Device"), subclass: 01 ("?"), protocol: 01 ("Microsoft ActiveSync")
+interface class: ef ("Miscellaneous Device"), subclass: 01 ("?"), protocol: 01 ("Microsoft ActiveSync")
+interface class: ef ("Miscellaneous Device"), subclass: 01 ("?"), protocol: 01 ("Microsoft ActiveSync")
+vendor: 03e8 ("EndPoints, Inc."), product: 0008 ("101 Ethernet [klsi]")
+vendor: 03e8 ("EndPoints, Inc."), product: 0008 ("101 Ethernet [klsi]")
+vendor: 03e8 ("EndPoints, Inc."), product: 0008 ("101 Ethernet [klsi]")
+vendor: 03e8 ("EndPoints, Inc."), product: 0008 ("101 Ethernet [klsi]")
+vendor: 03e8 ("EndPoints, Inc."), product: 0008 ("101 Ethernet [klsi]")
+vendor: 03e8 ("EndPoints, Inc."), product: 0008 ("101 Ethernet [klsi]")
+vendor: 03e8 ("EndPoints, Inc."), product: 0008 ("101 Ethernet [klsi]")
+vendor: 03e8 ("EndPoints, Inc."), product: 0008 ("101 Ethernet [klsi]")
+vendor: 03f0 ("HP, Inc"), product: 1f1d ("un2400 Gobi Wireless Modem")
+vendor: 03f0 ("HP, Inc"), product: 251d ("Gobi 2000 Wireless Modem")
+vendor: 03f0 ("HP, Inc"), product: 371d
+vendor: 03f0 ("HP, Inc"), product: 4b1d, interface class: 02 ("Communications"), subclass: 0e, protocol: 00
+vendor: 0402 ("ALi Corp."), product: 5632 ("M5632 Host-to-Host Link")
+vendor: 0402 ("ALi Corp."), product: 5632 ("M5632 Host-to-Host Link")
+vendor: 0402 ("ALi Corp."), product: 5632 ("M5632 Host-to-Host Link")
+vendor: 0402 ("ALi Corp."), product: 5632 ("M5632 Host-to-Host Link")
+vendor: 0402 ("ALi Corp."), product: 5632 ("M5632 Host-to-Host Link")
+vendor: 0402 ("ALi Corp."), product: 5632 ("M5632 Host-to-Host Link")
+vendor: 0402 ("ALi Corp."), product: 5632 ("M5632 Host-to-Host Link")
+vendor: 0402 ("ALi Corp."), product: 5632 ("M5632 Host-to-Host Link")
+vendor: 0408 ("Quanta Computer, Inc."), product: ea42
+vendor: 0411 ("BUFFALO INC. (formerly MelCo., Inc.)"), product: 0012 ("LUA-KTX Ethernet")
+vendor: 0411 ("BUFFALO INC. (formerly MelCo., Inc.)"), product: 0012 ("LUA-KTX Ethernet")
+vendor: 0411 ("BUFFALO INC. (formerly MelCo., Inc.)"), product: 0012 ("LUA-KTX Ethernet")
+vendor: 0411 ("BUFFALO INC. (formerly MelCo., Inc.)"), product: 0012 ("LUA-KTX Ethernet")
+vendor: 0411 ("BUFFALO INC. (formerly MelCo., Inc.)"), product: 0012 ("LUA-KTX Ethernet")
+vendor: 0411 ("BUFFALO INC. (formerly MelCo., Inc.)"), product: 0012 ("LUA-KTX Ethernet")
+vendor: 0411 ("BUFFALO INC. (formerly MelCo., Inc.)"), product: 0012 ("LUA-KTX Ethernet")
+vendor: 0411 ("BUFFALO INC. (formerly MelCo., Inc.)"), product: 0012 ("LUA-KTX Ethernet")
+vendor: 0411 ("BUFFALO INC. (formerly MelCo., Inc.)"), product: 0012 ("LUA-KTX Ethernet")
+vendor: 0411 ("BUFFALO INC. (formerly MelCo., Inc.)"), product: 003d ("LUA-U2-KTX Ethernet")
+vendor: 0411 ("BUFFALO INC. (formerly MelCo., Inc.)"), product: 003d ("LUA-U2-KTX Ethernet")
+vendor: 0411 ("BUFFALO INC. (formerly MelCo., Inc.)"), product: 003d ("LUA-U2-KTX Ethernet")
+vendor: 0411 ("BUFFALO INC. (formerly MelCo., Inc.)"), product: 003d ("LUA-U2-KTX Ethernet")
+vendor: 0411 ("BUFFALO INC. (formerly MelCo., Inc.)"), product: 003d ("LUA-U2-KTX Ethernet")
+vendor: 0411 ("BUFFALO INC. (formerly MelCo., Inc.)"), product: 003d ("LUA-U2-KTX Ethernet")
+vendor: 0411 ("BUFFALO INC. (formerly MelCo., Inc.)"), product: 003d ("LUA-U2-KTX Ethernet")
+vendor: 0411 ("BUFFALO INC. (formerly MelCo., Inc.)"), product: 003d ("LUA-U2-KTX Ethernet")
+vendor: 0411 ("BUFFALO INC. (formerly MelCo., Inc.)"), product: 003d ("LUA-U2-KTX Ethernet")
+vendor: 0411 ("BUFFALO INC. (formerly MelCo., Inc.)"), product: 006e ("LUA-U2-GT 10/100/1000 Ethernet Adapter")
+vendor: 0411 ("BUFFALO INC. (formerly MelCo., Inc.)"), product: 006e ("LUA-U2-GT 10/100/1000 Ethernet Adapter")
+vendor: 0411 ("BUFFALO INC. (formerly MelCo., Inc.)"), product: 006e ("LUA-U2-GT 10/100/1000 Ethernet Adapter")
+vendor: 0411 ("BUFFALO INC. (formerly MelCo., Inc.)"), product: 006e ("LUA-U2-GT 10/100/1000 Ethernet Adapter")
+vendor: 0411 ("BUFFALO INC. (formerly MelCo., Inc.)"), product: 006e ("LUA-U2-GT 10/100/1000 Ethernet Adapter")
+vendor: 0421 ("Nokia Mobile Phones"), interface class: 02 ("Communications"), subclass: fe
+vendor: 0421 ("Nokia Mobile Phones"), interface class: 02 ("Communications"), subclass: fe
+vendor: 0423 ("Computer Access Technology Corp."), product: 000a ("NetMate Ethernet")
+vendor: 0423 ("Computer Access Technology Corp."), product: 000a ("NetMate Ethernet")
+vendor: 0423 ("Computer Access Technology Corp."), product: 000a ("NetMate Ethernet")
+vendor: 0423 ("Computer Access Technology Corp."), product: 000a ("NetMate Ethernet")
+vendor: 0423 ("Computer Access Technology Corp."), product: 000a ("NetMate Ethernet")
+vendor: 0423 ("Computer Access Technology Corp."), product: 000a ("NetMate Ethernet")
+vendor: 0423 ("Computer Access Technology Corp."), product: 000a ("NetMate Ethernet")
+vendor: 0423 ("Computer Access Technology Corp."), product: 000a ("NetMate Ethernet")
+vendor: 0423 ("Computer Access Technology Corp."), product: 000c ("NetMate2 Ethernet")
+vendor: 0423 ("Computer Access Technology Corp."), product: 000c ("NetMate2 Ethernet")
+vendor: 0423 ("Computer Access Technology Corp."), product: 000c ("NetMate2 Ethernet")
+vendor: 0423 ("Computer Access Technology Corp."), product: 000c ("NetMate2 Ethernet")
+vendor: 0423 ("Computer Access Technology Corp."), product: 000c ("NetMate2 Ethernet")
+vendor: 0423 ("Computer Access Technology Corp."), product: 000c ("NetMate2 Ethernet")
+vendor: 0423 ("Computer Access Technology Corp."), product: 000c ("NetMate2 Ethernet")
+vendor: 0423 ("Computer Access Technology Corp."), product: 000c ("NetMate2 Ethernet")
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 7500 ("LAN7500 Ethernet 10/100/1000 Adapter")
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 7500 ("LAN7500 Ethernet 10/100/1000 Adapter")
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 7505
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 7505
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9500 ("LAN9500/LAN9500i")
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9500 ("LAN9500/LAN9500i")
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9500 ("LAN9500/LAN9500i")
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9505
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9505
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9505
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9530
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9530
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9730
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9730
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9900
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9900
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9900
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9901
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9901
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9901
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9902
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9902
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9902
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9903
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9903
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9903
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9904 ("LAN9512/LAN9514 Ethernet 10/100 Adapter (SAL10)")
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9904 ("LAN9512/LAN9514 Ethernet 10/100 Adapter (SAL10)")
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9904 ("LAN9512/LAN9514 Ethernet 10/100 Adapter (SAL10)")
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9905
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9905
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9905
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9906
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9906
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9906
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9907
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9907
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9907
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9908
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9908
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9908
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9909
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9909
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9909
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9e00 ("LAN9500A/LAN9500Ai")
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9e00 ("LAN9500A/LAN9500Ai")
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9e00 ("LAN9500A/LAN9500Ai")
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9e01
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9e01
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9e01
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9e08
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: 9e08
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: ec00 ("SMSC9512/9514 Fast Ethernet Adapter")
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: ec00 ("SMSC9512/9514 Fast Ethernet Adapter")
+vendor: 0424 ("Microchip Technology, Inc. (formerly SMSC)"), product: ec00 ("SMSC9512/9514 Fast Ethernet Adapter")
+vendor: 046d ("Logitech, Inc."), product: c11f ("Harmony 900/1100 Remote"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 046d ("Logitech, Inc."), product: c11f ("Harmony 900/1100 Remote"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 049f ("Compaq Computer Corp."), product: 505a ("Linux-USB "CDC Subset" Device, or Itsy (experimental)")
+vendor: 049f ("Compaq Computer Corp."), product: 505a ("Linux-USB "CDC Subset" Device, or Itsy (experimental)")
+vendor: 049f ("Compaq Computer Corp."), product: 505a ("Linux-USB "CDC Subset" Device, or Itsy (experimental)")
+vendor: 049f ("Compaq Computer Corp."), product: 505a ("Linux-USB "CDC Subset" Device, or Itsy (experimental)")
+vendor: 049f ("Compaq Computer Corp."), product: 505a ("Linux-USB "CDC Subset" Device, or Itsy (experimental)")
+vendor: 049f ("Compaq Computer Corp."), product: 505a ("Linux-USB "CDC Subset" Device, or Itsy (experimental)")
+vendor: 049f ("Compaq Computer Corp."), product: 505a ("Linux-USB "CDC Subset" Device, or Itsy (experimental)")
+vendor: 049f ("Compaq Computer Corp."), product: 505a ("Linux-USB "CDC Subset" Device, or Itsy (experimental)")
+vendor: 049f ("Compaq Computer Corp."), product: 505a ("Linux-USB "CDC Subset" Device, or Itsy (experimental)")
+vendor: 049f ("Compaq Computer Corp."), product: 505a ("Linux-USB "CDC Subset" Device, or Itsy (experimental)")
+vendor: 049f ("Compaq Computer Corp."), product: 505a ("Linux-USB "CDC Subset" Device, or Itsy (experimental)"), bcd min: 0200 (hex), bcd max:0200 (hex)
+vendor: 04bb ("I-O Data Device, Inc."), product: 0901 ("USB ETT")
+vendor: 04bb ("I-O Data Device, Inc."), product: 0901 ("USB ETT")
+vendor: 04bb ("I-O Data Device, Inc."), product: 0901 ("USB ETT")
+vendor: 04bb ("I-O Data Device, Inc."), product: 0901 ("USB ETT")
+vendor: 04bb ("I-O Data Device, Inc."), product: 0901 ("USB ETT")
+vendor: 04bb ("I-O Data Device, Inc."), product: 0901 ("USB ETT")
+vendor: 04bb ("I-O Data Device, Inc."), product: 0901 ("USB ETT")
+vendor: 04bb ("I-O Data Device, Inc."), product: 0901 ("USB ETT")
+vendor: 04bb ("I-O Data Device, Inc."), product: 0930 ("ETG-US2")
+vendor: 04bb ("I-O Data Device, Inc."), product: 0930 ("ETG-US2")
+vendor: 04bb ("I-O Data Device, Inc."), product: 0930 ("ETG-US2")
+vendor: 04bb ("I-O Data Device, Inc."), product: 0930 ("ETG-US2")
+vendor: 04bb ("I-O Data Device, Inc."), product: 0930 ("ETG-US2")
+vendor: 04bb ("I-O Data Device, Inc."), product: 0930 ("ETG-US2")
+vendor: 04da ("Panasonic (Matsushita)"), product: 250d ("Gobi Wireless Modem")
+vendor: 04dd ("Sharp Corp."), product: 8004 ("Zaurus SL-5000D/SL-5500 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8004 ("Zaurus SL-5000D/SL-5500 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8004 ("Zaurus SL-5000D/SL-5500 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8004 ("Zaurus SL-5000D/SL-5500 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8004 ("Zaurus SL-5000D/SL-5500 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8004 ("Zaurus SL-5000D/SL-5500 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8004 ("Zaurus SL-5000D/SL-5500 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8004 ("Zaurus SL-5000D/SL-5500 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8004 ("Zaurus SL-5000D/SL-5500 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8004 ("Zaurus SL-5000D/SL-5500 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8004 ("Zaurus SL-5000D/SL-5500 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8004 ("Zaurus SL-5000D/SL-5500 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8004 ("Zaurus SL-5000D/SL-5500 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8004 ("Zaurus SL-5000D/SL-5500 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8004 ("Zaurus SL-5000D/SL-5500 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8004 ("Zaurus SL-5000D/SL-5500 PDA"), interface class: 0a ("CDC Data"), subclass: 00 ("Unused"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8005 ("Zaurus A-300"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8005 ("Zaurus A-300"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8005 ("Zaurus A-300"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8005 ("Zaurus A-300"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8005 ("Zaurus A-300"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8005 ("Zaurus A-300"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8005 ("Zaurus A-300"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8005 ("Zaurus A-300"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8005 ("Zaurus A-300"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8005 ("Zaurus A-300"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8005 ("Zaurus A-300"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8005 ("Zaurus A-300"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8005 ("Zaurus A-300"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8005 ("Zaurus A-300"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8005 ("Zaurus A-300"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8005 ("Zaurus A-300"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8006 ("Zaurus SL-B500/SL-5600 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8006 ("Zaurus SL-B500/SL-5600 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8006 ("Zaurus SL-B500/SL-5600 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8006 ("Zaurus SL-B500/SL-5600 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8006 ("Zaurus SL-B500/SL-5600 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8006 ("Zaurus SL-B500/SL-5600 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8006 ("Zaurus SL-B500/SL-5600 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8006 ("Zaurus SL-B500/SL-5600 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8006 ("Zaurus SL-B500/SL-5600 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8006 ("Zaurus SL-B500/SL-5600 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8006 ("Zaurus SL-B500/SL-5600 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8006 ("Zaurus SL-B500/SL-5600 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8006 ("Zaurus SL-B500/SL-5600 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8006 ("Zaurus SL-B500/SL-5600 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8006 ("Zaurus SL-B500/SL-5600 PDA"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8006 ("Zaurus SL-B500/SL-5600 PDA"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8007 ("Zaurus C-700 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8007 ("Zaurus C-700 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8007 ("Zaurus C-700 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8007 ("Zaurus C-700 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8007 ("Zaurus C-700 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8007 ("Zaurus C-700 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8007 ("Zaurus C-700 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8007 ("Zaurus C-700 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8007 ("Zaurus C-700 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8007 ("Zaurus C-700 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8007 ("Zaurus C-700 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8007 ("Zaurus C-700 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8007 ("Zaurus C-700 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8007 ("Zaurus C-700 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 8007 ("Zaurus C-700 PDA"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9031 ("Zaurus C-750/C-760/C-860/SL-C3000 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9031 ("Zaurus C-750/C-760/C-860/SL-C3000 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9031 ("Zaurus C-750/C-760/C-860/SL-C3000 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9031 ("Zaurus C-750/C-760/C-860/SL-C3000 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9031 ("Zaurus C-750/C-760/C-860/SL-C3000 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9031 ("Zaurus C-750/C-760/C-860/SL-C3000 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9031 ("Zaurus C-750/C-760/C-860/SL-C3000 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9031 ("Zaurus C-750/C-760/C-860/SL-C3000 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9031 ("Zaurus C-750/C-760/C-860/SL-C3000 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9031 ("Zaurus C-750/C-760/C-860/SL-C3000 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9031 ("Zaurus C-750/C-760/C-860/SL-C3000 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9031 ("Zaurus C-750/C-760/C-860/SL-C3000 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9031 ("Zaurus C-750/C-760/C-860/SL-C3000 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9031 ("Zaurus C-750/C-760/C-860/SL-C3000 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9031 ("Zaurus C-750/C-760/C-860/SL-C3000 PDA"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9031 ("Zaurus C-750/C-760/C-860/SL-C3000 PDA"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9032 ("Zaurus SL-6000"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9032 ("Zaurus SL-6000"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9032 ("Zaurus SL-6000"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9032 ("Zaurus SL-6000"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9032 ("Zaurus SL-6000"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9032 ("Zaurus SL-6000"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9032 ("Zaurus SL-6000"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9032 ("Zaurus SL-6000"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9032 ("Zaurus SL-6000"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9032 ("Zaurus SL-6000"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9032 ("Zaurus SL-6000"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9032 ("Zaurus SL-6000"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9032 ("Zaurus SL-6000"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9032 ("Zaurus SL-6000"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9032 ("Zaurus SL-6000"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9050 ("Zaurus C-860 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9050 ("Zaurus C-860 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9050 ("Zaurus C-860 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9050 ("Zaurus C-860 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9050 ("Zaurus C-860 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9050 ("Zaurus C-860 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9050 ("Zaurus C-860 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9050 ("Zaurus C-860 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9050 ("Zaurus C-860 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9050 ("Zaurus C-860 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9050 ("Zaurus C-860 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9050 ("Zaurus C-860 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9050 ("Zaurus C-860 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9050 ("Zaurus C-860 PDA"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04dd ("Sharp Corp."), product: 9050 ("Zaurus C-860 PDA"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 04e8 ("Samsung Electronics Co., Ltd"), product: 6889 ("GT-B3730 Composite LTE device (Commercial)")
+vendor: 04e8 ("Samsung Electronics Co., Ltd"), product: 6889 ("GT-B3730 Composite LTE device (Commercial)")
+vendor: 04e8 ("Samsung Electronics Co., Ltd"), product: 689a ("LTE Storage Driver [CMC2xx]")
+vendor: 04e8 ("Samsung Electronics Co., Ltd"), product: 689a ("LTE Storage Driver [CMC2xx]")
+vendor: 04e8 ("Samsung Electronics Co., Ltd"), product: a100
+vendor: 04e8 ("Samsung Electronics Co., Ltd"), product: a101
+vendor: 04e8 ("Samsung Electronics Co., Ltd"), product: a101, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04f1 ("Victor Company of Japan, Ltd"), product: 3008 ("MP-PRX1 Ethernet")
+vendor: 04f1 ("Victor Company of Japan, Ltd"), product: 3008 ("MP-PRX1 Ethernet")
+vendor: 04f1 ("Victor Company of Japan, Ltd"), product: 3008 ("MP-PRX1 Ethernet")
+vendor: 04f1 ("Victor Company of Japan, Ltd"), product: 3008 ("MP-PRX1 Ethernet")
+vendor: 04f1 ("Victor Company of Japan, Ltd"), product: 3008 ("MP-PRX1 Ethernet")
+vendor: 04f1 ("Victor Company of Japan, Ltd"), product: 3008 ("MP-PRX1 Ethernet")
+vendor: 0506 ("3Com Corp."), product: 03e8 ("3C19250 Ethernet [klsi]")
+vendor: 0506 ("3Com Corp."), product: 03e8 ("3C19250 Ethernet [klsi]")
+vendor: 0506 ("3Com Corp."), product: 03e8 ("3C19250 Ethernet [klsi]")
+vendor: 0506 ("3Com Corp."), product: 03e8 ("3C19250 Ethernet [klsi]")
+vendor: 0506 ("3Com Corp."), product: 03e8 ("3C19250 Ethernet [klsi]")
+vendor: 0506 ("3Com Corp."), product: 03e8 ("3C19250 Ethernet [klsi]")
+vendor: 0506 ("3Com Corp."), product: 03e8 ("3C19250 Ethernet [klsi]")
+vendor: 0506 ("3Com Corp."), product: 03e8 ("3C19250 Ethernet [klsi]")
+vendor: 0506 ("3Com Corp."), product: 11f8 ("HomeConnect 3C460")
+vendor: 0506 ("3Com Corp."), product: 11f8 ("HomeConnect 3C460")
+vendor: 0506 ("3Com Corp."), product: 11f8 ("HomeConnect 3C460")
+vendor: 0506 ("3Com Corp."), product: 11f8 ("HomeConnect 3C460")
+vendor: 0506 ("3Com Corp."), product: 11f8 ("HomeConnect 3C460")
+vendor: 0506 ("3Com Corp."), product: 11f8 ("HomeConnect 3C460")
+vendor: 0506 ("3Com Corp."), product: 11f8 ("HomeConnect 3C460")
+vendor: 0506 ("3Com Corp."), product: 11f8 ("HomeConnect 3C460")
+vendor: 050d ("Belkin Components"), product: 0004 ("Direct Connect")
+vendor: 050d ("Belkin Components"), product: 0004 ("Direct Connect")
+vendor: 050d ("Belkin Components"), product: 0004 ("Direct Connect")
+vendor: 050d ("Belkin Components"), product: 0004 ("Direct Connect")
+vendor: 050d ("Belkin Components"), product: 0004 ("Direct Connect")
+vendor: 050d ("Belkin Components"), product: 0004 ("Direct Connect")
+vendor: 050d ("Belkin Components"), product: 0004 ("Direct Connect")
+vendor: 050d ("Belkin Components"), product: 0004 ("Direct Connect")
+vendor: 050d ("Belkin Components"), product: 0004 ("Direct Connect")
+vendor: 050d ("Belkin Components"), product: 258a ("F5U258 Host to Host cable")
+vendor: 050d ("Belkin Components"), product: 258a ("F5U258 Host to Host cable")
+vendor: 050d ("Belkin Components"), product: 5055 ("F5D5055 Gigabit Network Adapter [AX88xxx]")
+vendor: 050d ("Belkin Components"), product: 5055 ("F5D5055 Gigabit Network Adapter [AX88xxx]")
+vendor: 050d ("Belkin Components"), product: 5055 ("F5D5055 Gigabit Network Adapter [AX88xxx]")
+vendor: 050d ("Belkin Components"), product: 5055 ("F5D5055 Gigabit Network Adapter [AX88xxx]")
+vendor: 050d ("Belkin Components"), product: 5055 ("F5D5055 Gigabit Network Adapter [AX88xxx]")
+vendor: 050d ("Belkin Components"), product: 6051 ("F5D6051 802.11b Wireless Network Adapter [ZyDAS ZD1201]")
+vendor: 050d ("Belkin Components"), product: 6051 ("F5D6051 802.11b Wireless Network Adapter [ZyDAS ZD1201]")
+vendor: 050f ("KC Technology, Inc."), product: 0190 ("KC2190 USB Host-to-Host cable")
+vendor: 050f ("KC Technology, Inc."), product: 0190 ("KC2190 USB Host-to-Host cable")
+vendor: 050f ("KC Technology, Inc."), product: 0190 ("KC2190 USB Host-to-Host cable")
+vendor: 050f ("KC Technology, Inc."), product: 0190 ("KC2190 USB Host-to-Host cable")
+vendor: 050f ("KC Technology, Inc."), product: 0190 ("KC2190 USB Host-to-Host cable")
+vendor: 050f ("KC Technology, Inc."), product: 0190 ("KC2190 USB Host-to-Host cable")
+vendor: 050f ("KC Technology, Inc."), product: 0190 ("KC2190 USB Host-to-Host cable")
+vendor: 050f ("KC Technology, Inc."), product: 0190 ("KC2190 USB Host-to-Host cable")
+vendor: 0525 ("Netchip Technology, Inc."), product: 1080 ("NET1080 USB-USB Bridge")
+vendor: 0525 ("Netchip Technology, Inc."), product: 1080 ("NET1080 USB-USB Bridge")
+vendor: 0525 ("Netchip Technology, Inc."), product: 1080 ("NET1080 USB-USB Bridge")
+vendor: 0525 ("Netchip Technology, Inc."), product: 1080 ("NET1080 USB-USB Bridge")
+vendor: 0525 ("Netchip Technology, Inc."), product: 1080 ("NET1080 USB-USB Bridge")
+vendor: 0525 ("Netchip Technology, Inc."), product: 1080 ("NET1080 USB-USB Bridge")
+vendor: 0525 ("Netchip Technology, Inc."), product: 1080 ("NET1080 USB-USB Bridge")
+vendor: 0525 ("Netchip Technology, Inc."), product: 1080 ("NET1080 USB-USB Bridge")
+vendor: 0525 ("Netchip Technology, Inc."), product: 1080 ("NET1080 USB-USB Bridge")
+vendor: 0525 ("Netchip Technology, Inc."), product: 2888
+vendor: 0525 ("Netchip Technology, Inc."), product: 2888
+vendor: 0525 ("Netchip Technology, Inc."), product: 2888
+vendor: 0525 ("Netchip Technology, Inc."), product: 2888
+vendor: 0525 ("Netchip Technology, Inc."), product: 2888
+vendor: 0525 ("Netchip Technology, Inc."), product: 2888
+vendor: 0525 ("Netchip Technology, Inc."), product: 2888
+vendor: 0525 ("Netchip Technology, Inc."), product: 2888
+vendor: 0525 ("Netchip Technology, Inc."), product: 2888
+vendor: 0525 ("Netchip Technology, Inc."), product: 9901
+vendor: 0525 ("Netchip Technology, Inc."), product: 9901
+vendor: 0525 ("Netchip Technology, Inc."), product: 9901
+vendor: 0525 ("Netchip Technology, Inc."), product: 9901
+vendor: 0525 ("Netchip Technology, Inc."), product: 9901
+vendor: 0525 ("Netchip Technology, Inc."), product: 9901
+vendor: 0525 ("Netchip Technology, Inc."), product: 9901
+vendor: 0525 ("Netchip Technology, Inc."), product: 9901
+vendor: 0525 ("Netchip Technology, Inc."), product: 9901
+vendor: 0525 ("Netchip Technology, Inc."), product: a4a2 ("Linux-USB Ethernet/RNDIS Gadget")
+vendor: 0525 ("Netchip Technology, Inc."), product: a4a2 ("Linux-USB Ethernet/RNDIS Gadget")
+vendor: 0525 ("Netchip Technology, Inc."), product: a4a2 ("Linux-USB Ethernet/RNDIS Gadget")
+vendor: 0525 ("Netchip Technology, Inc."), product: a4a2 ("Linux-USB Ethernet/RNDIS Gadget"), bcd min: 0203 (hex), bcd max:0203 (hex)
+vendor: 0525 ("Netchip Technology, Inc."), product: a4a2 ("Linux-USB Ethernet/RNDIS Gadget"), bcd min: 0203 (hex), bcd max:0203 (hex)
+vendor: 0525 ("Netchip Technology, Inc."), product: a4a2 ("Linux-USB Ethernet/RNDIS Gadget"), bcd min: 0203 (hex), bcd max:0203 (hex)
+vendor: 0525 ("Netchip Technology, Inc."), product: a4a2 ("Linux-USB Ethernet/RNDIS Gadget"), bcd min: 0203 (hex), bcd max:0203 (hex)
+vendor: 0525 ("Netchip Technology, Inc."), product: a4a2 ("Linux-USB Ethernet/RNDIS Gadget"), bcd min: 0203 (hex), bcd max:0203 (hex)
+vendor: 0525 ("Netchip Technology, Inc."), product: a4a2 ("Linux-USB Ethernet/RNDIS Gadget"), bcd min: 0203 (hex), bcd max:0203 (hex)
+vendor: 0547 ("Anchor Chips, Inc."), product: 2720 ("AN2720 USB-USB Bridge")
+vendor: 0547 ("Anchor Chips, Inc."), product: 2720 ("AN2720 USB-USB Bridge")
+vendor: 0547 ("Anchor Chips, Inc."), product: 2720 ("AN2720 USB-USB Bridge")
+vendor: 0547 ("Anchor Chips, Inc."), product: 2720 ("AN2720 USB-USB Bridge")
+vendor: 0547 ("Anchor Chips, Inc."), product: 2720 ("AN2720 USB-USB Bridge")
+vendor: 0547 ("Anchor Chips, Inc."), product: 2720 ("AN2720 USB-USB Bridge")
+vendor: 0547 ("Anchor Chips, Inc."), product: 2720 ("AN2720 USB-USB Bridge")
+vendor: 0547 ("Anchor Chips, Inc."), product: 2720 ("AN2720 USB-USB Bridge")
+vendor: 0547 ("Anchor Chips, Inc."), product: 2720 ("AN2720 USB-USB Bridge")
+vendor: 0547 ("Anchor Chips, Inc."), product: 2727 ("Xircom PGUNET USB-USB Bridge")
+vendor: 0547 ("Anchor Chips, Inc."), product: 2727 ("Xircom PGUNET USB-USB Bridge")
+vendor: 0547 ("Anchor Chips, Inc."), product: 2727 ("Xircom PGUNET USB-USB Bridge")
+vendor: 0547 ("Anchor Chips, Inc."), product: 2727 ("Xircom PGUNET USB-USB Bridge")
+vendor: 0547 ("Anchor Chips, Inc."), product: 2727 ("Xircom PGUNET USB-USB Bridge")
+vendor: 0547 ("Anchor Chips, Inc."), product: 2727 ("Xircom PGUNET USB-USB Bridge")
+vendor: 0547 ("Anchor Chips, Inc."), product: 2727 ("Xircom PGUNET USB-USB Bridge")
+vendor: 0547 ("Anchor Chips, Inc."), product: 2727 ("Xircom PGUNET USB-USB Bridge")
+vendor: 0547 ("Anchor Chips, Inc."), product: 2727 ("Xircom PGUNET USB-USB Bridge")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 2002 ("10Mbps Ethernet [klsi]")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 2002 ("10Mbps Ethernet [klsi]")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 2002 ("10Mbps Ethernet [klsi]")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 2002 ("10Mbps Ethernet [klsi]")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 2002 ("10Mbps Ethernet [klsi]")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 2002 ("10Mbps Ethernet [klsi]")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 2002 ("10Mbps Ethernet [klsi]")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 2002 ("10Mbps Ethernet [klsi]")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 2009 ("UC-210T Ethernet")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 2009 ("UC-210T Ethernet")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 2009 ("UC-210T Ethernet")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 2009 ("UC-210T Ethernet")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 2009 ("UC-210T Ethernet")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 2009 ("UC-210T Ethernet")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 2009 ("UC-210T Ethernet")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 2009 ("UC-210T Ethernet")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 2009 ("UC-210T Ethernet")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 4000 ("DSB-650 10Mbps Ethernet [klsi]")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 4000 ("DSB-650 10Mbps Ethernet [klsi]")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 4000 ("DSB-650 10Mbps Ethernet [klsi]")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 4000 ("DSB-650 10Mbps Ethernet [klsi]")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 4000 ("DSB-650 10Mbps Ethernet [klsi]")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 4000 ("DSB-650 10Mbps Ethernet [klsi]")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 4000 ("DSB-650 10Mbps Ethernet [klsi]")
+vendor: 0557 ("ATEN International Co., Ltd"), product: 4000 ("DSB-650 10Mbps Ethernet [klsi]")
+vendor: 0565 ("Peracom Networks, Inc."), product: 0002 ("Enet Ethernet [klsi]")
+vendor: 0565 ("Peracom Networks, Inc."), product: 0002 ("Enet Ethernet [klsi]")
+vendor: 0565 ("Peracom Networks, Inc."), product: 0002 ("Enet Ethernet [klsi]")
+vendor: 0565 ("Peracom Networks, Inc."), product: 0002 ("Enet Ethernet [klsi]")
+vendor: 0565 ("Peracom Networks, Inc."), product: 0002 ("Enet Ethernet [klsi]")
+vendor: 0565 ("Peracom Networks, Inc."), product: 0002 ("Enet Ethernet [klsi]")
+vendor: 0565 ("Peracom Networks, Inc."), product: 0002 ("Enet Ethernet [klsi]")
+vendor: 0565 ("Peracom Networks, Inc."), product: 0002 ("Enet Ethernet [klsi]")
+vendor: 0565 ("Peracom Networks, Inc."), product: 0003 ("@Home Networks Ethernet [klsi]")
+vendor: 0565 ("Peracom Networks, Inc."), product: 0003 ("@Home Networks Ethernet [klsi]")
+vendor: 0565 ("Peracom Networks, Inc."), product: 0003 ("@Home Networks Ethernet [klsi]")
+vendor: 0565 ("Peracom Networks, Inc."), product: 0003 ("@Home Networks Ethernet [klsi]")
+vendor: 0565 ("Peracom Networks, Inc."), product: 0003 ("@Home Networks Ethernet [klsi]")
+vendor: 0565 ("Peracom Networks, Inc."), product: 0003 ("@Home Networks Ethernet [klsi]")
+vendor: 0565 ("Peracom Networks, Inc."), product: 0003 ("@Home Networks Ethernet [klsi]")
+vendor: 0565 ("Peracom Networks, Inc."), product: 0003 ("@Home Networks Ethernet [klsi]")
+vendor: 0565 ("Peracom Networks, Inc."), product: 0005 ("Enet2 Ethernet [klsi]")
+vendor: 0565 ("Peracom Networks, Inc."), product: 0005 ("Enet2 Ethernet [klsi]")
+vendor: 0565 ("Peracom Networks, Inc."), product: 0005 ("Enet2 Ethernet [klsi]")
+vendor: 0565 ("Peracom Networks, Inc."), product: 0005 ("Enet2 Ethernet [klsi]")
+vendor: 0565 ("Peracom Networks, Inc."), product: 0005 ("Enet2 Ethernet [klsi]")
+vendor: 0565 ("Peracom Networks, Inc."), product: 0005 ("Enet2 Ethernet [klsi]")
+vendor: 0565 ("Peracom Networks, Inc."), product: 0005 ("Enet2 Ethernet [klsi]")
+vendor: 0565 ("Peracom Networks, Inc."), product: 0005 ("Enet2 Ethernet [klsi]")
+vendor: 056c ("eTEK Labs"), product: 8100 ("KwikLink Host-Host Connector")
+vendor: 056c ("eTEK Labs"), product: 8100 ("KwikLink Host-Host Connector")
+vendor: 056c ("eTEK Labs"), product: 8100 ("KwikLink Host-Host Connector")
+vendor: 056c ("eTEK Labs"), product: 8100 ("KwikLink Host-Host Connector")
+vendor: 056c ("eTEK Labs"), product: 8100 ("KwikLink Host-Host Connector")
+vendor: 056c ("eTEK Labs"), product: 8100 ("KwikLink Host-Host Connector")
+vendor: 056c ("eTEK Labs"), product: 8100 ("KwikLink Host-Host Connector")
+vendor: 056c ("eTEK Labs"), product: 8100 ("KwikLink Host-Host Connector")
+vendor: 056c ("eTEK Labs"), product: 8100 ("KwikLink Host-Host Connector")
+vendor: 0572 ("Conexant Systems (Rockwell), Inc."), product: cb01 ("ADSL Modem"), device class: ff ("Vendor Specific Class"), subclass: 00, protocol: 00
+vendor: 0572 ("Conexant Systems (Rockwell), Inc."), product: cb01 ("ADSL Modem"), device class: ff ("Vendor Specific Class"), subclass: 00, protocol: 00
+vendor: 0572 ("Conexant Systems (Rockwell), Inc."), product: cb01 ("ADSL Modem"), interface class: ff ("Vendor Specific Class"), subclass: 00, protocol: 00
+vendor: 0586 ("ZyXEL Communications Corp."), product: 3400 ("ZyAIR B-220 IEEE 802.11b Adapter")
+vendor: 0586 ("ZyXEL Communications Corp."), product: 3400 ("ZyAIR B-220 IEEE 802.11b Adapter")
+vendor: 0586 ("ZyXEL Communications Corp."), product: 401a
+vendor: 0586 ("ZyXEL Communications Corp."), product: 401a
+vendor: 0586 ("ZyXEL Communications Corp."), product: 401a
+vendor: 0586 ("ZyXEL Communications Corp."), product: 401a
+vendor: 0586 ("ZyXEL Communications Corp."), product: 401a
+vendor: 0586 ("ZyXEL Communications Corp."), product: 401a
+vendor: 05ac ("Apple, Inc."), product: 1290 ("iPhone"), interface class: ff ("Vendor Specific Class"), subclass: fd, protocol: 01
+vendor: 05ac ("Apple, Inc."), product: 1290 ("iPhone"), interface class: ff ("Vendor Specific Class"), subclass: fd, protocol: 01
+vendor: 05ac ("Apple, Inc."), product: 1292 ("iPhone 3G"), interface class: ff ("Vendor Specific Class"), subclass: fd, protocol: 01
+vendor: 05ac ("Apple, Inc."), product: 1292 ("iPhone 3G"), interface class: ff ("Vendor Specific Class"), subclass: fd, protocol: 01
+vendor: 05ac ("Apple, Inc."), product: 1294 ("iPhone 3GS"), interface class: ff ("Vendor Specific Class"), subclass: fd, protocol: 01
+vendor: 05ac ("Apple, Inc."), product: 1294 ("iPhone 3GS"), interface class: ff ("Vendor Specific Class"), subclass: fd, protocol: 01
+vendor: 05ac ("Apple, Inc."), product: 1297 ("iPhone 4"), interface class: ff ("Vendor Specific Class"), subclass: fd, protocol: 01
+vendor: 05ac ("Apple, Inc."), product: 1297 ("iPhone 4"), interface class: ff ("Vendor Specific Class"), subclass: fd, protocol: 01
+vendor: 05ac ("Apple, Inc."), product: 129a ("iPad"), interface class: ff ("Vendor Specific Class"), subclass: fd, protocol: 01
+vendor: 05ac ("Apple, Inc."), product: 129c ("iPhone 4(CDMA)"), interface class: ff ("Vendor Specific Class"), subclass: fd, protocol: 01
+vendor: 05ac ("Apple, Inc."), product: 12a0 ("iPhone 4S"), interface class: ff ("Vendor Specific Class"), subclass: fd, protocol: 01
+vendor: 05ac ("Apple, Inc."), product: 12a2 ("iPad 2 (3G; 64GB)"), interface class: ff ("Vendor Specific Class"), subclass: fd, protocol: 01
+vendor: 05ac ("Apple, Inc."), product: 12a6 ("iPad 3 (3G, 16 GB)"), interface class: ff ("Vendor Specific Class"), subclass: fd, protocol: 01
+vendor: 05ac ("Apple, Inc."), product: 12a8 ("iPhone 5/5C/5S/6/SE"), interface class: ff ("Vendor Specific Class"), subclass: fd, protocol: 01
+vendor: 05ac ("Apple, Inc."), product: 12ab ("iPad 4/Mini1"), interface class: ff ("Vendor Specific Class"), subclass: fd, protocol: 01
+vendor: 05ac ("Apple, Inc."), product: 1402 ("Ethernet Adapter [A1277]")
+vendor: 05ac ("Apple, Inc."), product: 1402 ("Ethernet Adapter [A1277]")
+vendor: 05ac ("Apple, Inc."), product: 1402 ("Ethernet Adapter [A1277]")
+vendor: 05ac ("Apple, Inc."), product: 1402 ("Ethernet Adapter [A1277]")
+vendor: 05ac ("Apple, Inc."), product: 1402 ("Ethernet Adapter [A1277]")
+vendor: 05c6 ("Qualcomm, Inc."), product: 7000
+vendor: 05c6 ("Qualcomm, Inc."), product: 7001
+vendor: 05c6 ("Qualcomm, Inc."), product: 7002
+vendor: 05c6 ("Qualcomm, Inc."), product: 7101
+vendor: 05c6 ("Qualcomm, Inc."), product: 7102
+vendor: 05c6 ("Qualcomm, Inc."), product: 8000
+vendor: 05c6 ("Qualcomm, Inc."), product: 8001
+vendor: 05c6 ("Qualcomm, Inc."), product: 9000 ("SIMCom SIM5218 modem")
+vendor: 05c6 ("Qualcomm, Inc."), product: 9001 ("Gobi Wireless Modem")
+vendor: 05c6 ("Qualcomm, Inc."), product: 9002 ("Gobi Wireless Modem")
+vendor: 05c6 ("Qualcomm, Inc."), product: 9003 ("Quectel UC20")
+vendor: 05c6 ("Qualcomm, Inc."), product: 9005
+vendor: 05c6 ("Qualcomm, Inc."), product: 9009
+vendor: 05c6 ("Qualcomm, Inc."), product: 900a
+vendor: 05c6 ("Qualcomm, Inc."), product: 900b
+vendor: 05c6 ("Qualcomm, Inc."), product: 900c
+vendor: 05c6 ("Qualcomm, Inc."), product: 900d
+vendor: 05c6 ("Qualcomm, Inc."), product: 900f
+vendor: 05c6 ("Qualcomm, Inc."), product: 9010
+vendor: 05c6 ("Qualcomm, Inc."), product: 9011
+vendor: 05c6 ("Qualcomm, Inc."), product: 9021
+vendor: 05c6 ("Qualcomm, Inc."), product: 9022
+vendor: 05c6 ("Qualcomm, Inc."), product: 9025 ("HSUSB Device")
+vendor: 05c6 ("Qualcomm, Inc."), product: 9026
+vendor: 05c6 ("Qualcomm, Inc."), product: 902e
+vendor: 05c6 ("Qualcomm, Inc."), product: 9031
+vendor: 05c6 ("Qualcomm, Inc."), product: 9032
+vendor: 05c6 ("Qualcomm, Inc."), product: 9033
+vendor: 05c6 ("Qualcomm, Inc."), product: 9034
+vendor: 05c6 ("Qualcomm, Inc."), product: 9035
+vendor: 05c6 ("Qualcomm, Inc."), product: 9036
+vendor: 05c6 ("Qualcomm, Inc."), product: 9037
+vendor: 05c6 ("Qualcomm, Inc."), product: 9038
+vendor: 05c6 ("Qualcomm, Inc."), product: 903b
+vendor: 05c6 ("Qualcomm, Inc."), product: 903c
+vendor: 05c6 ("Qualcomm, Inc."), product: 903d
+vendor: 05c6 ("Qualcomm, Inc."), product: 903e
+vendor: 05c6 ("Qualcomm, Inc."), product: 9043
+vendor: 05c6 ("Qualcomm, Inc."), product: 9046
+vendor: 05c6 ("Qualcomm, Inc."), product: 9047
+vendor: 05c6 ("Qualcomm, Inc."), product: 9048
+vendor: 05c6 ("Qualcomm, Inc."), product: 904c
+vendor: 05c6 ("Qualcomm, Inc."), product: 9050
+vendor: 05c6 ("Qualcomm, Inc."), product: 9052
+vendor: 05c6 ("Qualcomm, Inc."), product: 9053
+vendor: 05c6 ("Qualcomm, Inc."), product: 9054
+vendor: 05c6 ("Qualcomm, Inc."), product: 9055
+vendor: 05c6 ("Qualcomm, Inc."), product: 9056
+vendor: 05c6 ("Qualcomm, Inc."), product: 9062
+vendor: 05c6 ("Qualcomm, Inc."), product: 9064
+vendor: 05c6 ("Qualcomm, Inc."), product: 9065
+vendor: 05c6 ("Qualcomm, Inc."), product: 9066
+vendor: 05c6 ("Qualcomm, Inc."), product: 9067
+vendor: 05c6 ("Qualcomm, Inc."), product: 9068
+vendor: 05c6 ("Qualcomm, Inc."), product: 9069
+vendor: 05c6 ("Qualcomm, Inc."), product: 9070
+vendor: 05c6 ("Qualcomm, Inc."), product: 9075
+vendor: 05c6 ("Qualcomm, Inc."), product: 9076
+vendor: 05c6 ("Qualcomm, Inc."), product: 9077
+vendor: 05c6 ("Qualcomm, Inc."), product: 9078
+vendor: 05c6 ("Qualcomm, Inc."), product: 9079
+vendor: 05c6 ("Qualcomm, Inc."), product: 9080
+vendor: 05c6 ("Qualcomm, Inc."), product: 9083
+vendor: 05c6 ("Qualcomm, Inc."), product: 9084
+vendor: 05c6 ("Qualcomm, Inc."), product: 9202 ("Gobi Wireless Modem")
+vendor: 05c6 ("Qualcomm, Inc."), product: 9203 ("Gobi Wireless Modem")
+vendor: 05c6 ("Qualcomm, Inc."), product: 9205 ("Gobi 2000")
+vendor: 05c6 ("Qualcomm, Inc."), product: 920b
+vendor: 05c6 ("Qualcomm, Inc."), product: 920d
+vendor: 05c6 ("Qualcomm, Inc."), product: 9212 ("Acer Gobi Wireless Modem")
+vendor: 05c6 ("Qualcomm, Inc."), product: 9215 ("Quectel EC20 LTE modem / Acer Gobi 2000 Wireless Modem")
+vendor: 05c6 ("Qualcomm, Inc."), product: 9222 ("Gobi Wireless Modem")
+vendor: 05c6 ("Qualcomm, Inc."), product: 9225 ("Sony Gobi 2000 Wireless Modem")
+vendor: 05c6 ("Qualcomm, Inc."), product: 9235 ("Top Global Gobi 2000 Wireless Modem")
+vendor: 05c6 ("Qualcomm, Inc."), product: 9245 ("Samsung Gobi 2000 Wireless Modem")
+vendor: 05c6 ("Qualcomm, Inc."), product: 9265 ("Asus Gobi 2000 Wireless Modem")
+vendor: 05c6 ("Qualcomm, Inc."), product: 9275 ("iRex Technologies Gobi 2000 Wireless Modem")
+vendor: 05e3 ("Genesys Logic, Inc."), product: 0502 ("GL620USB-A GeneLink USB-USB Bridge")
+vendor: 05e3 ("Genesys Logic, Inc."), product: 0502 ("GL620USB-A GeneLink USB-USB Bridge")
+vendor: 05e3 ("Genesys Logic, Inc."), product: 0502 ("GL620USB-A GeneLink USB-USB Bridge")
+vendor: 05e3 ("Genesys Logic, Inc."), product: 0502 ("GL620USB-A GeneLink USB-USB Bridge")
+vendor: 05e3 ("Genesys Logic, Inc."), product: 0502 ("GL620USB-A GeneLink USB-USB Bridge")
+vendor: 05e3 ("Genesys Logic, Inc."), product: 0502 ("GL620USB-A GeneLink USB-USB Bridge")
+vendor: 05e3 ("Genesys Logic, Inc."), product: 0502 ("GL620USB-A GeneLink USB-USB Bridge")
+vendor: 05e3 ("Genesys Logic, Inc."), product: 0502 ("GL620USB-A GeneLink USB-USB Bridge")
+vendor: 05e3 ("Genesys Logic, Inc."), product: 0502 ("GL620USB-A GeneLink USB-USB Bridge")
+vendor: 05e9 ("Kawasaki LSI"), product: 0008 ("KL5KUSB101B Ethernet [klsi]")
+vendor: 05e9 ("Kawasaki LSI"), product: 0008 ("KL5KUSB101B Ethernet [klsi]")
+vendor: 05e9 ("Kawasaki LSI"), product: 0008 ("KL5KUSB101B Ethernet [klsi]")
+vendor: 05e9 ("Kawasaki LSI"), product: 0008 ("KL5KUSB101B Ethernet [klsi]")
+vendor: 05e9 ("Kawasaki LSI"), product: 0008 ("KL5KUSB101B Ethernet [klsi]")
+vendor: 05e9 ("Kawasaki LSI"), product: 0008 ("KL5KUSB101B Ethernet [klsi]")
+vendor: 05e9 ("Kawasaki LSI"), product: 0008 ("KL5KUSB101B Ethernet [klsi]")
+vendor: 05e9 ("Kawasaki LSI"), product: 0008 ("KL5KUSB101B Ethernet [klsi]")
+vendor: 05e9 ("Kawasaki LSI"), product: 0009 ("Sony 10Mbps Ethernet [pegasus]")
+vendor: 05e9 ("Kawasaki LSI"), product: 0009 ("Sony 10Mbps Ethernet [pegasus]")
+vendor: 05e9 ("Kawasaki LSI"), product: 0009 ("Sony 10Mbps Ethernet [pegasus]")
+vendor: 05e9 ("Kawasaki LSI"), product: 0009 ("Sony 10Mbps Ethernet [pegasus]")
+vendor: 05e9 ("Kawasaki LSI"), product: 0009 ("Sony 10Mbps Ethernet [pegasus]")
+vendor: 05e9 ("Kawasaki LSI"), product: 0009 ("Sony 10Mbps Ethernet [pegasus]")
+vendor: 05e9 ("Kawasaki LSI"), product: 0009 ("Sony 10Mbps Ethernet [pegasus]")
+vendor: 05e9 ("Kawasaki LSI"), product: 0009 ("Sony 10Mbps Ethernet [pegasus]")
+vendor: 066b ("Linksys, Inc."), product: 20f9
+vendor: 066b ("Linksys, Inc."), product: 2202 ("USB10TX Ethernet [pegasus]")
+vendor: 066b ("Linksys, Inc."), product: 2202 ("USB10TX Ethernet [pegasus]")
+vendor: 066b ("Linksys, Inc."), product: 2202 ("USB10TX Ethernet [pegasus]")
+vendor: 066b ("Linksys, Inc."), product: 2202 ("USB10TX Ethernet [pegasus]")
+vendor: 066b ("Linksys, Inc."), product: 2202 ("USB10TX Ethernet [pegasus]")
+vendor: 066b ("Linksys, Inc."), product: 2202 ("USB10TX Ethernet [pegasus]")
+vendor: 066b ("Linksys, Inc."), product: 2202 ("USB10TX Ethernet [pegasus]")
+vendor: 066b ("Linksys, Inc."), product: 2202 ("USB10TX Ethernet [pegasus]")
+vendor: 067b ("Prolific Technology, Inc."), product: 0000 ("PL2301 USB-USB Bridge")
+vendor: 067b ("Prolific Technology, Inc."), product: 0000 ("PL2301 USB-USB Bridge")
+vendor: 067b ("Prolific Technology, Inc."), product: 0000 ("PL2301 USB-USB Bridge")
+vendor: 067b ("Prolific Technology, Inc."), product: 0000 ("PL2301 USB-USB Bridge")
+vendor: 067b ("Prolific Technology, Inc."), product: 0000 ("PL2301 USB-USB Bridge")
+vendor: 067b ("Prolific Technology, Inc."), product: 0000 ("PL2301 USB-USB Bridge")
+vendor: 067b ("Prolific Technology, Inc."), product: 0000 ("PL2301 USB-USB Bridge")
+vendor: 067b ("Prolific Technology, Inc."), product: 0000 ("PL2301 USB-USB Bridge")
+vendor: 067b ("Prolific Technology, Inc."), product: 0000 ("PL2301 USB-USB Bridge")
+vendor: 067b ("Prolific Technology, Inc."), product: 0001 ("PL2302 USB-USB Bridge")
+vendor: 067b ("Prolific Technology, Inc."), product: 0001 ("PL2302 USB-USB Bridge")
+vendor: 067b ("Prolific Technology, Inc."), product: 0001 ("PL2302 USB-USB Bridge")
+vendor: 067b ("Prolific Technology, Inc."), product: 0001 ("PL2302 USB-USB Bridge")
+vendor: 067b ("Prolific Technology, Inc."), product: 0001 ("PL2302 USB-USB Bridge")
+vendor: 067b ("Prolific Technology, Inc."), product: 0001 ("PL2302 USB-USB Bridge")
+vendor: 067b ("Prolific Technology, Inc."), product: 0001 ("PL2302 USB-USB Bridge")
+vendor: 067b ("Prolific Technology, Inc."), product: 0001 ("PL2302 USB-USB Bridge")
+vendor: 067b ("Prolific Technology, Inc."), product: 0001 ("PL2302 USB-USB Bridge")
+vendor: 067b ("Prolific Technology, Inc."), product: 25a1 ("PL25A1 Host-Host Bridge")
+vendor: 067b ("Prolific Technology, Inc."), product: 25a1 ("PL25A1 Host-Host Bridge")
+vendor: 06d0 ("LapLink, Inc."), product: 0622 ("LapLink Gold USB-USB Bridge [net1080]")
+vendor: 06d0 ("LapLink, Inc."), product: 0622 ("LapLink Gold USB-USB Bridge [net1080]")
+vendor: 06d0 ("LapLink, Inc."), product: 0622 ("LapLink Gold USB-USB Bridge [net1080]")
+vendor: 06d0 ("LapLink, Inc."), product: 0622 ("LapLink Gold USB-USB Bridge [net1080]")
+vendor: 06d0 ("LapLink, Inc."), product: 0622 ("LapLink Gold USB-USB Bridge [net1080]")
+vendor: 06d0 ("LapLink, Inc."), product: 0622 ("LapLink Gold USB-USB Bridge [net1080]")
+vendor: 06d0 ("LapLink, Inc."), product: 0622 ("LapLink Gold USB-USB Bridge [net1080]")
+vendor: 06d0 ("LapLink, Inc."), product: 0622 ("LapLink Gold USB-USB Bridge [net1080]")
+vendor: 06d0 ("LapLink, Inc."), product: 0622 ("LapLink Gold USB-USB Bridge [net1080]")
+vendor: 06e1 ("ADS Technologies, Inc."), product: 0008 ("UBS-10BT Ethernet [klsi]")
+vendor: 06e1 ("ADS Technologies, Inc."), product: 0008 ("UBS-10BT Ethernet [klsi]")
+vendor: 06e1 ("ADS Technologies, Inc."), product: 0008 ("UBS-10BT Ethernet [klsi]")
+vendor: 06e1 ("ADS Technologies, Inc."), product: 0008 ("UBS-10BT Ethernet [klsi]")
+vendor: 06e1 ("ADS Technologies, Inc."), product: 0008 ("UBS-10BT Ethernet [klsi]")
+vendor: 06e1 ("ADS Technologies, Inc."), product: 0008 ("UBS-10BT Ethernet [klsi]")
+vendor: 06e1 ("ADS Technologies, Inc."), product: 0008 ("UBS-10BT Ethernet [klsi]")
+vendor: 06e1 ("ADS Technologies, Inc."), product: 0008 ("UBS-10BT Ethernet [klsi]")
+vendor: 06e1 ("ADS Technologies, Inc."), product: 0009 ("UBS-10BT Ethernet")
+vendor: 06e1 ("ADS Technologies, Inc."), product: 0009 ("UBS-10BT Ethernet")
+vendor: 06e1 ("ADS Technologies, Inc."), product: 0009 ("UBS-10BT Ethernet")
+vendor: 06e1 ("ADS Technologies, Inc."), product: 0009 ("UBS-10BT Ethernet")
+vendor: 06e1 ("ADS Technologies, Inc."), product: 0009 ("UBS-10BT Ethernet")
+vendor: 06e1 ("ADS Technologies, Inc."), product: 0009 ("UBS-10BT Ethernet")
+vendor: 06e1 ("ADS Technologies, Inc."), product: 0009 ("UBS-10BT Ethernet")
+vendor: 06e1 ("ADS Technologies, Inc."), product: 0009 ("UBS-10BT Ethernet")
+vendor: 0707 ("Standard Microsystems Corp."), product: 0100 ("2202 Ethernet [klsi]")
+vendor: 0707 ("Standard Microsystems Corp."), product: 0100 ("2202 Ethernet [klsi]")
+vendor: 0707 ("Standard Microsystems Corp."), product: 0100 ("2202 Ethernet [klsi]")
+vendor: 0707 ("Standard Microsystems Corp."), product: 0100 ("2202 Ethernet [klsi]")
+vendor: 0707 ("Standard Microsystems Corp."), product: 0100 ("2202 Ethernet [klsi]")
+vendor: 0707 ("Standard Microsystems Corp."), product: 0100 ("2202 Ethernet [klsi]")
+vendor: 0707 ("Standard Microsystems Corp."), product: 0100 ("2202 Ethernet [klsi]")
+vendor: 0707 ("Standard Microsystems Corp."), product: 0100 ("2202 Ethernet [klsi]")
+vendor: 077b ("Linksys"), product: 2226 ("USB200M 100baseTX Adapter")
+vendor: 077b ("Linksys"), product: 2226 ("USB200M 100baseTX Adapter")
+vendor: 077b ("Linksys"), product: 2226 ("USB200M 100baseTX Adapter")
+vendor: 077b ("Linksys"), product: 2226 ("USB200M 100baseTX Adapter")
+vendor: 077b ("Linksys"), product: 2226 ("USB200M 100baseTX Adapter")
+vendor: 077b ("Linksys"), product: 2226 ("USB200M 100baseTX Adapter")
+vendor: 077b ("Linksys"), product: 2226 ("USB200M 100baseTX Adapter")
+vendor: 077b ("Linksys"), product: 2226 ("USB200M 100baseTX Adapter")
+vendor: 077b ("Linksys"), product: 2226 ("USB200M 100baseTX Adapter")
+vendor: 077b ("Linksys"), product: 2226 ("USB200M 100baseTX Adapter")
+vendor: 0789 ("Logitec Corp."), product: 0160 ("LAN-GTJ/U2A")
+vendor: 0789 ("Logitec Corp."), product: 0160 ("LAN-GTJ/U2A")
+vendor: 0789 ("Logitec Corp."), product: 0160 ("LAN-GTJ/U2A")
+vendor: 07aa ("Corega K.K."), product: 0001 ("Ether USB-T Ethernet [klsi]")
+vendor: 07aa ("Corega K.K."), product: 0001 ("Ether USB-T Ethernet [klsi]")
+vendor: 07aa ("Corega K.K."), product: 0001 ("Ether USB-T Ethernet [klsi]")
+vendor: 07aa ("Corega K.K."), product: 0001 ("Ether USB-T Ethernet [klsi]")
+vendor: 07aa ("Corega K.K."), product: 0001 ("Ether USB-T Ethernet [klsi]")
+vendor: 07aa ("Corega K.K."), product: 0001 ("Ether USB-T Ethernet [klsi]")
+vendor: 07aa ("Corega K.K."), product: 0001 ("Ether USB-T Ethernet [klsi]")
+vendor: 07aa ("Corega K.K."), product: 0001 ("Ether USB-T Ethernet [klsi]")
+vendor: 07aa ("Corega K.K."), product: 0017 ("FEther USB2-TX")
+vendor: 07aa ("Corega K.K."), product: 0017 ("FEther USB2-TX")
+vendor: 07aa ("Corega K.K."), product: 0017 ("FEther USB2-TX")
+vendor: 07aa ("Corega K.K."), product: 0017 ("FEther USB2-TX")
+vendor: 07aa ("Corega K.K."), product: 0017 ("FEther USB2-TX")
+vendor: 07aa ("Corega K.K."), product: 0017 ("FEther USB2-TX")
+vendor: 07aa ("Corega K.K."), product: 0017 ("FEther USB2-TX")
+vendor: 07aa ("Corega K.K."), product: 0017 ("FEther USB2-TX")
+vendor: 07aa ("Corega K.K."), product: 0017 ("FEther USB2-TX")
+vendor: 07aa ("Corega K.K."), product: 9601 ("FEther USB-TXC")
+vendor: 07aa ("Corega K.K."), product: 9601 ("FEther USB-TXC")
+vendor: 07aa ("Corega K.K."), product: 9601 ("FEther USB-TXC")
+vendor: 07aa ("Corega K.K."), product: 9601 ("FEther USB-TXC")
+vendor: 07aa ("Corega K.K."), product: 9601 ("FEther USB-TXC")
+vendor: 07b4 ("Olympus Optical Co., Ltd"), product: 0f02, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 07b4 ("Olympus Optical Co., Ltd"), product: 0f02, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 07b4 ("Olympus Optical Co., Ltd"), product: 0f02, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 07b4 ("Olympus Optical Co., Ltd"), product: 0f02, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 07b4 ("Olympus Optical Co., Ltd"), product: 0f02, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 07b4 ("Olympus Optical Co., Ltd"), product: 0f02, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 07b4 ("Olympus Optical Co., Ltd"), product: 0f02, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 07b4 ("Olympus Optical Co., Ltd"), product: 0f02, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 07b4 ("Olympus Optical Co., Ltd"), product: 0f02, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 07b4 ("Olympus Optical Co., Ltd"), product: 0f02, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 07b4 ("Olympus Optical Co., Ltd"), product: 0f02, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 07b4 ("Olympus Optical Co., Ltd"), product: 0f02, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 07b4 ("Olympus Optical Co., Ltd"), product: 0f02, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 07b8 ("AboCom Systems Inc"), product: 4000 ("DU-E10 Ethernet [klsi]")
+vendor: 07b8 ("AboCom Systems Inc"), product: 4000 ("DU-E10 Ethernet [klsi]")
+vendor: 07b8 ("AboCom Systems Inc"), product: 4000 ("DU-E10 Ethernet [klsi]")
+vendor: 07b8 ("AboCom Systems Inc"), product: 4000 ("DU-E10 Ethernet [klsi]")
+vendor: 07b8 ("AboCom Systems Inc"), product: 4000 ("DU-E10 Ethernet [klsi]")
+vendor: 07b8 ("AboCom Systems Inc"), product: 4000 ("DU-E10 Ethernet [klsi]")
+vendor: 07b8 ("AboCom Systems Inc"), product: 4000 ("DU-E10 Ethernet [klsi]")
+vendor: 07b8 ("AboCom Systems Inc"), product: 4000 ("DU-E10 Ethernet [klsi]")
+vendor: 07b8 ("AboCom Systems Inc"), product: 401a ("RTL8151")
+vendor: 07b8 ("AboCom Systems Inc"), product: 401a ("RTL8151")
+vendor: 07b8 ("AboCom Systems Inc"), product: 401a ("RTL8151")
+vendor: 07b8 ("AboCom Systems Inc"), product: 401a ("RTL8151")
+vendor: 07b8 ("AboCom Systems Inc"), product: 401a ("RTL8151")
+vendor: 07b8 ("AboCom Systems Inc"), product: 401a ("RTL8151")
+vendor: 07b8 ("AboCom Systems Inc"), product: 401a ("RTL8151")
+vendor: 07b8 ("AboCom Systems Inc"), product: 401a ("RTL8151")
+vendor: 07b8 ("AboCom Systems Inc"), product: 420a ("UF200 Ethernet")
+vendor: 07b8 ("AboCom Systems Inc"), product: 420a ("UF200 Ethernet")
+vendor: 07b8 ("AboCom Systems Inc"), product: 420a ("UF200 Ethernet")
+vendor: 07b8 ("AboCom Systems Inc"), product: 420a ("UF200 Ethernet")
+vendor: 07b8 ("AboCom Systems Inc"), product: 420a ("UF200 Ethernet")
+vendor: 07b8 ("AboCom Systems Inc"), product: 420a ("UF200 Ethernet")
+vendor: 07b8 ("AboCom Systems Inc"), product: 420a ("UF200 Ethernet")
+vendor: 07b8 ("AboCom Systems Inc"), product: 420a ("UF200 Ethernet")
+vendor: 07b8 ("AboCom Systems Inc"), product: 420a ("UF200 Ethernet")
+vendor: 07b8 ("AboCom Systems Inc"), product: 420a ("UF200 Ethernet")
+vendor: 07c9 ("Allied Telesyn International"), product: b010
+vendor: 07c9 ("Allied Telesyn International"), product: b010
+vendor: 07d1 ("D-Link System"), product: 3c05 ("EH103 Wireless G Adapter")
+vendor: 07d1 ("D-Link System"), product: 3c05 ("EH103 Wireless G Adapter")
+vendor: 07d1 ("D-Link System"), product: 3c05 ("EH103 Wireless G Adapter")
+vendor: 07d1 ("D-Link System"), product: 3c05 ("EH103 Wireless G Adapter")
+vendor: 07d1 ("D-Link System"), product: 3c05 ("EH103 Wireless G Adapter")
+vendor: 07d1 ("D-Link System"), product: 3c05 ("EH103 Wireless G Adapter")
+vendor: 0846 ("NetGear, Inc."), product: 1001 ("EA101 10 Mbps 10BASE-T Ethernet [Kawasaki LSI KL5KLUSB101B]")
+vendor: 0846 ("NetGear, Inc."), product: 1001 ("EA101 10 Mbps 10BASE-T Ethernet [Kawasaki LSI KL5KLUSB101B]")
+vendor: 0846 ("NetGear, Inc."), product: 1001 ("EA101 10 Mbps 10BASE-T Ethernet [Kawasaki LSI KL5KLUSB101B]")
+vendor: 0846 ("NetGear, Inc."), product: 1001 ("EA101 10 Mbps 10BASE-T Ethernet [Kawasaki LSI KL5KLUSB101B]")
+vendor: 0846 ("NetGear, Inc."), product: 1001 ("EA101 10 Mbps 10BASE-T Ethernet [Kawasaki LSI KL5KLUSB101B]")
+vendor: 0846 ("NetGear, Inc."), product: 1001 ("EA101 10 Mbps 10BASE-T Ethernet [Kawasaki LSI KL5KLUSB101B]")
+vendor: 0846 ("NetGear, Inc."), product: 1001 ("EA101 10 Mbps 10BASE-T Ethernet [Kawasaki LSI KL5KLUSB101B]")
+vendor: 0846 ("NetGear, Inc."), product: 1001 ("EA101 10 Mbps 10BASE-T Ethernet [Kawasaki LSI KL5KLUSB101B]")
+vendor: 0846 ("NetGear, Inc."), product: 1002 ("Ethernet")
+vendor: 0846 ("NetGear, Inc."), product: 1002 ("Ethernet")
+vendor: 0846 ("NetGear, Inc."), product: 1002 ("Ethernet")
+vendor: 0846 ("NetGear, Inc."), product: 1002 ("Ethernet")
+vendor: 0846 ("NetGear, Inc."), product: 1002 ("Ethernet")
+vendor: 0846 ("NetGear, Inc."), product: 1002 ("Ethernet")
+vendor: 0846 ("NetGear, Inc."), product: 1002 ("Ethernet")
+vendor: 0846 ("NetGear, Inc."), product: 1002 ("Ethernet")
+vendor: 0846 ("NetGear, Inc."), product: 1040 ("FA120 Fast Ethernet USB 2.0 [Asix AX88172 / AX8817x]")
+vendor: 0846 ("NetGear, Inc."), product: 1040 ("FA120 Fast Ethernet USB 2.0 [Asix AX88172 / AX8817x]")
+vendor: 0846 ("NetGear, Inc."), product: 1040 ("FA120 Fast Ethernet USB 2.0 [Asix AX88172 / AX8817x]")
+vendor: 0846 ("NetGear, Inc."), product: 1040 ("FA120 Fast Ethernet USB 2.0 [Asix AX88172 / AX8817x]")
+vendor: 0846 ("NetGear, Inc."), product: 1040 ("FA120 Fast Ethernet USB 2.0 [Asix AX88172 / AX8817x]")
+vendor: 0846 ("NetGear, Inc."), product: 1040 ("FA120 Fast Ethernet USB 2.0 [Asix AX88172 / AX8817x]")
+vendor: 0846 ("NetGear, Inc."), product: 1040 ("FA120 Fast Ethernet USB 2.0 [Asix AX88172 / AX8817x]")
+vendor: 0846 ("NetGear, Inc."), product: 1040 ("FA120 Fast Ethernet USB 2.0 [Asix AX88172 / AX8817x]")
+vendor: 0846 ("NetGear, Inc."), product: 1040 ("FA120 Fast Ethernet USB 2.0 [Asix AX88172 / AX8817x]")
+vendor: 0846 ("NetGear, Inc."), product: 1040 ("FA120 Fast Ethernet USB 2.0 [Asix AX88172 / AX8817x]")
+vendor: 0846 ("NetGear, Inc."), product: 68a2
+vendor: 085a ("Xircom"), product: 0008 ("Ethernet")
+vendor: 085a ("Xircom"), product: 0008 ("Ethernet")
+vendor: 085a ("Xircom"), product: 0008 ("Ethernet")
+vendor: 085a ("Xircom"), product: 0008 ("Ethernet")
+vendor: 085a ("Xircom"), product: 0008 ("Ethernet")
+vendor: 085a ("Xircom"), product: 0008 ("Ethernet")
+vendor: 085a ("Xircom"), product: 0008 ("Ethernet")
+vendor: 085a ("Xircom"), product: 0008 ("Ethernet")
+vendor: 085a ("Xircom"), product: 0009 ("Ethernet")
+vendor: 085a ("Xircom"), product: 0009 ("Ethernet")
+vendor: 085a ("Xircom"), product: 0009 ("Ethernet")
+vendor: 085a ("Xircom"), product: 0009 ("Ethernet")
+vendor: 085a ("Xircom"), product: 0009 ("Ethernet")
+vendor: 085a ("Xircom"), product: 0009 ("Ethernet")
+vendor: 085a ("Xircom"), product: 0009 ("Ethernet")
+vendor: 085a ("Xircom"), product: 0009 ("Ethernet")
+vendor: 087d ("Jaton Corp."), product: 5704 ("Ethernet")
+vendor: 087d ("Jaton Corp."), product: 5704 ("Ethernet")
+vendor: 087d ("Jaton Corp."), product: 5704 ("Ethernet")
+vendor: 087d ("Jaton Corp."), product: 5704 ("Ethernet")
+vendor: 087d ("Jaton Corp."), product: 5704 ("Ethernet")
+vendor: 087d ("Jaton Corp."), product: 5704 ("Ethernet")
+vendor: 087d ("Jaton Corp."), product: 5704 ("Ethernet")
+vendor: 087d ("Jaton Corp."), product: 5704 ("Ethernet")
+vendor: 08d1 ("smartBridges, Inc."), product: 0001 ("smartNIC Ethernet [catc]")
+vendor: 08d1 ("smartBridges, Inc."), product: 0001 ("smartNIC Ethernet [catc]")
+vendor: 08d1 ("smartBridges, Inc."), product: 0001 ("smartNIC Ethernet [catc]")
+vendor: 08d1 ("smartBridges, Inc."), product: 0001 ("smartNIC Ethernet [catc]")
+vendor: 08d1 ("smartBridges, Inc."), product: 0001 ("smartNIC Ethernet [catc]")
+vendor: 08d1 ("smartBridges, Inc."), product: 0001 ("smartNIC Ethernet [catc]")
+vendor: 08d1 ("smartBridges, Inc."), product: 0001 ("smartNIC Ethernet [catc]")
+vendor: 08d1 ("smartBridges, Inc."), product: 0001 ("smartNIC Ethernet [catc]")
+vendor: 08dd ("Billionton Systems, Inc."), product: 90ff ("USB2AR Ethernet")
+vendor: 08dd ("Billionton Systems, Inc."), product: 90ff ("USB2AR Ethernet")
+vendor: 08dd ("Billionton Systems, Inc."), product: 90ff ("USB2AR Ethernet")
+vendor: 08dd ("Billionton Systems, Inc."), product: 90ff ("USB2AR Ethernet")
+vendor: 08dd ("Billionton Systems, Inc."), product: 90ff ("USB2AR Ethernet")
+vendor: 08dd ("Billionton Systems, Inc."), product: 90ff ("USB2AR Ethernet")
+vendor: 08dd ("Billionton Systems, Inc."), product: 90ff ("USB2AR Ethernet")
+vendor: 08dd ("Billionton Systems, Inc."), product: 90ff ("USB2AR Ethernet")
+vendor: 08dd ("Billionton Systems, Inc."), product: 90ff ("USB2AR Ethernet")
+vendor: 0930 ("Toshiba Corp."), interface class: 02 ("Communications"), subclass: 0d, protocol: 00
+vendor: 0930 ("Toshiba Corp."), product: 130b ("F3507g Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 0930 ("Toshiba Corp."), product: 130b ("F3507g Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 0930 ("Toshiba Corp."), product: 130c ("F3607gw Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 0930 ("Toshiba Corp."), product: 130c ("F3607gw Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 0930 ("Toshiba Corp."), product: 1311 ("F3607gw v2 Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 0930 ("Toshiba Corp."), product: 1311 ("F3607gw v2 Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 0951 ("Kingston Technology"), product: 0008 ("Ethernet")
+vendor: 0951 ("Kingston Technology"), product: 0008 ("Ethernet")
+vendor: 0951 ("Kingston Technology"), product: 0008 ("Ethernet")
+vendor: 0951 ("Kingston Technology"), product: 0008 ("Ethernet")
+vendor: 0951 ("Kingston Technology"), product: 0008 ("Ethernet")
+vendor: 0951 ("Kingston Technology"), product: 0008 ("Ethernet")
+vendor: 0951 ("Kingston Technology"), product: 0008 ("Ethernet")
+vendor: 0951 ("Kingston Technology"), product: 0008 ("Ethernet")
+vendor: 095a ("Portsmith"), product: 3003 ("Express Ethernet")
+vendor: 095a ("Portsmith"), product: 3003 ("Express Ethernet")
+vendor: 095a ("Portsmith"), product: 3003 ("Express Ethernet")
+vendor: 095a ("Portsmith"), product: 3003 ("Express Ethernet")
+vendor: 095a ("Portsmith"), product: 3003 ("Express Ethernet")
+vendor: 095a ("Portsmith"), product: 3003 ("Express Ethernet")
+vendor: 095a ("Portsmith"), product: 3003 ("Express Ethernet")
+vendor: 095a ("Portsmith"), product: 3003 ("Express Ethernet")
+vendor: 09e1 ("Intellon Corp."), product: 5121 ("MicroLink dLAN")
+vendor: 09e1 ("Intellon Corp."), product: 5121 ("MicroLink dLAN")
+vendor: 09e1 ("Intellon Corp."), product: 5121 ("MicroLink dLAN")
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 0268 ("ST268")
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 0268 ("ST268")
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 0268 ("ST268")
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 0268 ("ST268")
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 0268 ("ST268")
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 0269
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 1269
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 6688 ("ZT6688 Fast Ethernet Adapter")
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 6688 ("ZT6688 Fast Ethernet Adapter")
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 6688 ("ZT6688 Fast Ethernet Adapter")
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 6688 ("ZT6688 Fast Ethernet Adapter")
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 6688 ("ZT6688 Fast Ethernet Adapter")
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 8515 ("ADMtek ADM8515 NIC")
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 8515 ("ADMtek ADM8515 NIC")
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 8515 ("ADMtek ADM8515 NIC")
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 8515 ("ADMtek ADM8515 NIC")
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 9000 ("DM9000E Fast Ethernet Adapter")
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 9000 ("DM9000E Fast Ethernet Adapter")
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 9000 ("DM9000E Fast Ethernet Adapter")
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 9601 ("DM9601 Fast Ethernet Adapter")
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 9601 ("DM9601 Fast Ethernet Adapter")
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 9601 ("DM9601 Fast Ethernet Adapter")
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 9601 ("DM9601 Fast Ethernet Adapter")
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 9601 ("DM9601 Fast Ethernet Adapter")
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 9620
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 9621
+vendor: 0a46 ("Davicom Semiconductor, Inc."), product: 9622
+vendor: 0a47 ("Hirose Electric"), product: 9601
+vendor: 0a47 ("Hirose Electric"), product: 9601
+vendor: 0a47 ("Hirose Electric"), product: 9601
+vendor: 0a47 ("Hirose Electric"), product: 9601
+vendor: 0ace ("ZyDAS"), product: 1201 ("ZD1201 802.11b")
+vendor: 0ace ("ZyDAS"), product: 1201 ("ZD1201 802.11b")
+vendor: 0af0 ("Option"), product: 6711 ("GlobeTrotter Express 7.2 v2")
+vendor: 0af0 ("Option"), product: 6711 ("GlobeTrotter Express 7.2 v2")
+vendor: 0af0 ("Option"), product: 6711 ("GlobeTrotter Express 7.2 v2")
+vendor: 0af0 ("Option"), product: 6731
+vendor: 0af0 ("Option"), product: 6731
+vendor: 0af0 ("Option"), product: 6731
+vendor: 0af0 ("Option"), product: 6751
+vendor: 0af0 ("Option"), product: 6751
+vendor: 0af0 ("Option"), product: 6751
+vendor: 0af0 ("Option"), product: 6771
+vendor: 0af0 ("Option"), product: 6771
+vendor: 0af0 ("Option"), product: 6771
+vendor: 0af0 ("Option"), product: 6791
+vendor: 0af0 ("Option"), product: 6791
+vendor: 0af0 ("Option"), product: 6791
+vendor: 0af0 ("Option"), product: 6811
+vendor: 0af0 ("Option"), product: 6811
+vendor: 0af0 ("Option"), product: 6811
+vendor: 0af0 ("Option"), product: 6911
+vendor: 0af0 ("Option"), product: 6911
+vendor: 0af0 ("Option"), product: 6911
+vendor: 0af0 ("Option"), product: 6951
+vendor: 0af0 ("Option"), product: 6951
+vendor: 0af0 ("Option"), product: 6951
+vendor: 0af0 ("Option"), product: 6971 ("Globetrotter HSDPA Modem")
+vendor: 0af0 ("Option"), product: 6971 ("Globetrotter HSDPA Modem")
+vendor: 0af0 ("Option"), product: 6971 ("Globetrotter HSDPA Modem")
+vendor: 0af0 ("Option"), product: 7011
+vendor: 0af0 ("Option"), product: 7011
+vendor: 0af0 ("Option"), product: 7011
+vendor: 0af0 ("Option"), product: 7031
+vendor: 0af0 ("Option"), product: 7031
+vendor: 0af0 ("Option"), product: 7031
+vendor: 0af0 ("Option"), product: 7051
+vendor: 0af0 ("Option"), product: 7051
+vendor: 0af0 ("Option"), product: 7051
+vendor: 0af0 ("Option"), product: 7071
+vendor: 0af0 ("Option"), product: 7071
+vendor: 0af0 ("Option"), product: 7071
+vendor: 0af0 ("Option"), product: 7111
+vendor: 0af0 ("Option"), product: 7111
+vendor: 0af0 ("Option"), product: 7111
+vendor: 0af0 ("Option"), product: 7211
+vendor: 0af0 ("Option"), product: 7211
+vendor: 0af0 ("Option"), product: 7211
+vendor: 0af0 ("Option"), product: 7251 ("Globetrotter HSUPA Modem (aka iCON HSUPA E)")
+vendor: 0af0 ("Option"), product: 7251 ("Globetrotter HSUPA Modem (aka iCON HSUPA E)")
+vendor: 0af0 ("Option"), product: 7251 ("Globetrotter HSUPA Modem (aka iCON HSUPA E)")
+vendor: 0af0 ("Option"), product: 7271
+vendor: 0af0 ("Option"), product: 7271
+vendor: 0af0 ("Option"), product: 7271
+vendor: 0af0 ("Option"), product: 7301
+vendor: 0af0 ("Option"), product: 7301
+vendor: 0af0 ("Option"), product: 7301
+vendor: 0af0 ("Option"), product: 7311
+vendor: 0af0 ("Option"), product: 7311
+vendor: 0af0 ("Option"), product: 7311
+vendor: 0af0 ("Option"), product: 7361
+vendor: 0af0 ("Option"), product: 7361
+vendor: 0af0 ("Option"), product: 7361
+vendor: 0af0 ("Option"), product: 7381
+vendor: 0af0 ("Option"), product: 7381
+vendor: 0af0 ("Option"), product: 7381
+vendor: 0af0 ("Option"), product: 7401
+vendor: 0af0 ("Option"), product: 7401
+vendor: 0af0 ("Option"), product: 7401
+vendor: 0af0 ("Option"), product: 7501 ("Globetrotter HSUPA Modem (icon 411 aka "Vodafone K3760")")
+vendor: 0af0 ("Option"), product: 7501 ("Globetrotter HSUPA Modem (icon 411 aka "Vodafone K3760")")
+vendor: 0af0 ("Option"), product: 7501 ("Globetrotter HSUPA Modem (icon 411 aka "Vodafone K3760")")
+vendor: 0af0 ("Option"), product: 7601 ("Globetrotter MO40x 3G Modem (GTM 382)")
+vendor: 0af0 ("Option"), product: 7601 ("Globetrotter MO40x 3G Modem (GTM 382)")
+vendor: 0af0 ("Option"), product: 7601 ("Globetrotter MO40x 3G Modem (GTM 382)")
+vendor: 0af0 ("Option"), product: 7701 ("Globetrotter HSUPA Modem (aka icon 451)")
+vendor: 0af0 ("Option"), product: 7701 ("Globetrotter HSUPA Modem (aka icon 451)")
+vendor: 0af0 ("Option"), product: 7701 ("Globetrotter HSUPA Modem (aka icon 451)")
+vendor: 0af0 ("Option"), product: 7706
+vendor: 0af0 ("Option"), product: 7706
+vendor: 0af0 ("Option"), product: 7706
+vendor: 0af0 ("Option"), product: 7801
+vendor: 0af0 ("Option"), product: 7801
+vendor: 0af0 ("Option"), product: 7801
+vendor: 0af0 ("Option"), product: 7901
+vendor: 0af0 ("Option"), product: 7901
+vendor: 0af0 ("Option"), product: 7901
+vendor: 0af0 ("Option"), product: 7a01
+vendor: 0af0 ("Option"), product: 7a01
+vendor: 0af0 ("Option"), product: 7a01
+vendor: 0af0 ("Option"), product: 7a05
+vendor: 0af0 ("Option"), product: 7a05
+vendor: 0af0 ("Option"), product: 7a05
+vendor: 0af0 ("Option"), product: 8120
+vendor: 0af0 ("Option"), product: 8200
+vendor: 0af0 ("Option"), product: 8200
+vendor: 0af0 ("Option"), product: 8200
+vendor: 0af0 ("Option"), product: 8201
+vendor: 0af0 ("Option"), product: 8201
+vendor: 0af0 ("Option"), product: 8201
+vendor: 0af0 ("Option"), product: 8300
+vendor: 0af0 ("Option"), product: 8300
+vendor: 0af0 ("Option"), product: 8300
+vendor: 0af0 ("Option"), product: 8302
+vendor: 0af0 ("Option"), product: 8302
+vendor: 0af0 ("Option"), product: 8302
+vendor: 0af0 ("Option"), product: 8304
+vendor: 0af0 ("Option"), product: 8304
+vendor: 0af0 ("Option"), product: 8304
+vendor: 0af0 ("Option"), product: 8400
+vendor: 0af0 ("Option"), product: 8400
+vendor: 0af0 ("Option"), product: 8400
+vendor: 0af0 ("Option"), product: 8600
+vendor: 0af0 ("Option"), product: 8600
+vendor: 0af0 ("Option"), product: 8800
+vendor: 0af0 ("Option"), product: 8800
+vendor: 0af0 ("Option"), product: 8900
+vendor: 0af0 ("Option"), product: 8900
+vendor: 0af0 ("Option"), product: 9000
+vendor: 0af0 ("Option"), product: 9000
+vendor: 0af0 ("Option"), product: c031
+vendor: 0af0 ("Option"), product: c031
+vendor: 0af0 ("Option"), product: c031
+vendor: 0af0 ("Option"), product: c100
+vendor: 0af0 ("Option"), product: c100
+vendor: 0af0 ("Option"), product: c100
+vendor: 0af0 ("Option"), product: d013
+vendor: 0af0 ("Option"), product: d013
+vendor: 0af0 ("Option"), product: d013
+vendor: 0af0 ("Option"), product: d031
+vendor: 0af0 ("Option"), product: d031
+vendor: 0af0 ("Option"), product: d031
+vendor: 0af0 ("Option"), product: d033
+vendor: 0af0 ("Option"), product: d033
+vendor: 0af0 ("Option"), product: d033
+vendor: 0af0 ("Option"), product: d035
+vendor: 0af0 ("Option"), product: d035
+vendor: 0af0 ("Option"), product: d035
+vendor: 0af0 ("Option"), product: d055 ("Globetrotter GI0505 [iCON 505]")
+vendor: 0af0 ("Option"), product: d055 ("Globetrotter GI0505 [iCON 505]")
+vendor: 0af0 ("Option"), product: d055 ("Globetrotter GI0505 [iCON 505]")
+vendor: 0af0 ("Option"), product: d057
+vendor: 0af0 ("Option"), product: d057
+vendor: 0af0 ("Option"), product: d057
+vendor: 0af0 ("Option"), product: d058
+vendor: 0af0 ("Option"), product: d058
+vendor: 0af0 ("Option"), product: d058
+vendor: 0af0 ("Option"), product: d155
+vendor: 0af0 ("Option"), product: d155
+vendor: 0af0 ("Option"), product: d155
+vendor: 0af0 ("Option"), product: d157
+vendor: 0af0 ("Option"), product: d157
+vendor: 0af0 ("Option"), product: d157
+vendor: 0af0 ("Option"), product: d255
+vendor: 0af0 ("Option"), product: d255
+vendor: 0af0 ("Option"), product: d255
+vendor: 0af0 ("Option"), product: d257
+vendor: 0af0 ("Option"), product: d257
+vendor: 0af0 ("Option"), product: d257
+vendor: 0af0 ("Option"), product: d357
+vendor: 0af0 ("Option"), product: d357
+vendor: 0af0 ("Option"), product: d357
+vendor: 0b05 ("ASUSTek Computer, Inc."), product: 1776 ("Gobi Wireless Modem")
+vendor: 0b3c ("Olivetti Techcenter"), product: c000 ("Olicard 100")
+vendor: 0b3c ("Olivetti Techcenter"), product: c001
+vendor: 0b3c ("Olivetti Techcenter"), product: c002
+vendor: 0b3c ("Olivetti Techcenter"), product: c004
+vendor: 0b3c ("Olivetti Techcenter"), product: c005
+vendor: 0b3c ("Olivetti Techcenter"), product: c00a
+vendor: 0b3c ("Olivetti Techcenter"), product: c00b
+vendor: 0b95 ("ASIX Electronics Corp."), product: 1720 ("10/100 Ethernet")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 1720 ("10/100 Ethernet")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 1720 ("10/100 Ethernet")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 1720 ("10/100 Ethernet")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 1720 ("10/100 Ethernet")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 1720 ("10/100 Ethernet")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 1720 ("10/100 Ethernet")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 1720 ("10/100 Ethernet")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 1720 ("10/100 Ethernet")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 172a
+vendor: 0b95 ("ASIX Electronics Corp."), product: 1780 ("AX88178")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 1780 ("AX88178")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 1780 ("AX88178")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 1780 ("AX88178")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 1780 ("AX88178")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 1780 ("AX88178")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 178a
+vendor: 0b95 ("ASIX Electronics Corp."), product: 1790 ("AX88179 Gigabit Ethernet")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 7720 ("AX88772")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 7720 ("AX88772")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 7720 ("AX88772")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 7720 ("AX88772")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 7720 ("AX88772")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 7720 ("AX88772")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 7720 ("AX88772")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 7720 ("AX88772")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 772a ("AX88772A Fast Ethernet")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 772a ("AX88772A Fast Ethernet")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 772a ("AX88772A Fast Ethernet")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 772a ("AX88772A Fast Ethernet")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 772b ("AX88772B")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 772b ("AX88772B")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 7e2b ("AX88772B Fast Ethernet Controller")
+vendor: 0b95 ("ASIX Electronics Corp."), product: 7e2b ("AX88772B Fast Ethernet Controller")
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8150 ("RTL8150 Fast Ethernet Adapter")
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8150 ("RTL8150 Fast Ethernet Adapter")
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8150 ("RTL8150 Fast Ethernet Adapter")
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8150 ("RTL8150 Fast Ethernet Adapter")
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8150 ("RTL8150 Fast Ethernet Adapter")
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8150 ("RTL8150 Fast Ethernet Adapter")
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8150 ("RTL8150 Fast Ethernet Adapter")
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8150 ("RTL8150 Fast Ethernet Adapter")
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8150 ("RTL8150 Fast Ethernet Adapter")
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8152 ("RTL8152 Fast Ethernet Adapter")
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8152 ("RTL8152 Fast Ethernet Adapter"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8153 ("RTL8153 Gigabit Ethernet Adapter")
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8153 ("RTL8153 Gigabit Ethernet Adapter"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 0bdb ("Ericsson Business Mobile Networks BV"), interface class: 02 ("Communications"), subclass: 0d, protocol: 00
+vendor: 0bdb ("Ericsson Business Mobile Networks BV"), interface class: 02 ("Communications"), subclass: 0e, protocol: 00
+vendor: 0bdb ("Ericsson Business Mobile Networks BV"), product: 1049 ("C3607w Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 0bdb ("Ericsson Business Mobile Networks BV"), product: 1049 ("C3607w Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 0bdb ("Ericsson Business Mobile Networks BV"), product: 1900 ("F3507g Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 0bdb ("Ericsson Business Mobile Networks BV"), product: 1900 ("F3507g Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 0bdb ("Ericsson Business Mobile Networks BV"), product: 1902 ("F3507g v2 Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 0bdb ("Ericsson Business Mobile Networks BV"), product: 1902 ("F3507g v2 Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 0bdb ("Ericsson Business Mobile Networks BV"), product: 1904 ("F3607gw Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 0bdb ("Ericsson Business Mobile Networks BV"), product: 1904 ("F3607gw Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 0bdb ("Ericsson Business Mobile Networks BV"), product: 1905 ("F3607gw v2 Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 0bdb ("Ericsson Business Mobile Networks BV"), product: 1905 ("F3607gw v2 Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 0bdb ("Ericsson Business Mobile Networks BV"), product: 1906 ("F3607gw v3 Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 0bdb ("Ericsson Business Mobile Networks BV"), product: 1906 ("F3607gw v3 Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 0bdb ("Ericsson Business Mobile Networks BV"), product: 1909 ("F3307 v2 Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 0bdb ("Ericsson Business Mobile Networks BV"), product: 1909 ("F3307 v2 Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 0bdb ("Ericsson Business Mobile Networks BV"), product: 190a ("F3307 Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 0bdb ("Ericsson Business Mobile Networks BV"), product: 190a ("F3307 Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 0bdb ("Ericsson Business Mobile Networks BV"), product: 190b ("C3607w v2 Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 0bdb ("Ericsson Business Mobile Networks BV"), product: 190b ("C3607w v2 Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 0db0 ("Micro Star International"), product: 6823 ("UB11B/MS-6823 802.11b Wi-Fi adapter")
+vendor: 0db0 ("Micro Star International"), product: 6823 ("UB11B/MS-6823 802.11b Wi-Fi adapter")
+vendor: 0db0 ("Micro Star International"), product: a877
+vendor: 0db0 ("Micro Star International"), product: a877
+vendor: 0db0 ("Micro Star International"), product: a877
+vendor: 0db0 ("Micro Star International"), product: a877
+vendor: 0df6 ("Sitecom Europe B.V."), product: 0021
+vendor: 0df6 ("Sitecom Europe B.V."), product: 0021
+vendor: 0df6 ("Sitecom Europe B.V."), product: 0021
+vendor: 0df6 ("Sitecom Europe B.V."), product: 0056 ("LN-031 10/100/1000 Ethernet Adapter")
+vendor: 0df6 ("Sitecom Europe B.V."), product: 0056 ("LN-031 10/100/1000 Ethernet Adapter")
+vendor: 0df6 ("Sitecom Europe B.V."), product: 0072 ("AX88179 Gigabit Ethernet [Sitecom]")
+vendor: 0e7e ("Gmate, Inc."), product: 1001 ("YP3X00 PDA")
+vendor: 0e7e ("Gmate, Inc."), product: 1001 ("YP3X00 PDA")
+vendor: 0e7e ("Gmate, Inc."), product: 1001 ("YP3X00 PDA")
+vendor: 0e7e ("Gmate, Inc."), product: 1001 ("YP3X00 PDA")
+vendor: 0e7e ("Gmate, Inc."), product: 1001 ("YP3X00 PDA")
+vendor: 0e7e ("Gmate, Inc."), product: 1001 ("YP3X00 PDA")
+vendor: 0e7e ("Gmate, Inc."), product: 1001 ("YP3X00 PDA")
+vendor: 0e7e ("Gmate, Inc."), product: 1001 ("YP3X00 PDA")
+vendor: 0e7e ("Gmate, Inc."), product: 1001 ("YP3X00 PDA")
+vendor: 0f3d ("Airprime, Incorporated"), product: 68a2
+vendor: 0f3d ("Airprime, Incorporated"), product: 68a3
+vendor: 0f3d ("Airprime, Incorporated"), product: 68aa
+vendor: 0fe6 ("ICS Advent"), product: 8101 ("DM9601 Fast Ethernet Adapter")
+vendor: 0fe6 ("ICS Advent"), product: 8101 ("DM9601 Fast Ethernet Adapter")
+vendor: 0fe6 ("ICS Advent"), product: 8101 ("DM9601 Fast Ethernet Adapter")
+vendor: 0fe6 ("ICS Advent"), product: 9700 ("DM9601 Fast Ethernet Adapter")
+vendor: 0fe6 ("ICS Advent"), product: 9700 ("DM9601 Fast Ethernet Adapter")
+vendor: 0fe6 ("ICS Advent"), product: 9700 ("DM9601 Fast Ethernet Adapter")
+vendor: 0fe6 ("ICS Advent"), product: 9800
+vendor: 1004 ("LG Electronics, Inc."), product: 61aa, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 1004 ("LG Electronics, Inc."), product: 61aa, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 1004 ("LG Electronics, Inc."), product: 61aa, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 1004 ("LG Electronics, Inc."), product: 61aa, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 1044 ("Chu Yuen Enterprise Co., Ltd"), product: 8005 ("GN-WLBZ201 802.11b Adapter")
+vendor: 1044 ("Chu Yuen Enterprise Co., Ltd"), product: 8005 ("GN-WLBZ201 802.11b Adapter")
+vendor: 106c ("Curitel Communications, Inc."), interface class: ff ("Vendor Specific Class"), subclass: f0, protocol: ff
+vendor: 106c ("Curitel Communications, Inc."), interface class: ff ("Vendor Specific Class"), subclass: f1, protocol: ff
+vendor: 106c ("Curitel Communications, Inc."), product: 3718, interface class: ff ("Vendor Specific Class"), subclass: f0, protocol: ff
+vendor: 10bd ("TMT Technology, Inc."), product: 1427 ("Ethernet")
+vendor: 10bd ("TMT Technology, Inc."), product: 1427 ("Ethernet")
+vendor: 10bd ("TMT Technology, Inc."), product: 1427 ("Ethernet")
+vendor: 10bd ("TMT Technology, Inc."), product: 1427 ("Ethernet")
+vendor: 10bd ("TMT Technology, Inc."), product: 1427 ("Ethernet")
+vendor: 10bd ("TMT Technology, Inc."), product: 1427 ("Ethernet")
+vendor: 10bd ("TMT Technology, Inc."), product: 1427 ("Ethernet")
+vendor: 10bd ("TMT Technology, Inc."), product: 1427 ("Ethernet")
+vendor: 114f ("Wavecom"), product: 68a2
+vendor: 1189 ("Acer Communications & Multimedia"), product: 0893 ("EP-1427X-2 Ethernet Adapter [Acer]")
+vendor: 1189 ("Acer Communications & Multimedia"), product: 0893 ("EP-1427X-2 Ethernet Adapter [Acer]")
+vendor: 1189 ("Acer Communications & Multimedia"), product: 0893 ("EP-1427X-2 Ethernet Adapter [Acer]")
+vendor: 1189 ("Acer Communications & Multimedia"), product: 0893 ("EP-1427X-2 Ethernet Adapter [Acer]")
+vendor: 1189 ("Acer Communications & Multimedia"), product: 0893 ("EP-1427X-2 Ethernet Adapter [Acer]")
+vendor: 1189 ("Acer Communications & Multimedia"), product: 0893 ("EP-1427X-2 Ethernet Adapter [Acer]")
+vendor: 1189 ("Acer Communications & Multimedia"), product: 0893 ("EP-1427X-2 Ethernet Adapter [Acer]")
+vendor: 1189 ("Acer Communications & Multimedia"), product: 0893 ("EP-1427X-2 Ethernet Adapter [Acer]")
+vendor: 1189 ("Acer Communications & Multimedia"), product: 0893 ("EP-1427X-2 Ethernet Adapter [Acer]")
+vendor: 1199 ("Sierra Wireless, Inc."), product: 68a2
+vendor: 1199 ("Sierra Wireless, Inc."), product: 68a2, interface class: 02 ("Communications"), subclass: 0e, protocol: 00
+vendor: 1199 ("Sierra Wireless, Inc."), product: 68a2, interface class: ff ("Vendor Specific Class"), subclass: ff ("Vendor Specific Subclass"), protocol: ff ("Vendor Specific Protocol")
+vendor: 1199 ("Sierra Wireless, Inc."), product: 68a3 ("MC8700 Modem")
+vendor: 1199 ("Sierra Wireless, Inc."), product: 68a3 ("MC8700 Modem")
+vendor: 1199 ("Sierra Wireless, Inc."), product: 68a5
+vendor: 1199 ("Sierra Wireless, Inc."), product: 68a9
+vendor: 1199 ("Sierra Wireless, Inc."), product: 68aa ("4G LTE adapter")
+vendor: 1199 ("Sierra Wireless, Inc."), product: 68c0
+vendor: 1199 ("Sierra Wireless, Inc."), product: 9001 ("Gobi 2000 Wireless Modem")
+vendor: 1199 ("Sierra Wireless, Inc."), product: 9002 ("Gobi 2000 Wireless Modem")
+vendor: 1199 ("Sierra Wireless, Inc."), product: 9003 ("Gobi 2000 Wireless Modem")
+vendor: 1199 ("Sierra Wireless, Inc."), product: 9004 ("Gobi 2000 Wireless Modem")
+vendor: 1199 ("Sierra Wireless, Inc."), product: 9005 ("Gobi 2000 Wireless Modem")
+vendor: 1199 ("Sierra Wireless, Inc."), product: 9006 ("Gobi 2000 Wireless Modem")
+vendor: 1199 ("Sierra Wireless, Inc."), product: 9007 ("Gobi 2000 Wireless Modem")
+vendor: 1199 ("Sierra Wireless, Inc."), product: 9008 ("Gobi 2000 Wireless Modem")
+vendor: 1199 ("Sierra Wireless, Inc."), product: 9009 ("Gobi 2000 Wireless Modem")
+vendor: 1199 ("Sierra Wireless, Inc."), product: 900a ("Gobi 2000 Wireless Modem")
+vendor: 1199 ("Sierra Wireless, Inc."), product: 9011 ("MC8305 Modem")
+vendor: 1199 ("Sierra Wireless, Inc."), product: 9013 ("Sierra Wireless Gobi 3000 Modem device (MC8355)")
+vendor: 1199 ("Sierra Wireless, Inc."), product: 9015
+vendor: 1199 ("Sierra Wireless, Inc."), product: 9019
+vendor: 1199 ("Sierra Wireless, Inc."), product: 901b
+vendor: 1199 ("Sierra Wireless, Inc."), product: 901c
+vendor: 1199 ("Sierra Wireless, Inc."), product: 901f
+vendor: 1199 ("Sierra Wireless, Inc."), product: 9041 ("EM7305 Modem")
+vendor: 1199 ("Sierra Wireless, Inc."), product: 9051
+vendor: 1199 ("Sierra Wireless, Inc."), product: 9053
+vendor: 1199 ("Sierra Wireless, Inc."), product: 9054
+vendor: 1199 ("Sierra Wireless, Inc."), product: 9055 ("Gobi 9x15 Multimode 3G/4G LTE Modem (NAT mode)")
+vendor: 1199 ("Sierra Wireless, Inc."), product: 9056
+vendor: 1199 ("Sierra Wireless, Inc."), product: 9057 ("Gobi 9x15 Multimode 3G/4G LTE Modem (IP passthrough mode)")
+vendor: 1199 ("Sierra Wireless, Inc."), product: 9061
+vendor: 1286 ("Marvell Semiconductor, Inc."), product: 8001 ("BLOB boot loader firmware")
+vendor: 1286 ("Marvell Semiconductor, Inc."), product: 8001 ("BLOB boot loader firmware")
+vendor: 1286 ("Marvell Semiconductor, Inc."), product: 8001 ("BLOB boot loader firmware")
+vendor: 1286 ("Marvell Semiconductor, Inc."), product: 8001 ("BLOB boot loader firmware")
+vendor: 12d1 ("Huawei Technologies Co., Ltd."), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: ff
+vendor: 12d1 ("Huawei Technologies Co., Ltd."), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: ff
+vendor: 12d1 ("Huawei Technologies Co., Ltd."), interface class: 02 ("Communications"), subclass: 0d, protocol: 00
+vendor: 12d1 ("Huawei Technologies Co., Ltd."), interface class: ff ("Vendor Specific Class"), subclass: 01, protocol: 07
+vendor: 12d1 ("Huawei Technologies Co., Ltd."), interface class: ff ("Vendor Specific Class"), subclass: 01, protocol: 08
+vendor: 12d1 ("Huawei Technologies Co., Ltd."), interface class: ff ("Vendor Specific Class"), subclass: 01, protocol: 09
+vendor: 12d1 ("Huawei Technologies Co., Ltd."), interface class: ff ("Vendor Specific Class"), subclass: 01, protocol: 11
+vendor: 12d1 ("Huawei Technologies Co., Ltd."), interface class: ff ("Vendor Specific Class"), subclass: 01, protocol: 37
+vendor: 12d1 ("Huawei Technologies Co., Ltd."), interface class: ff ("Vendor Specific Class"), subclass: 01, protocol: 38
+vendor: 12d1 ("Huawei Technologies Co., Ltd."), interface class: ff ("Vendor Specific Class"), subclass: 01, protocol: 39
+vendor: 12d1 ("Huawei Technologies Co., Ltd."), interface class: ff ("Vendor Specific Class"), subclass: 01, protocol: 67
+vendor: 12d1 ("Huawei Technologies Co., Ltd."), interface class: ff ("Vendor Specific Class"), subclass: 01, protocol: 69
+vendor: 12d1 ("Huawei Technologies Co., Ltd."), interface class: ff ("Vendor Specific Class"), subclass: 02, protocol: 16
+vendor: 12d1 ("Huawei Technologies Co., Ltd."), interface class: ff ("Vendor Specific Class"), subclass: 02, protocol: 16
+vendor: 12d1 ("Huawei Technologies Co., Ltd."), interface class: ff ("Vendor Specific Class"), subclass: 02, protocol: 46
+vendor: 12d1 ("Huawei Technologies Co., Ltd."), interface class: ff ("Vendor Specific Class"), subclass: 02, protocol: 46
+vendor: 12d1 ("Huawei Technologies Co., Ltd."), interface class: ff ("Vendor Specific Class"), subclass: 02, protocol: 76
+vendor: 12d1 ("Huawei Technologies Co., Ltd."), interface class: ff ("Vendor Specific Class"), subclass: 02, protocol: 76
+vendor: 12d1 ("Huawei Technologies Co., Ltd."), interface class: ff ("Vendor Specific Class"), subclass: 03, protocol: 16
+vendor: 12d1 ("Huawei Technologies Co., Ltd."), product: 140c ("E180v")
+vendor: 12d1 ("Huawei Technologies Co., Ltd."), product: 14ac ("E815")
+vendor: 12d1 ("Huawei Technologies Co., Ltd."), product: 14ac ("E815")
+vendor: 12d1 ("Huawei Technologies Co., Ltd."), product: 14f1 ("Gobi 3000 HSPA+ Modem")
+vendor: 1342 ("Mobility"), product: 0204 ("Ethernet")
+vendor: 1342 ("Mobility"), product: 0204 ("Ethernet")
+vendor: 1342 ("Mobility"), product: 0204 ("Ethernet")
+vendor: 1342 ("Mobility"), product: 0204 ("Ethernet")
+vendor: 1342 ("Mobility"), product: 0204 ("Ethernet")
+vendor: 1342 ("Mobility"), product: 0204 ("Ethernet")
+vendor: 1342 ("Mobility"), product: 0204 ("Ethernet")
+vendor: 1342 ("Mobility"), product: 0204 ("Ethernet")
+vendor: 13b1 ("Linksys"), product: 0018 ("USB200M 10/100 Ethernet Adapter")
+vendor: 13b1 ("Linksys"), product: 0018 ("USB200M 10/100 Ethernet Adapter")
+vendor: 13b1 ("Linksys"), product: 0018 ("USB200M 10/100 Ethernet Adapter")
+vendor: 13b1 ("Linksys"), product: 0018 ("USB200M 10/100 Ethernet Adapter")
+vendor: 13b1 ("Linksys"), product: 0018 ("USB200M 10/100 Ethernet Adapter")
+vendor: 13b1 ("Linksys"), product: 0018 ("USB200M 10/100 Ethernet Adapter")
+vendor: 13d2 ("Shark Multimedia"), product: 0400 ("Pocket Ethernet [klsi]")
+vendor: 13d2 ("Shark Multimedia"), product: 0400 ("Pocket Ethernet [klsi]")
+vendor: 13d2 ("Shark Multimedia"), product: 0400 ("Pocket Ethernet [klsi]")
+vendor: 13d2 ("Shark Multimedia"), product: 0400 ("Pocket Ethernet [klsi]")
+vendor: 13d2 ("Shark Multimedia"), product: 0400 ("Pocket Ethernet [klsi]")
+vendor: 13d2 ("Shark Multimedia"), product: 0400 ("Pocket Ethernet [klsi]")
+vendor: 13d2 ("Shark Multimedia"), product: 0400 ("Pocket Ethernet [klsi]")
+vendor: 13d2 ("Shark Multimedia"), product: 0400 ("Pocket Ethernet [klsi]")
+vendor: 1410 ("Novatel Wireless"), product: 9010 ("Expedite E362"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 1410 ("Novatel Wireless"), product: 9010 ("Expedite E362"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 1410 ("Novatel Wireless"), product: 9011, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 1410 ("Novatel Wireless"), product: 9011, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 1410 ("Novatel Wireless"), product: a001 ("Gobi Wireless Modem")
+vendor: 1410 ("Novatel Wireless"), product: a002
+vendor: 1410 ("Novatel Wireless"), product: a003
+vendor: 1410 ("Novatel Wireless"), product: a004
+vendor: 1410 ("Novatel Wireless"), product: a005
+vendor: 1410 ("Novatel Wireless"), product: a006
+vendor: 1410 ("Novatel Wireless"), product: a007
+vendor: 1410 ("Novatel Wireless"), product: a021
+vendor: 1410 ("Novatel Wireless"), product: b001 ("Ovation MC551"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 1410 ("Novatel Wireless"), product: b001 ("Ovation MC551"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 1485 ("Silicom"), product: 0001 ("U2E")
+vendor: 1485 ("Silicom"), product: 0001 ("U2E")
+vendor: 1485 ("Silicom"), product: 0001 ("U2E")
+vendor: 1485 ("Silicom"), product: 0001 ("U2E")
+vendor: 1485 ("Silicom"), product: 0001 ("U2E")
+vendor: 1485 ("Silicom"), product: 0001 ("U2E")
+vendor: 1485 ("Silicom"), product: 0001 ("U2E")
+vendor: 1485 ("Silicom"), product: 0001 ("U2E")
+vendor: 1485 ("Silicom"), product: 0002 ("Psion Gold Port Ethernet")
+vendor: 1485 ("Silicom"), product: 0002 ("Psion Gold Port Ethernet")
+vendor: 1485 ("Silicom"), product: 0002 ("Psion Gold Port Ethernet")
+vendor: 1485 ("Silicom"), product: 0002 ("Psion Gold Port Ethernet")
+vendor: 1485 ("Silicom"), product: 0002 ("Psion Gold Port Ethernet")
+vendor: 1485 ("Silicom"), product: 0002 ("Psion Gold Port Ethernet")
+vendor: 1485 ("Silicom"), product: 0002 ("Psion Gold Port Ethernet")
+vendor: 14ea ("Planex Communications"), product: ab11 ("GU-1000T")
+vendor: 14ea ("Planex Communications"), product: ab11 ("GU-1000T")
+vendor: 14ea ("Planex Communications"), product: ab11 ("GU-1000T")
+vendor: 14ea ("Planex Communications"), product: ab11 ("GU-1000T")
+vendor: 1519 ("Comneon"), product: 0443, interface class: 02 ("Communications"), subclass: 0d, protocol: 00
+vendor: 1557 ("OQO"), product: 7720 ("model 01+ Ethernet")
+vendor: 1557 ("OQO"), product: 7720 ("model 01+ Ethernet")
+vendor: 1557 ("OQO"), product: 7720 ("model 01+ Ethernet")
+vendor: 1557 ("OQO"), product: 7720 ("model 01+ Ethernet")
+vendor: 1557 ("OQO"), product: 7720 ("model 01+ Ethernet")
+vendor: 1557 ("OQO"), product: 7720 ("model 01+ Ethernet")
+vendor: 1557 ("OQO"), product: 8150 ("model 01 Ethernet interface")
+vendor: 1557 ("OQO"), product: 8150 ("model 01 Ethernet interface")
+vendor: 1557 ("OQO"), product: 8150 ("model 01 Ethernet interface")
+vendor: 1557 ("OQO"), product: 8150 ("model 01 Ethernet interface")
+vendor: 1557 ("OQO"), product: 8150 ("model 01 Ethernet interface")
+vendor: 1557 ("OQO"), product: 8150 ("model 01 Ethernet interface")
+vendor: 1630 ("2Wire, Inc."), product: 0042, interface class: 02 ("Communications"), subclass: 02 ("Abstract (modem)"), protocol: ff ("Vendor Specific (MSFT RNDIS?)")
+vendor: 1630 ("2Wire, Inc."), product: 0042, interface class: 02 ("Communications"), subclass: 02 ("Abstract (modem)"), protocol: ff ("Vendor Specific (MSFT RNDIS?)")
+vendor: 1631 ("Good Way Technology"), product: 6200 ("GWUSB2E")
+vendor: 1631 ("Good Way Technology"), product: 6200 ("GWUSB2E")
+vendor: 1631 ("Good Way Technology"), product: 6200 ("GWUSB2E")
+vendor: 1631 ("Good Way Technology"), product: 6200 ("GWUSB2E")
+vendor: 1631 ("Good Way Technology"), product: 6200 ("GWUSB2E")
+vendor: 1631 ("Good Way Technology"), product: 6200 ("GWUSB2E")
+vendor: 1631 ("Good Way Technology"), product: 6200 ("GWUSB2E")
+vendor: 1631 ("Good Way Technology"), product: 6200 ("GWUSB2E")
+vendor: 1631 ("Good Way Technology"), product: 6200 ("GWUSB2E")
+vendor: 1645 ("Entrega [hex]"), product: 0005 ("E45 Ethernet [klsi]")
+vendor: 1645 ("Entrega [hex]"), product: 0005 ("E45 Ethernet [klsi]")
+vendor: 1645 ("Entrega [hex]"), product: 0005 ("E45 Ethernet [klsi]")
+vendor: 1645 ("Entrega [hex]"), product: 0005 ("E45 Ethernet [klsi]")
+vendor: 1645 ("Entrega [hex]"), product: 0005 ("E45 Ethernet [klsi]")
+vendor: 1645 ("Entrega [hex]"), product: 0005 ("E45 Ethernet [klsi]")
+vendor: 1645 ("Entrega [hex]"), product: 0005 ("E45 Ethernet [klsi]")
+vendor: 1645 ("Entrega [hex]"), product: 0005 ("E45 Ethernet [klsi]")
+vendor: 1645 ("Entrega [hex]"), product: 0008 ("Ethernet")
+vendor: 1645 ("Entrega [hex]"), product: 0008 ("Ethernet")
+vendor: 1645 ("Entrega [hex]"), product: 0008 ("Ethernet")
+vendor: 1645 ("Entrega [hex]"), product: 0008 ("Ethernet")
+vendor: 1645 ("Entrega [hex]"), product: 0008 ("Ethernet")
+vendor: 1645 ("Entrega [hex]"), product: 0008 ("Ethernet")
+vendor: 1645 ("Entrega [hex]"), product: 0008 ("Ethernet")
+vendor: 1645 ("Entrega [hex]"), product: 0008 ("Ethernet")
+vendor: 1645 ("Entrega [hex]"), product: 8005 ("Ethernet")
+vendor: 1645 ("Entrega [hex]"), product: 8005 ("Ethernet")
+vendor: 1645 ("Entrega [hex]"), product: 8005 ("Ethernet")
+vendor: 1645 ("Entrega [hex]"), product: 8005 ("Ethernet")
+vendor: 1645 ("Entrega [hex]"), product: 8005 ("Ethernet")
+vendor: 1645 ("Entrega [hex]"), product: 8005 ("Ethernet")
+vendor: 1645 ("Entrega [hex]"), product: 8005 ("Ethernet")
+vendor: 1645 ("Entrega [hex]"), product: 8005 ("Ethernet")
+vendor: 1668 ("Actiontec Electronics, Inc. [hex]"), product: 0323
+vendor: 1668 ("Actiontec Electronics, Inc. [hex]"), product: 0323
+vendor: 1668 ("Actiontec Electronics, Inc. [hex]"), product: 0323
+vendor: 1668 ("Actiontec Electronics, Inc. [hex]"), product: 0323
+vendor: 1668 ("Actiontec Electronics, Inc. [hex]"), product: 0323
+vendor: 16d5 ("AnyDATA Corporation"), product: 650a, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 16d5 ("AnyDATA Corporation"), product: 650a, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 16d8 ("CMOTECH Co., Ltd."), product: 6003
+vendor: 16d8 ("CMOTECH Co., Ltd."), product: 6007
+vendor: 16d8 ("CMOTECH Co., Ltd."), product: 6008
+vendor: 16d8 ("CMOTECH Co., Ltd."), product: 6280 ("CMOTECH CDMA Technologies modem")
+vendor: 16d8 ("CMOTECH Co., Ltd."), product: 7001
+vendor: 16d8 ("CMOTECH Co., Ltd."), product: 7002
+vendor: 16d8 ("CMOTECH Co., Ltd."), product: 7003
+vendor: 16d8 ("CMOTECH Co., Ltd."), product: 7004
+vendor: 16d8 ("CMOTECH Co., Ltd."), product: 7006
+vendor: 16d8 ("CMOTECH Co., Ltd."), product: 700a
+vendor: 16d8 ("CMOTECH Co., Ltd."), product: 7211
+vendor: 16d8 ("CMOTECH Co., Ltd."), product: 7212
+vendor: 16d8 ("CMOTECH Co., Ltd."), product: 7213
+vendor: 16d8 ("CMOTECH Co., Ltd."), product: 7251
+vendor: 16d8 ("CMOTECH Co., Ltd."), product: 7252
+vendor: 16d8 ("CMOTECH Co., Ltd."), product: 7253
+vendor: 16d8 ("CMOTECH Co., Ltd."), product: 8002 ("Gobi 2000 Wireless Modem")
+vendor: 1737 ("802.11g Adapter [Linksys WUSB54GC v3]"), product: 0039 ("USB1000 Gigabit Notebook Adapter")
+vendor: 1737 ("802.11g Adapter [Linksys WUSB54GC v3]"), product: 0039 ("USB1000 Gigabit Notebook Adapter")
+vendor: 1737 ("802.11g Adapter [Linksys WUSB54GC v3]"), product: 0039 ("USB1000 Gigabit Notebook Adapter")
+vendor: 1737 ("802.11g Adapter [Linksys WUSB54GC v3]"), product: 0039 ("USB1000 Gigabit Notebook Adapter")
+vendor: 1737 ("802.11g Adapter [Linksys WUSB54GC v3]"), product: 0039 ("USB1000 Gigabit Notebook Adapter")
+vendor: 1737 ("802.11g Adapter [Linksys WUSB54GC v3]"), product: 0039 ("USB1000 Gigabit Notebook Adapter")
+vendor: 17ef ("Lenovo"), product: 304b ("AX88179 Gigabit Ethernet [ThinkPad OneLink GigaLAN]")
+vendor: 17ef ("Lenovo"), product: 7203 ("Ethernet adapter [U2L 100P-Y1]")
+vendor: 182d, product: 207c
+vendor: 182d, product: 207c
+vendor: 182d, product: 207c
+vendor: 182d, product: 207c
+vendor: 182d, product: 207c
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0002 ("MF632/ONDA ET502HS/MT505UP")
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0012
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0017 ("MF669")
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0019
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0021
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0025
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0031 ("MF110/MF627/MF636")
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0042
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0049
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0052
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0055
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0055, interface class: ff ("Vendor Specific Class"), subclass: ff ("Vendor Specific Subclass"), protocol: ff ("Vendor Specific Protocol")
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0058
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0063 ("K3565-Z HSDPA")
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0063 ("K3565-Z HSDPA"), interface class: ff ("Vendor Specific Class"), subclass: ff ("Vendor Specific Subclass"), protocol: ff ("Vendor Specific Protocol")
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0104 ("K4505-Z")
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0104 ("K4505-Z"), interface class: ff ("Vendor Specific Class"), subclass: ff ("Vendor Specific Subclass"), protocol: ff ("Vendor Specific Protocol")
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0113
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0118
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0121
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0123
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0124
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0125
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0126
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0130
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0133
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0141
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0157
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0158
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0167 ("MF820 4G LTE")
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0167 ("MF820 4G LTE"), interface class: ff ("Vendor Specific Class"), subclass: ff ("Vendor Specific Subclass"), protocol: ff ("Vendor Specific Protocol")
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0168
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0176
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0178
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0191
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0199
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0200
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0257
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0265
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0284
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0326 ("LTE4G O2 ZTE MF821D LTE/UMTS/GSM Modem/Networkcard")
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 0412
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1003, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1008 ("K3570-Z")
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1008 ("K3570-Z"), interface class: ff ("Vendor Specific Class"), subclass: ff ("Vendor Specific Subclass"), protocol: ff ("Vendor Specific Protocol")
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1010 ("K3571-Z")
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1010 ("K3571-Z"), interface class: ff ("Vendor Specific Class"), subclass: ff ("Vendor Specific Subclass"), protocol: ff ("Vendor Specific Protocol")
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1012
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1015, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1018 ("K5006-Z vodafone LTE/UMTS/GSM Modem/Networkcard")
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1021
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1173, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1177, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1181, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1245
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1247
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1252
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1254
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1255
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1256
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1270 ("MF667")
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1401
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1402
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1402, interface class: ff ("Vendor Specific Class"), subclass: ff ("Vendor Specific Subclass"), protocol: ff ("Vendor Specific Protocol")
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1424
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1425
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1426
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 1428
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 2002
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: 2002, interface class: ff ("Vendor Specific Class"), subclass: ff ("Vendor Specific Subclass"), protocol: ff ("Vendor Specific Protocol")
+vendor: 19d2 ("ZTE WCDMA Technologies MSM"), product: fff3 ("Gobi Wireless Modem")
+vendor: 1bbb ("T & A Mobile Phones"), product: 011e ("Alcatel One Touch L100V / Telekom Speedstick LTE II")
+vendor: 1bbb ("T & A Mobile Phones"), product: 0203
+vendor: 1bc7 ("Telit Wireless Solutions"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 1bc7 ("Telit Wireless Solutions"), product: 1200 ("LE920 (old firmware)")
+vendor: 1bc7 ("Telit Wireless Solutions"), product: 1201 ("LE910 / LE920")
+vendor: 1e2d ("Gemalto M2M GmbH"), product: 0053
+vendor: 1e2d ("Gemalto M2M GmbH"), product: 0060
+vendor: 1e2d ("Gemalto M2M GmbH"), product: 12d1
+vendor: 2001 ("D-Link Corp."), product: 1a00 ("DUB-E100 Fast Ethernet Adapter(rev.A) [ASIX AX88172]")
+vendor: 2001 ("D-Link Corp."), product: 1a00 ("DUB-E100 Fast Ethernet Adapter(rev.A) [ASIX AX88172]")
+vendor: 2001 ("D-Link Corp."), product: 1a00 ("DUB-E100 Fast Ethernet Adapter(rev.A) [ASIX AX88172]")
+vendor: 2001 ("D-Link Corp."), product: 1a00 ("DUB-E100 Fast Ethernet Adapter(rev.A) [ASIX AX88172]")
+vendor: 2001 ("D-Link Corp."), product: 1a00 ("DUB-E100 Fast Ethernet Adapter(rev.A) [ASIX AX88172]")
+vendor: 2001 ("D-Link Corp."), product: 1a00 ("DUB-E100 Fast Ethernet Adapter(rev.A) [ASIX AX88172]")
+vendor: 2001 ("D-Link Corp."), product: 1a00 ("DUB-E100 Fast Ethernet Adapter(rev.A) [ASIX AX88172]")
+vendor: 2001 ("D-Link Corp."), product: 1a00 ("DUB-E100 Fast Ethernet Adapter(rev.A) [ASIX AX88172]")
+vendor: 2001 ("D-Link Corp."), product: 1a00 ("DUB-E100 Fast Ethernet Adapter(rev.A) [ASIX AX88172]")
+vendor: 2001 ("D-Link Corp."), product: 1a00 ("DUB-E100 Fast Ethernet Adapter(rev.A) [ASIX AX88172]")
+vendor: 2001 ("D-Link Corp."), product: 1a02 ("DUB-E100 Fast Ethernet Adapter(rev.C1) [ASIX AX88772]")
+vendor: 2001 ("D-Link Corp."), product: 3c05 ("DUB-E100 Fast Ethernet Adapter(rev.B1) [ASIX AX88772]")
+vendor: 2001 ("D-Link Corp."), product: 3c05 ("DUB-E100 Fast Ethernet Adapter(rev.B1) [ASIX AX88772]")
+vendor: 2001 ("D-Link Corp."), product: 3c05 ("DUB-E100 Fast Ethernet Adapter(rev.B1) [ASIX AX88772]")
+vendor: 2001 ("D-Link Corp."), product: 3c05 ("DUB-E100 Fast Ethernet Adapter(rev.B1) [ASIX AX88772]")
+vendor: 2001 ("D-Link Corp."), product: 3c05 ("DUB-E100 Fast Ethernet Adapter(rev.B1) [ASIX AX88772]")
+vendor: 2001 ("D-Link Corp."), product: 3c05 ("DUB-E100 Fast Ethernet Adapter(rev.B1) [ASIX AX88772]")
+vendor: 2001 ("D-Link Corp."), product: 4000 ("DSB-650C Ethernet [klsi]")
+vendor: 2001 ("D-Link Corp."), product: 4000 ("DSB-650C Ethernet [klsi]")
+vendor: 2001 ("D-Link Corp."), product: 4000 ("DSB-650C Ethernet [klsi]")
+vendor: 2001 ("D-Link Corp."), product: 4000 ("DSB-650C Ethernet [klsi]")
+vendor: 2001 ("D-Link Corp."), product: 4000 ("DSB-650C Ethernet [klsi]")
+vendor: 2001 ("D-Link Corp."), product: 4000 ("DSB-650C Ethernet [klsi]")
+vendor: 2001 ("D-Link Corp."), product: 4000 ("DSB-650C Ethernet [klsi]")
+vendor: 2001 ("D-Link Corp."), product: 4000 ("DSB-650C Ethernet [klsi]")
+vendor: 2001 ("D-Link Corp."), product: 4a00 ("DUB-1312 Gigabit Ethernet Adapter")
+vendor: 22b8 ("Motorola PCS"), product: 6027 ("USBLAN"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 22b8 ("Motorola PCS"), product: 6425, interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 22b8 ("Motorola PCS"), product: 6425, interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 22b8 ("Motorola PCS"), product: 6425, interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 2357 ("TP-Link"), product: 0201 ("HSUPA Modem MA180")
+vendor: 2357 ("TP-Link"), product: 9000
+vendor: 3980, product: 0003
+vendor: 3980, product: 0003
+vendor: 3980, product: 0003
+vendor: 3980, product: 0003
+vendor: 3980, product: 0003
+vendor: 3980, product: 0003
+vendor: 3980, product: 0003
+vendor: 3980, product: 0003
+vendor: 413c ("Dell Computer Corp."), interface class: 02 ("Communications"), subclass: 0d, protocol: 00
+vendor: 413c ("Dell Computer Corp."), product: 8147 ("F3507g Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 413c ("Dell Computer Corp."), product: 8147 ("F3507g Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 413c ("Dell Computer Corp."), product: 8172 ("Gobi Wireless Modem")
+vendor: 413c ("Dell Computer Corp."), product: 8183 ("F3607gw Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 413c ("Dell Computer Corp."), product: 8183 ("F3607gw Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 413c ("Dell Computer Corp."), product: 8184 ("F3607gw v2 Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 413c ("Dell Computer Corp."), product: 8184 ("F3607gw v2 Mobile Broadband Module"), interface class: 02 ("Communications"), subclass: 0a ("Mobile Direct Line"), protocol: 00
+vendor: 413c ("Dell Computer Corp."), product: 8186 ("Gobi 2000 Wireless Modem")
+vendor: 413c ("Dell Computer Corp."), product: 8194
+vendor: 413c ("Dell Computer Corp."), product: 8195, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 413c ("Dell Computer Corp."), product: 8195, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 413c ("Dell Computer Corp."), product: 8196, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 413c ("Dell Computer Corp."), product: 8196, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 413c ("Dell Computer Corp."), product: 819b, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 413c ("Dell Computer Corp."), product: 819b, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 413c ("Dell Computer Corp."), product: 81a2
+vendor: 413c ("Dell Computer Corp."), product: 81a3 ("Hub of E-Port Replicator")
+vendor: 413c ("Dell Computer Corp."), product: 81a4
+vendor: 413c ("Dell Computer Corp."), product: 81a8 ("Wireless 5808 Mobile Broadband (Sierra Wireless Mini PCIE, 4G UMTS,HSDPA,HSPA+,LTE,1xRTT,EVDO Rev A,GSM,GPRS)")
+vendor: 413c ("Dell Computer Corp."), product: 81a9
+vendor: 6189 ("Sitecom"), product: 182d ("LN-029 10/100 Ethernet Adapter")
+vendor: 6189 ("Sitecom"), product: 182d ("LN-029 10/100 Ethernet Adapter")
+vendor: 6189 ("Sitecom"), product: 182d ("LN-029 10/100 Ethernet Adapter")
+vendor: 6189 ("Sitecom"), product: 182d ("LN-029 10/100 Ethernet Adapter")
+vendor: 6189 ("Sitecom"), product: 182d ("LN-029 10/100 Ethernet Adapter")
+vendor: 6189 ("Sitecom"), product: 182d ("LN-029 10/100 Ethernet Adapter")
+vendor: 6189 ("Sitecom"), product: 182d ("LN-029 10/100 Ethernet Adapter")
+vendor: 6189 ("Sitecom"), product: 182d ("LN-029 10/100 Ethernet Adapter")
+vendor: 6189 ("Sitecom"), product: 182d ("LN-029 10/100 Ethernet Adapter")
+vendor: 8086 ("Intel Corp."), product: 07d3 ("BLOB boot loader firmware")
+vendor: 8086 ("Intel Corp."), product: 07d3 ("BLOB boot loader firmware")
+vendor: 8086 ("Intel Corp."), product: 07d3 ("BLOB boot loader firmware")
+vendor: 8086 ("Intel Corp."), product: 07d3 ("BLOB boot loader firmware")
+vendor: 8086 ("Intel Corp."), product: 07d3 ("BLOB boot loader firmware")
+vendor: 8086 ("Intel Corp."), product: 07d3 ("BLOB boot loader firmware")
+vendor: 8086 ("Intel Corp."), product: 07d3 ("BLOB boot loader firmware")
+vendor: 8086 ("Intel Corp."), product: 07d3 ("BLOB boot loader firmware")
+vendor: 9710 ("MosChip Semiconductor"), product: 7730 ("MCS7730 10/100 Mbps Ethernet adapter")
+vendor: 9710 ("MosChip Semiconductor"), product: 7730 ("MCS7730 10/100 Mbps Ethernet adapter")
+vendor: 9710 ("MosChip Semiconductor"), product: 7730 ("MCS7730 10/100 Mbps Ethernet adapter")
+vendor: 9710 ("MosChip Semiconductor"), product: 7830 ("MCS7830 10/100 Mbps Ethernet adapter")
+vendor: 9710 ("MosChip Semiconductor"), product: 7830 ("MCS7830 10/100 Mbps Ethernet adapter")
+vendor: 9710 ("MosChip Semiconductor"), product: 7830 ("MCS7830 10/100 Mbps Ethernet adapter")
+vendor: 9710 ("MosChip Semiconductor"), product: 7830 ("MCS7830 10/100 Mbps Ethernet adapter")
+vendor: 9710 ("MosChip Semiconductor"), product: 7830 ("MCS7830 10/100 Mbps Ethernet adapter")
+vendor: 9710 ("MosChip Semiconductor"), product: 7832 ("MCS7832 10/100 Mbps Ethernet adapter")
+vendor: 9710 ("MosChip Semiconductor"), product: 7832 ("MCS7832 10/100 Mbps Ethernet adapter")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

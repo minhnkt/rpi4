@@ -1,0 +1,420 @@
+
+
+
+
+
+        ##################################### RELEASE NOTES
+
+         NOTE: if you install 21.02.0 please change your
+               UPGRADEsFLAVOUR="release"
+               in order to track stable releases via
+               the updatecheck bar
+
+
+
+
+        ##### r18325ish php7 has been dropped this will probably cause issues for
+                        [tty][editor] luci 'extras' or any usercode running php
+                        ymmv... the above is non-essential so will release as
+                        normal and possibly update or remove those features
+                         -### php8-mod-json #NotAvailableWhatsItfor?
+
+        ##### TBA CVE busybox fixes https://github.com/openwrt/openwrt/pull/4815
+              @21.02.x only just for yourself afaict risk is medium to low
+              near term... 21.02.2 will likely be tagged anyways
+
+
+        ##### r18161 back to probably r17699 ish may not have functional wifi
+        ##### r18270 as above and both need private browsing / incognito to
+                     avoid luci login issue
+              https://forum.openwrt.org/t/rpi4-community-build/69998/1701?u=wulfy23 r18161/270 network stalls maybe
+
+
+
+
+
+        ##### 21.02.1_1.0.6-2 is initial and likely subject to minor fixes in the coming
+              week/s release users may wish to wait a week or two before upgrading
+                   -also there is no huge benefits really some https wolfssl stuff
+                   -argon 2.2.9 (probably) (chrome css issue)
+                   -really minor luci stuff
+        
+
+
+        ##### ujail and seccomp on master builds
+          -around 20211023 master switched to including procd(seccomp+ujail) by
+           default... these packages are EXCLUDED from these builds due to
+           potential to cause users production issues until a future date...
+
+           typical issues revolve around dnsmasq not starting or file paths
+
+
+
+        #####
+          -possible wifi anomalies switched to foundation blobs/bin
+          -wg3: argon theme(2.2.3-5) > interfaces > peers does not save
+
+
+        ############################## current AKA 3.5.6x+/r176xx AKA testing(for now) for r17625>r17631>r17637 on test
+        ############################## r17674 > stable (nmap still broken)
+
+        NOTE
+          -files: xt_geoip samples are now downloaded if used
+           (nobody uses I think and they are out of date a little)
+
+
+        ISSUES(maybe)
+          -nmap may be broken [ /usbstick 55°] nmap -v
+           Error relocating /usr/bin/nmap: _ZSt28__throw_bad_array_new_lengthv: symbol not fo
+           (note: zerotier-cli also effected)
+           (update appears resolved as of: r18086)
+
+
+          -wg1 fairly stable unless you run wireguard!!! UNCONFIRMED interface bring up issue
+          -wg2: FIXED @sammutd88 (status page seems unavailable) > stull busted
+
+          -possible snmpd issues?
+          -FIXEDr17637 waiting for zerotier: update to 1.6.6 update (older builds have minor vuln/if used)
+           https://www.zerotier.com/2021/09/21/incident-response-to-september-20th-2021
+          -TBA possible statistics quirks (looks ok so far)?
+
+        ############################## zerotier
+          -as it seems very inert when disabled... and is generally
+           of use particularly on firstboot/remote access when
+           cgnat is in play... I am testing adding this service
+
+          -if anyone notices any signs when it's disabled... or
+           has ethical concerns please post on the forum
+
+          -there *may* be scope to leverage this for complex
+           support requests or debugging also... (for which
+           it could be manually installed also by the user)
+
+           stressing IT IS DEFAULT DISABLED (should do NOTHING!)
+
+
+           afaik the dependant libs (natpmp and upnpc also are inert?/
+           cause no conflicts or similar issues)
+
+           *possible scope for this and things like v2raya to be
+            bundled into a new 'mega'-ish variant down the track
+            if required (some users want it some dont)
+
+
+
+
+        ############################## build_key/s rotation [20210917]
+           -users on builds older than ~5months may need
+            sysupgrade -R -F /tmp/sys.img.gz
+
+
+        ############################## r17517+ wolfssl vuln bump ->4.8.1
+           -https://github.com/wolfSSL/wolfssl/releases
+
+
+        ############################## cdn opkg repos act funny
+           -have removed the use of cdn for official repos
+            on snapshot builds... it was quick and worked
+            for several months but it has started acting
+            funny...
+
+        ############################## possible issues on 3.5+(kernel 5.10)
+           -bgnet eth0 icmpv6 "rare" ethernet driver crashing (has workaround)
+           -pppoe firstboot issues > intermittent?
+           -probable intermittent asix3.0 dongles
+            Bus 002 Device 002: ID 0b95:1790 ASIX Elec. Corp. AX88179
+
+
+        ############################## ntfs-3g CVE's fixed@3.5.30+
+           -https://github.com/openwrt/packages/pull/16506
+           -https://www.openwall.com/lists/oss-security/2021/08/30/1
+            build is not patched yet... have not looked at the
+            details myself... but as ntfs is not commonly advised
+            or used likely low in a build context
+
+
+        ############################## simple-adblock default lists
+           -there is some WIP basic simple-adblock list backup and default
+            logic added... users of simple-adblock may experience quirks
+            related to this but afaik it shouldn't really effect much
+            after the first upgrade (which will carry existing backups
+            in the next upgrade)
+
+
+        ############################## CVE-2021-3711/2
+           -all builds rc4+<3.5.5(r17430) and below contain known openssl cve
+            make your own determination as to criticality
+
+
+         ############################# ~3.5.5-16+ undo(payload) since 3.2.100
+            -changes made to the AUTORESTORE(packages) logix may be unusual >UNDO
+
+
+
+         ######################## kernel 5.10 @ 3.5.x
+
+             NOTE: localfix implemented for 3.5.x builds @ kernel 5.10 ipv6 bug
+                   users of ipv6 with connections faster than 300Mb/s may wish
+                   to stay on 3.2 builds for now
+         
+
+         ######################## gcc10 + k140 + sqm bump @ 3.5.x
+         ### r17355+
+         ### r17339+ sqm got bumped works ok but stats show larger backlogs?
+             statistics more userspace?(better?)
+
+
+
+
+         ####################################################################### ~3.2.130
+         -9 https-dns-proxy 90 iface hotplug workaround implemented
+         -7 https-dns-proxy 90 iface hotplug needs seperate images after fixed
+
+
+        looks like I broke auto package restore for a while;
+        https://forum.openwrt.org/t/rpi4-community-build-onhold/69998/1225?u=wulfy23
+        edit: false alarm... only effects complex firstboot internet peeps or similar
+
+
+
+
+         ####################################################################### ~3.2.107
+
+         Drop snort3 too large and needed more use/testing
+
+         Drop collectd-mod-dns due to issues with ipv6 and (wip) remove
+         existing related luci_statistics config
+
+         Add PERFTWEAKS_SCRIPT= for alternate script to run
+
+
+
+
+         #######################################################################
+
+
+         3.2.100 ROOTFSEXPAND > default adding takes effect on second upgrade
+
+
+                  -changes made to the AUTORESTORE(packages) logix may be unusual
+                   mostly around no restore then restore toggling
+
+                      1: moves /etc/config/opkg if AUTORESTORE is off
+                         (apologies if you use vgaetera's script independantly
+                          i need to use another name for that file)
+                      2: random removal of acme on my system unable to determine
+                         the cause as yet... may revert all these changes
+                         depending on further fallout
+
+                 UPDATE: may have resolved the above
+
+
+
+         3.2.61-63 fix ROOTFSEXPAND (+ fakeinternet + wireguard-helper [testapps])
+ 
+         3.2.61-50+ support ROOTFSEXPAND=1 on upgrade [default-nobackport]
+         https://forum.openwrt.org/t/rpi4-community-build/69998/1054?u=wulfy23
+		  *contained bug* hotfix automatic
+          *if boot fails put sdcard into pc and change cmdline.txt to root=/dev/mmcblk0p2        
+
+
+         3.2.61-36 cm4-carrier-rtl1111 + performance optimisations [vpn-pbr support status still unknown]
+         3.2.61-30 [ok]
+         3.2.61-20< faulty > reverted to 3.1.50@3.2.61-30
+
+
+
+        ############################################################################## 3.2.13
+        #was config-network-device build experimental [ok]
+
+        ############################################################################## 3.2.13-2
+
+
+        EEPROM-UPDATE:     wip changes avoid using on this build
+
+        NETWORK-MIGRATION: this build is the first to include upstream network config migration
+                           for /etc/config/network to split l2/l3 devices
+
+
+        NOTE: Users of VPNPBR or with non-basic network configurations should skip this release
+
+
+        SEE-FORUM-FOR-MORE FINER DETAILS
+        https://forum.openwrt.org/t/rpi4-community-build/69998/900?u=wulfy23
+
+
+
+
+
+
+        ############################################################################## 3.1.30ish?
+
+        WWWMODS:            Not wanting to delay the current version any longer
+                            3.1.57-23 contains some www features that are not
+                            yet parameterized.
+
+                            For the uber-security concious... please use
+                            #> rpi-support.sh nowwwmods
+                            the pages are authenticated albeit fairly alpha-ish 
+
+
+
+        NEWINIOPTIONS:      To remove auth from YOUTUBEDL you can use
+                             YOUTUBEDL_NOAUTH=1
+
+                             DLWRAPPER=1 #firstboot-setup-only
+                                          caches adblock and banip lists
+                                          weekly
+
+
+
+
+
+         KNOWNISSUES:       eeprom-update via luci (or 'rpi4_eeprom.sh updaterecommended')
+                             -excludes vl805
+                             -runs regardless of whether an update is needed
+                              use sparingly or use the direct command
+                              $> rpi-eeprom-update -a
+
+
+
+
+        POSSIBLEVFATISSUE:  not really confirmed but attempted to use a new usbstick
+                            (Product:  SanDisk 3.2Gen1) and df -h would freeze/take
+                            a long time with its default filesystem (vfat)
+                            Possible false positive as was setting up block mount
+                            so may have been double mounted or something
+
+
+        ############################################################################## 3.1.17ish
+
+        NEWINIOPTIONS:      You may wish to enable RMMOD="" or may wish to disable
+                            OPKGFEEDS_USEHTTP=1 (faster) if enabled
+
+        UPDATENOTICECHANGE: builds after 2.9.17-116 will contain some small changes to the
+        (rollingout)        update checking and notification code...
+
+                            anticipate some teething issues with old versions
+
+                            please pm me on the forum or post on the thread if you see odd
+                            behavior...
+
+                            https://forum.openwrt.org/t/rpi4-community-build/69998/772?u=wulfy23
+
+
+        BACKUPFEATURE:      The backup feature in the above notice makes files available for
+                            download at http://IP/backup this may or may not pose some
+                            security concerns (typically internal lan related only) depending
+                            on your environment... if you use this feature... you can;
+                            
+                                  click 'refresh' after downloading the file
+                            
+                            to remove and clear...
+                            These files are currently store on /tmp so reboot will also
+                            clear...
+
+                                 For best compatibility they specifically exclude;
+
+                                       -/etc/rc.local
+                                       -/boot/cmdline.txt
+                                       -/etc/opkg*
+
+        ACME CRONTAB ENTRY NOTE: https://forum.openwrt.org/t/rpi4-community-build/69998/761?u=wulfy23
+
+
+        OPENSSL-BUMP http://lists.openwrt.org/pipermail/openwrt-devel/2021-March/034476.html
+        (r16345+1.1.1k)
+
+
+
+        PARTUUID-DEFAULT
+
+		20210330 all builds have been partuuid(usb-support) for around two months
+                 from now on forgo appending 'partuuid' to build foldernames
+
+                 see: ### partuuid-notes in this file or the rest at the bottom
+                      there are some backup/restore implications@cmdline.txt
+
+
+
+        REMOVE-FREIDFUNK https://forum.openwrt.org/t/rpi4-community-build/69998/619
+
+        NOTE: Sysupgrade -> Disable your friedfunk-feed!!!
+        ( actually not sure about this one... may have been a temporary upstream shift/glitch )
+        ( actually seems correct )
+
+
+
+
+        NOTE: 2.7.5x+ wrt.ini luci editing now@system>startup
+
+
+        
+
+
+
+        KNOWNISSUES:
+                     *fixed 3.2.55-23
+                     built backup and extra www feature links not shown when no update published
+                     3.2.13-2 vpn-pbr possible issues
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+###########################
+
+#WIP BELOW
+
+###########################
+
+
+
+
+           ############################## added nft-qos mostly for mac rate limiting
+                                       -> 'adding' maybe...
+           (current only is not fully functional@upstream bugs)
+
+           -when I initially looked at this... mac limiting was ok... but
+            there were/are bugs with luci for the other tabs...
+           -i've now decided that these luci issues are not reason enough
+            to hold back adding this package... as the other runtime
+            state optimisations are addressable
+           -additionally it's sort of handy to have nft around to mess with
+            for some transitional stuff
+
+           -be advised... cannot provide support for the actual 'user-level'
+            side of this package... but 'os-level' details I happy to
+            work with (enabled|disabled|package_fundamental_function_bugs)
+           -especially for interested if anyone does NOT use this and
+            finds it intrusive/difficult to disable/uninstall via
+            packagesremove.txt (hopefully that wont be needed)
+            i.e. if it is not in ENABLEDSERVICES then the only
+            drawback afaik is the loaded kmods...
+            (or at least that's the end goal, if there are any
+             performance hits because of this... i'll look more
+             at dynamically unloading or removing after first
+             boot)
+
+
+
+
+
+
+
+
+
+https://www.zerotier.com/2021/09/21/incident-response-to-september-20th-2021/
+
+
+
+

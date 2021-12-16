@@ -1,0 +1,72 @@
+
+
+
+
+
+
+#https://cateee.net/lkddb/web-lkddb/USB_RTL8152.html
+
+
+
+USB
+Numeric ID (from LKDDb) and names (from usb.ids) of recognized devices:
+
+vendor: 045e ("Microsoft Corp."), product: 07ab, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 045e ("Microsoft Corp."), product: 07ab, interface class: ff ("Vendor Specific Class")
+vendor: 045e ("Microsoft Corp."), product: 07c6 ("RTL8153 GigE [Surface Ethernet Adapter]"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 045e ("Microsoft Corp."), product: 07c6 ("RTL8153 GigE [Surface Ethernet Adapter]"), interface class: ff ("Vendor Specific Class")
+vendor: 045e ("Microsoft Corp."), product: 0927 ("RTL8153B GigE [Surface Ethernet Adapter]"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 045e ("Microsoft Corp."), product: 0927 ("RTL8153B GigE [Surface Ethernet Adapter]"), interface class: ff ("Vendor Specific Class")
+vendor: 04e8 ("Samsung Electronics Co., Ltd"), product: a101
+vendor: 04e8 ("Samsung Electronics Co., Ltd"), product: a101
+vendor: 04e8 ("Samsung Electronics Co., Ltd"), product: a101, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 04e8 ("Samsung Electronics Co., Ltd"), product: a101, interface class: ff ("Vendor Specific Class")
+vendor: 0955 ("NVIDIA Corp."), product: 09ff, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 0955 ("NVIDIA Corp."), product: 09ff, interface class: ff ("Vendor Specific Class")
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8050, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8050, interface class: ff ("Vendor Specific Class")
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8053, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8053, interface class: ff ("Vendor Specific Class")
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8152 ("RTL8152 Fast Ethernet Adapter")
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8152 ("RTL8152 Fast Ethernet Adapter")
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8152 ("RTL8152 Fast Ethernet Adapter"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8152 ("RTL8152 Fast Ethernet Adapter"), interface class: ff ("Vendor Specific Class")
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8153 ("RTL8153 Gigabit Ethernet Adapter")
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8153 ("RTL8153 Gigabit Ethernet Adapter")
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8153 ("RTL8153 Gigabit Ethernet Adapter"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8153 ("RTL8153 Gigabit Ethernet Adapter"), interface class: ff ("Vendor Specific Class")
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8155, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8155, interface class: ff ("Vendor Specific Class")
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8156, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 0bda ("Realtek Semiconductor Corp."), product: 8156, interface class: ff ("Vendor Specific Class")
+vendor: 13b1 ("Linksys"), product: 0041 ("Gigabit Ethernet Adapter"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 13b1 ("Linksys"), product: 0041 ("Gigabit Ethernet Adapter"), interface class: ff ("Vendor Specific Class")
+vendor: 17ef ("Lenovo"), product: 304f ("RTL8153 Gigabit Ethernet [ThinkPad OneLink Pro Dock]"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 17ef ("Lenovo"), product: 304f ("RTL8153 Gigabit Ethernet [ThinkPad OneLink Pro Dock]"), interface class: ff ("Vendor Specific Class")
+vendor: 17ef ("Lenovo"), product: 3062 ("ThinkPad Dock Ethernet [Realtek RTL8153B]"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 17ef ("Lenovo"), product: 3062 ("ThinkPad Dock Ethernet [Realtek RTL8153B]"), interface class: ff ("Vendor Specific Class")
+vendor: 17ef ("Lenovo"), product: 3069 ("ThinkPad TBT3 LAN"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 17ef ("Lenovo"), product: 3069 ("ThinkPad TBT3 LAN"), interface class: ff ("Vendor Specific Class")
+vendor: 17ef ("Lenovo"), product: 3082, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 17ef ("Lenovo"), product: 3082, interface class: ff ("Vendor Specific Class")
+vendor: 17ef ("Lenovo"), product: 7205 ("Thinkpad LAN"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 17ef ("Lenovo"), product: 7205 ("Thinkpad LAN"), interface class: ff ("Vendor Specific Class")
+vendor: 17ef ("Lenovo"), product: 720c, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 17ef ("Lenovo"), product: 720c, interface class: ff ("Vendor Specific Class")
+vendor: 17ef ("Lenovo"), product: 7214, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 17ef ("Lenovo"), product: 7214, interface class: ff ("Vendor Specific Class")
+vendor: 17ef ("Lenovo"), product: 721e, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 17ef ("Lenovo"), product: 721e, interface class: ff ("Vendor Specific Class")
+vendor: 17ef ("Lenovo"), product: a387, interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 17ef ("Lenovo"), product: a387, interface class: ff ("Vendor Specific Class")
+vendor: 2357 ("TP-Link"), product: 0601 ("UE300 10/100/1000 LAN (ethernet mode) [Realtek RTL8153]"), interface class: 02 ("Communications"), subclass: 06 ("Ethernet Networking"), protocol: 00
+vendor: 2357 ("TP-Link"), product: 0601 ("UE300 10/100/1000 LAN (ethernet mode) [Realtek RTL8153]"), interface class: ff ("Vendor Specific Class")
+
+
+
+
+
+
+
+
+

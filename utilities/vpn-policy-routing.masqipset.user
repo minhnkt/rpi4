@@ -1,0 +1,190 @@
+#!/bin/sh
+
+
+
+
+
+
+
+#IP6ENABLED=$(uci -q get vpn-policy-routing.config.ipv6_enabled)
+
+
+
+
+
+while read MASQsection; do
+	[ -z "$MASQsection" ] && continue
+
+
+
+	MASQiface=
+	MASQipset_name=
+	
+	MASQsrc_addr=
+	MASQsum=
+	MASQsumE=
+
+
+	MASQiface="$(uci -q get ${MASQsection}.interface)"
+	#echo "$MASQsection"
+	#echo "MASQsectioninterface: $MASQiface"
+
+	[ -z "$MASQiface" ] && continue
+	#NOPE uci show vpn-policy-routing | grep "$MASQsection"
+	
+
+	MASQipset_name="$(uci -q get ${MASQsection}.ipset_name)"
+	[ -z "$MASQipset_name" ] && continue
+	#echo "MASQipset_name: $MASQipset_name"
+
+
+
+	#echo "MASQsectioninterface: $MASQiface"
+	#echo "MASQipset_name: $MASQipset_name"
+	MASQsum="${MASQsum} MASQipset_name:${MASQipset_name}(4|6)"
+
+
+
+
+	MASQsrc_addr="$(uci -q get ${MASQsection}.src_addr)"
+
+
+	if [ -z "$MASQsrc_addr" ]; then
+		echo "src_addr nope... who connection"
+	fi
+
+	vprCHAIN=
+	vprCHAIN=$(iptables-save -c | grep "\-\-match-set ${MASQiface} dst " | awk '{print $10}')
+
+
+	if [ -z "$vprCHAIN" ]; then
+		MASQsumE="${MASQsumE} vprCHAINunknown:${MASQiface}"
+		#echo "vprCHAINunknown: ${MASQiface}"
+		#continue
+	fi
+
+
+
+
+
+	echo "summary:$MASQsum e:${MASQsumE}"
+
+
+
+	if [ ! -z "$MASQsumE" ]; then
+		continue
+	fi
+	#echo "FORCEcont"; continue
+
+
+	ipset -exist create ${MASQipset_name}4 'hash:net'
+	ipset -exist create ${MASQipset_name}6 'hash:net' family inet6
+
+
+
+
+
+
+
+
+
+while read sRULE rRULE; do
+
+	[ -z "$sRULE" ] && continue
+
+	echo "sRULE: $sRULE"
+	echo "rRULE: $rRULE"
+
+
+done <<TTT
+$(iptables-save | grep VPRMASQRULE)
+TTT
+
+
+
+
+
+
+
+
+	if [ ! -z "$MASQsrc_addr" ]; then
+
+	for disneyIPc in $MASQsrc_addr; do
+
+        iptables -t mangle -D VPR_PREROUTING \
+                -s $disneyIPc \
+                -m set --match-set ${MASQipset_name}4 dst \
+                -m comment --comment VPRMASQRULE${MASQipset_name}4 -g ${VPRchain} 2>/dev/null
+        iptables -t mangle -I VPR_PREROUTING \
+                -s $disneyIPc \
+                -m set --match-set ${MASQipset_name}4 dst \
+                -m comment --comment VPRMASQRULE${MASQipset_name}4 -g ${VPRchain}
+
+	done
+
+
+
+	else
+
+        iptables -t mangle -D VPR_PREROUTING \
+                -s $disneyIPc \
+                -m set --match-set ${MASQipset_name}4 dst \
+                -m comment --comment VPRMASQRULE${MASQipset_name}4 -g ${VPRchain} 2>/dev/null
+        iptables -t mangle -I VPR_PREROUTING \
+                -s $disneyIPc \
+                -m set --match-set ${MASQipset_name}4 dst \
+                -m comment --comment VPRMASQRULE${MASQipset_name}4 -g ${VPRchain}
+
+	fi
+
+
+
+
+	sleep 2
+
+
+done <<CCC
+$(uci show vpn-policy-routing | grep '=masqipset$' | cut -d'=' -f1)
+CCC
+
+#vprCHAIN=$(iptables-save -c | grep "\-\-match-set ${Dlog} dst " | awk '{print $10}')
+
+
+
+
+
+
+
+exit 0
+
+
+
+
+#vpn-policy-routing.@masqipset[0]=masqipset
+#vpn-policy-routing.@masqipset[0].src_addr='10.2.23.33/24'
+#vpn-policy-routing.@masqipset[0].interface='us'
+#vpn-policy-routing.@masqipset[0].ipset_name='disney'
+
+
+
+
+
+#config masqipset
+#	option src_addr '10.2.23.33/24'
+#	option interface 'us'
+#	option ipset_name 'disney'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
