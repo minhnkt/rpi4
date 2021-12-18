@@ -609,6 +609,11 @@ Fsub="builds/rpi-4_snapshot_3.5.315-11_r18325_extra"
 Bname="rpi4.64-snapshot-27129-3.5.315-11-r18325-ext4-sys.img.gz"
 
 
+Fsub="rpi-4_snapshot_3.5.317-2_r18370_extra"
+Bname="rpi4.64-snapshot-27130-3.5.317-2-r18370-ext4-sys.img.gz"
+
+
+
 
 		#echo "no current build available"; exit 0		
 	;; ############################################################## ENDCURRENT

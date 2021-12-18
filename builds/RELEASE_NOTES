@@ -19,6 +19,14 @@
                         normal and possibly update or remove those features
                          -### php8-mod-json #NotAvailableWhatsItfor?
 
+                        bootstrap dark|light is not working [new upstream setting]
+                        (probably build related - low priority)
+
+                        updatecheck font color is sometimes whacky
+                        (low - medium priority)
+
+
+
         ##### TBA CVE busybox fixes https://github.com/openwrt/openwrt/pull/4815
               @21.02.x only just for yourself afaict risk is medium to low
               near term... 21.02.2 will likely be tagged anyways
