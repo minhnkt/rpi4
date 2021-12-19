@@ -12,7 +12,7 @@
 
 
 
-
+        ##### r18370    occasional micro-hangs not yet seen master likely pretty good now
         ##### r18325ish php7 has been dropped this will probably cause issues for
                         [tty][editor] luci 'extras' or any usercode running php
                         ymmv... the above is non-essential so will release as
@@ -27,6 +27,7 @@
 
 
 
+        ##### fingers crossed regen@20211229>1.0.10 for below... alot of untested wifi stuff
         ##### TBA CVE busybox fixes https://github.com/openwrt/openwrt/pull/4815
               @21.02.x only just for yourself afaict risk is medium to low
               near term... 21.02.2 will likely be tagged anyways

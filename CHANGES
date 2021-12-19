@@ -10,6 +10,7 @@
                 -odd sysuponline bug... > wip > minor dbg tweaks (-T DONTREALLYFLASH) etc. etc.
                  note: -2>-3 reupload seemed to sort of fix (manually added -2 paths or ftp issue?)
                 -iface/90-https ini parsing fix add ini HTTPS_DNS_DEBUG
+                -6) change PHP7=1 back to fg for a bit
                 -
                 -
                 -
@@ -20,6 +21,7 @@
                 -add hooks for no more php7 disable youtubedl+editor
                 -pkgs) rm php7 add php8 replacements (minus 1 json something) initially (not used yet in the build)
                 -7 ini) add PHP7=1 ipk download/install legacy ipks@45412 fboot(calls bin/php7...sh) WIP
+                -forgot to note somewhere around here if fboot is 21 change UPGRADEsFLAVOUR to 21 (wip)
  
         3.5.305not?/151-20>>>?
                 -add sierra wireless kmods
