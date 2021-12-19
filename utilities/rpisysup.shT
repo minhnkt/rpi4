@@ -558,8 +558,17 @@ Fsub="builds/rpi-4_snapshot_3.5.315-11_r18325_extra"
 Bname="rpi4.64-snapshot-27129-3.5.315-11-r18325-ext4-sys.img.gz"
 
 
+
+
+
 Fsub="builds/rpi-4_snapshot_3.5.317-2_r18370_extra"
 Bname="rpi4.64-snapshot-27130-3.5.317-2-r18370-ext4-sys.img.gz"
+
+
+Fsub="builds/rpi-4_snapshot_3.5.317-3_r18370_extra"
+Bname="rpi4.64-snapshot-27131-3.5.317-3-r18370-ext4-sys.img.gz"
+
+
 
 
 
@@ -604,6 +613,8 @@ Bname="rpi4.64-snapshot-27115-3.5.305-19-r18270-ext4-sys.img.gz"
 
 
 
+
+
 ################################################################# php8
 Fsub="builds/rpi-4_snapshot_3.5.315-3_r18325_extra"
 Bname="rpi4.64-snapshot-27120-3.5.315-3-r18325-ext4-sys.img.gz"
@@ -613,8 +624,19 @@ Fsub="builds/rpi-4_snapshot_3.5.315-11_r18325_extra"
 Bname="rpi4.64-snapshot-27129-3.5.315-11-r18325-ext4-sys.img.gz"
 
 
+
+
 Fsub="builds/rpi-4_snapshot_3.5.317-2_r18370_extra"
 Bname="rpi4.64-snapshot-27130-3.5.317-2-r18370-ext4-sys.img.gz"
+
+
+Fsub="builds/rpi-4_snapshot_3.5.317-3_r18370_extra"
+Bname="rpi4.64-snapshot-27131-3.5.317-3-r18370-ext4-sys.img.gz"
+
+
+Fsub="builds/rpi-4_snapshot_3.5.317-3_r18370_extra"
+Bname="rpi4.64-snapshot-27131-3.5.317-3-r18370-ext4-sys.img.gz"
+
 
 
 
