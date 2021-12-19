@@ -572,6 +572,18 @@ Bname="rpi4.64-snapshot-27131-3.5.317-3-r18370-ext4-sys.img.gz"
 
 
 
+
+
+
+
+Fsub="builds/rpi-4_snapshot_3.5.317-5_r18370_extra"
+Bname="rpi4.64-snapshot-27132-3.5.317-5-r18370-ext4-sys.img.gz"
+
+
+
+
+
+
 		#echo "no stable build available"; exit 0
     ;; ############################################################## ENDSTABLE
 
@@ -637,8 +649,22 @@ Bname="rpi4.64-snapshot-27131-3.5.317-3-r18370-ext4-sys.img.gz"
 
 
 
+
+
+
+
+Fsub="builds/rpi-4_snapshot_3.5.317-5_r18370_extra"
+Bname="rpi4.64-snapshot-27132-3.5.317-5-r18370-ext4-sys.img.gz"
+
+
+
+
+
 		#echo "no current build available"; exit 0		
 	;; ############################################################## ENDCURRENT
+
+
+
 
 
 
@@ -651,8 +677,13 @@ Bname="rpi4.64-snapshot-27130-3.5.317-2-r18370-ext4-sys.img.gz"
 
 
 
-#	echo "no testing build available"; exit 0
-    ;; ############################################################## ENDTESTING
+		#echo "no testing build available"; exit 0
+	
+	;; ############################################################## ENDTESTING
+
+
+
+
 
 
 
