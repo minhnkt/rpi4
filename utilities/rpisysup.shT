@@ -677,6 +677,9 @@ Bname="rpi4.64-snapshot-27132-3.5.317-5-r18370-ext4-sys.img.gz"
 Fsub="builds/devel/rpi-4_snapshot_3.5.317-7_r18370_extra"
 Bname="rpi4.64-snapshot-27136-3.5.317-7-r18370-ext4-sys.img.gz"
 
+Fsub="builds/devel/rpi-4_snapshot_3.5.317-8_r18370_extra"
+Bname="rpi4.64-snapshot-27137-3.5.317-8-r18370-ext4-sys.img.gz"
+
 
 
 

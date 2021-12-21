@@ -118,12 +118,15 @@ fi
 dbghttps() {
 
 if [ ! -z "$HTTPS_DNS_DEBUG" ] || [ ! -z "$(uci -q show network | grep "network.IPTV.proto='static'")" ]; then
+	#simple-adblock uci show dhcp | logger
+	logger -t "https-debug" "${1}simple?: $(logread | grep simple | tail -n2)"
 	logger -t "https-debug" "${1}pshttps: $(ps wwww | grep -v grep | grep https)"
 	logger -t "https-debug" "${1}uci127: $(uci show dhcp | grep 127)"
 	logger -t "https-debug" "${1}nslookupAdd: $(nslookup openwrt.org | grep '^Address' | head -n1)"
 fi
 
 }
+
 
 
 
