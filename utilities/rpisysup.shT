@@ -674,11 +674,10 @@ Fsub="builds/rpi-4_snapshot_3.5.317-5_r18370_extra"
 Bname="rpi4.64-snapshot-27132-3.5.317-5-r18370-ext4-sys.img.gz"
 
 
-Fsub="builds/devel/rpi-4_snapshot_3.5.317-7_r18370_extra"
-Bname="rpi4.64-snapshot-27136-3.5.317-7-r18370-ext4-sys.img.gz"
 
-Fsub="builds/devel/rpi-4_snapshot_3.5.317-8_r18370_extra"
-Bname="rpi4.64-snapshot-27137-3.5.317-8-r18370-ext4-sys.img.gz"
+
+Fsub="builds/devel/rpi-4_snapshot_3.5.317-9_r18370_extra"
+Bname="rpi4.64-snapshot-27139-3.5.317-9-r18370-ext4-sys.img.gz"
 
 
 
@@ -753,8 +752,20 @@ Bname="rpi4.64-snapshot-27137-3.5.317-8-r18370-ext4-sys.img.gz"
 
 
 #############################################################################MODEL/ENVspecificSANITYCHECKS
-######if ! grep -q '4-model-b' /tmp/sysinfo/board_name; then echo "only: raspberrypi,4-model-b [issupported]" && exit 0; fi
-if [ "$(blkid | grep '^/dev/mmcblk0p2' | grep ext4 | wc -l)" -ne 1 ]; then echo "ext4 sysupgrade only" && exit 0; fi
+#######if ! grep -q '4-model-b' /tmp/sysinfo/board_name; then echo "only: raspberrypi,4-model-b [issupported]" && exit 0; fi
+
+###########20211225 usb 1.2 exits
+###########20211225 usb 1.2 exits
+###########20211225 usb 1.2 exits
+###########20211225 usb 1.2 exits
+#if [ "$(blkid | grep '^/dev/mmcblk0p2' | grep ext4 | wc -l)" -ne 1 ]; then echo "ext4 sysupgrade only" && exit 0; fi
+###########20211225 usb 1.2 exits
+###########20211225 usb 1.2 exits
+###########20211225 usb 1.2 exits
+###########20211225 usb 1.2 exits
+
+
+
 
 
 
