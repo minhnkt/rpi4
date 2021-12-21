@@ -1,0 +1,424 @@
+#!/bin/sh
+
+
+
+[ "$ACTION" = 'ifup' ] || exit 0
+
+echo "${INTERFACE}" | grep -q wan || exit 0
+
+
+#################[ "$ACTION" = 'ifupdate' ] || exit 0 #ipv6crap
+#################[ "$ACTION" = 'ifup' ] || exit 0
+
+
+
+
+
+eval $(grep '^HTTPS_DNS_DEBUG=' /root/wrt.ini 2>/dev/null)
+
+
+
+
+
+
+
+
+
+if grep -q 'network_find_wan' /etc/init.d/https-dns-proxy; then
+	PROXYMSG="${PROXYMSG} find_wan_present"
+	#exit 0
+fi
+
+
+
+
+
+
+eval $(grep '^ENABLEDSERVICES=' /root/wrt.ini 2>/dev/null)
+
+
+
+if echo ${ENABLEDSERVICES:-"fish"} | grep -q "https-dns-proxy"; then
+	PROXYOK=1
+	PROXYMSG="${PROXYMSG} EN[yes]"
+else
+	PROXYMSG="${PROXYMSG} EN[no]"
+fi
+
+
+
+
+
+
+
+
+
+if [ -x /etc/init.d/https-dns-proxy ] && /etc/init.d/https-dns-proxy enabled; then
+	PROXYMSG="${PROXYMSG} srv[yes]"
+	PROXYOK=1
+else
+	PROXYMSG="${PROXYMSG} srv[no]"
+fi
+
+
+
+
+
+
+
+
+#if [ -x /etc/init.d/https-dns-proxy ] && /etc/init.d/https-dns-proxy enabled; then
+#	PROXYOK=1
+#fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if [ ! -z "$HTTPS_DNS_DEBUG" ] || [ ! -z "$(uci -q show network | grep "network.IPTV.proto='static'")" ]; then
+	logger -t "https-debug" "i:${INTERFACE} a:${ACTION} MSG:$PROXYMSG ok:${PROXYOK}"
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#[ -z "$PROXYOK" ] && logger -t "https-debug: NOPROXYOK"
+[ -z "$PROXYOK" ] && exit 0
+
+
+
+
+
+
+
+
+
+
+dbghttps() {
+
+if [ ! -z "$HTTPS_DNS_DEBUG" ] || [ ! -z "$(uci -q show network | grep "network.IPTV.proto='static'")" ]; then
+	logger -t "https-debug" "${1}pshttps: $(ps wwww | grep -v grep | grep https)"
+	logger -t "https-debug" "${1}uci127: $(uci show dhcp | grep 127)"
+	logger -t "https-debug" "${1}nslookupAdd: $(nslookup openwrt.org | grep '^Address' | head -n1)"
+fi
+
+}
+
+
+
+
+
+
+
+
+
+
+if [ "$ACTION" = 'ifup' ]; then
+	case "$INTERFACE" in
+		*"wan"*)
+
+
+
+			#sleep 10
+			dbghttps "pre"
+			
+			
+			logger -t "https-dns-proxy" "Reloading https-dns-proxy due to $ACTION of $INTERFACE"
+			/etc/init.d/https-dns-proxy reload
+
+			dbghttps "post1"
+			sleep 10
+			dbghttps "post2"
+		;;
+		wan)
+			
+			#sleep 10
+			dbghttps "pre"
+			
+			
+			logger -t "https-dns-proxy" "Reloading https-dns-proxy due to $ACTION of $INTERFACE"
+			/etc/init.d/https-dns-proxy reload
+			
+			
+			dbghttps "post1"
+			sleep 10
+			dbghttps "post2"
+		;;
+
+		*)
+			
+
+		if [ ! -z "$HTTPS_DNS_DEBUG" ] || [ ! -z "$(uci -q show network | grep "network.IPTV.proto='static'")" ]; then
+			logger -t "https-debug" "$ACTION of $INTERFACE [NOTAWAN]"
+		fi
+
+
+
+		;;
+	esac
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+exit 0
+
+
+
+
+
+
+#dca632 /usbstick 58°# /etc/init.d/dnsmasq reload; ps www | grep -v grep | grep masq
+#15916 dnsmasq  25368 S    /usr/sbin/dnsmasq -C /var/etc/dnsmasq.conf.cfg01411c -k -x /var/run/dnsmasq/dnsmasq.cfg01411c.pid
+#16144 root     22684 S    /usr/sbin/dnsmasq -C /var/etc/dnsmasq.conf.cfg01411c -k -x /var/run/dnsmasq/dnsmasq.cfg01411c.pid
+#25174 root      1648 R    /bin/sh /etc/rc.common /etc/init.d/dnsmasq running
+#25188 root      1280 S    /bin/sh /usr/lib/dnsmasq/dhcp-script.sh old aa:3a:9f:d7:a8:fb 10.2.3.117
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#opkg list | grep '^https-dns-proxy ' | awk '{print $3}'
+#2021-09-27-1
+#2021-09-27-2 #nohotplug
+
+
+#if grep -q '^VERSION="SNAPSHOT"' /etc/os-release; then exit 0; fi
+
+
+
+
+#OLD service_triggers() { procd_add_config_trigger "config.change" "$packageName" "/etc/init.d/${packageName}" restart; }
+
+
+############### NEW
+#service_triggers() {
+#	local iface
+#	. /lib/functions/network.sh
+#	network_find_wan iface
+#	if [ -n "$iface" ]; then
+#		procd_add_interface_trigger "interface.*" "$iface" "/etc/init.d/${packageName}" restart
+#	fi
+#	procd_add_config_trigger "config.change" "$packageName" "/etc/init.d/${packageName}" restart
+#}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if grep -q 'network_find_wan' /etc/init.d/https-dns-proxy; then
+	exit 0
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ !!!!!!!!! 20211221 worked anyway but... add ^ eval $(grep 'ENABLEDSERVICES=' /root/wrt.ini 2>/dev/null)
+eval $(grep '^ENABLEDSERVICES=' /root/wrt.ini 2>/dev/null)
+
+
+
+
+
+
+
+
+
+if echo ${ENABLEDSERVICES:-"fish"} | grep -q "https-dns-proxy"; then PROXYOK=1; fi
+
+
+
+
+if [ -x /etc/init.d/https-dns-proxy ] && /etc/init.d/https-dns-proxy enabled; then
+	PROXYOK=1
+fi
+
+
+
+
+
+[ -z "$PROXYOK" ] && exit 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############################ at the bottom of /etc/hotplug.d/iface/90-https-dns-proxy
+
+
+#if [ "$ACTION" = 'ifup' ] && [ "$INTERFACE" = 'wan' ]; then
+#	logger -t "https-dns-proxy" "Reloading https-dns-proxy due to $ACTION of $INTERFACE"
+#	/etc/init.d/https-dns-proxy reload
+#fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+if [ "$ACTION" = 'ifup' ]; then
+	case "$INTERFACE" in
+		*"wan"*)
+			logger -t "https-dns-proxy" "Reloading https-dns-proxy due to $ACTION of $INTERFACE"
+			/etc/init.d/https-dns-proxy reload
+		;;
+		wan)
+			logger -t "https-dns-proxy" "Reloading https-dns-proxy due to $ACTION of $INTERFACE"
+			/etc/init.d/https-dns-proxy reload
+		;;
+	esac
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#eval $(grep 'ENABLEDSERVICES=' /root/wrt.ini 2>/dev/null)
+#if echo ${ENABLEDSERVICES:-"fish"} | grep -q "https-dns-proxy"; then PROXYOK=1; fi
+
+
+
+
+
+
+
+
+
+#INTERFACE="pppoe-wan" ACTION="ifup" /etc/hotplug.d/iface/90-https-dns-proxy
+
+
+
+
+
+
+

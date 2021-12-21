@@ -11,7 +11,8 @@
                  note: -2>-3 reupload seemed to sort of fix (manually added -2 paths or ftp issue?)
                 -iface/90-https ini parsing fix add ini HTTPS_DNS_DEBUG
                 -6) change PHP7=1 back to fg for a bit
-                -
+                -7) iface/90-https ini HTTPS_DNS_DEBUG temporarily get some more state info
+                -7) qosify tweak 00-defaults.conf 
                 -
                 -
                 -
