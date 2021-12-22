@@ -681,6 +681,13 @@ Bname="rpi4.64-snapshot-27139-3.5.317-9-r18370-ext4-sys.img.gz"
 
 
 
+Fsub="builds/devel/rpi-4_snapshot_3.5.317-15_r18370_extra"
+Bname="rpi4.64-snapshot-27153-3.5.317-15-r18370-ext4-sys.img.gz"
+
+
+
+
+
 
 		#echo "no current build available"; exit 0		
 	;; ############################################################## ENDCURRENT
@@ -751,8 +758,6 @@ Bname="rpi4.64-snapshot-27139-3.5.317-9-r18370-ext4-sys.img.gz"
 
 
 
-#############################################################################MODEL/ENVspecificSANITYCHECKS
-#######if ! grep -q '4-model-b' /tmp/sysinfo/board_name; then echo "only: raspberrypi,4-model-b [issupported]" && exit 0; fi
 
 ###########20211225 usb 1.2 exits
 ###########20211225 usb 1.2 exits
@@ -763,6 +768,21 @@ Bname="rpi4.64-snapshot-27139-3.5.317-9-r18370-ext4-sys.img.gz"
 ###########20211225 usb 1.2 exits
 ###########20211225 usb 1.2 exits
 ###########20211225 usb 1.2 exits
+#####################################NOTE false positive no-flavour-given@ini> FLAVOUR=stable useroutputandlocaltest
+#well misleading message
+#grep UPGRADEs /root/wrt.ini; rm -rf /tmp/.update* ; rpi-sysup-online.sh -v check
+####################################################################################################################
+
+
+
+
+
+
+
+
+
+#############################################################################MODEL/ENVspecificSANITYCHECKS
+#######if ! grep -q '4-model-b' /tmp/sysinfo/board_name; then echo "only: raspberrypi,4-model-b [issupported]" && exit 0; fi
 
 
 

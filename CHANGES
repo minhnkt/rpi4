@@ -13,8 +13,9 @@
                 -6) change PHP7=1 back to fg for a bit
                 -7) iface/90-https ini HTTPS_DNS_DEBUG temporarily get some more state info
                 -7) qosify tweak 00-defaults.conf 
-                -9) remove pcie_bus_perf from 13-fsckparts due to 2G rev1.2 usb reboot issue
-                -
+                -9) @synapse remove pcie_bus_perf from 13-fsckparts due to 2G rev1.2 usb reboot issue
+                -9) @synapse usb sysup exited on not mmc!
+                -15) @Phase1 rmem earlier via init.d/nlbwmon
                 -
                 -
 

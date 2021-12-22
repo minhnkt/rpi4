@@ -13,7 +13,8 @@ see: https://forum.openwrt.org/t/rpi4-community-build/69998 to request packages,
 <sup>github https://github.com for a solid and open platform</sup><br>
 <sup>pi-foundation for a mostly open platform</sup><br>
 <sup>Special thanks: vgaetera jeff jow slh trendy and lleachii for guru skillsharing and support... </sup><br>
-<sup>@PaulFertser, @dibdot, @trendy, @moodyblue, @neil1, @jayanta525, @poodad, @syntaxterror, @bigfat, @gpuyy, @krazeh, @jcejohnson, @cesarvog, @malikshi, @stargeizer, @mint, @johnd2, @BenjaminBeichler, @cricalix, @toasterdev, @masaq and @geerlingguy for contributions to the build</sup><br>
+<sup>@PaulFertser, @dibdot, @trendy, @moodyblue, @neil1, @jayanta525, @poodad, @syntaxterror, @bigfat, @gpuyy, @krazeh, @jcejohnson, @cesarvog, @malikshi, @stargeizer, @mint, @johnd2, @BenjaminBeichler, @cricalix, @toasterdev, @masaq, @
+synapse, @Phase1 and @geerlingguy for contributions to the build</sup><br>
 <sup>@dangowrt, @noltari, @oskari.rauta, @mhei mainline code</sup><br>
 <sup>@lynx, @moeller0, @dlakelan + others sqm-autorate (lte/3g/variable-bw-links)</sup><br>
 <sup>@hnyman build system insight and official repo fixing</sup><br>
