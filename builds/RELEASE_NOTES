@@ -12,6 +12,9 @@
 
 
 
+        ##### 21.02.1   rebuild(1.0.10) seems to have probable wifi issues
+                        https://forum.openwrt.org/t/enabling-integrated-adapter-usb-wi-fi-adapter-for-raspberry-pi-4-b-simultaneously-does-not-work-after-upgrading-to-latest-current/115300?u=wulfy23
+
         ##### r18370    occasional micro-hangs not yet seen master likely pretty good now
         ##### r18325ish php7 has been dropped this will probably cause issues for
                         [tty][editor] luci 'extras' or any usercode running php

@@ -1,0 +1,700 @@
+#!/bin/sh
+
+
+
+#NOTES
+### if pulling this down from git... or running a sysupgraded OS... check your /root/wrt.ini has
+#PERFTWEAKS="default"
+### to enable recommended/current tweaks
+
+
+#NOTE: set PERFTWEAKS=1 to just enable one option at a time otherwise you get default||yourcustomoption if a default one
+############################################################################
+### you can set custom AFFINITY per IRQ with
+# PFAFFINITY="32:2 22:2"
+### etc. etc.
+############################################################################
+
+############################################################################
+### you can set packet steering on newer releases with 20-smp@config/network
+# option packet_steering '1'
+# option packet_steering_val 'c' #or other
+############################################################################
+
+
+
+#commenting out PERFTWEAKS will disable all tweaks except packet_steering
+
+
+
+#taskset from alpy maybe linux-utils | apk search cpu
+
+
+
+ecmd="echo "; i=$(basename $0)
+if [ -x /etc/custom/custfunc.sh ]; then
+	. /etc/custom/custfunc.sh
+	ecmd="echm ${i} "
+fi
+
+
+SNAME="rpi-perftweaks.sh"
+SSCRIPT="/bin/$SNAME"
+SLOG="/DEBUG-$SNAME.debug"
+#DEBUG=1					#wrt.ini RCDEBUG enables... or > enable-per-script
+#RCSLEEP=0					#wrt.ini or DEBUG enables... set default to 0EDIT>dolaterifz
+
+[ -n "$RCDEBUG" ] && DEBUG=1
+[ -n "$DEBUG" ] && [ -z "$RCSLEEP" ] && RCSLEEP=2
+[ -z "$RCSLEEP" ] && RCSLEEP=0
+
+
+
+
+
+
+echq() {
+	DL=`date +%Y%m%d-%H%M`
+
+	$ecmd "DBGTMPONecmdALL-$SSCRIPT: ${*}"
+
+	echo "$SSCRIPT: ${*}" > /dev/kmsg #echo "$SSCRIPT-$DL-kmsg: ${*}" > /dev/kmsg
+	[ -n "$DEBUG" ] && echo "$SSCRIPT-$DL: ${*}" >> $SLOG
+	sleep ${RCSLEEP:-0}
+}
+
+
+
+
+
+affinityalt() {
+
+	local aff_val_pre=$(cat /proc/irq/${1}/smp_affinity)
+	local aff_val_set="${2}"
+	local aff_fail=0
+
+	echo -n "${aff_val_set}" > /proc/irq/${1}/smp_affinity || aff_fail=1
+	AFFmsg="${AFFmsg} ${1}:$aff_val_pre:${aff_val_set}[$aff_fail]"
+}
+
+
+
+tasksetpids() {
+
+	local thispid=
+	for thispid in $(pidof ${1}); do #oneonlybutmeh
+		$TASKSET -apc ${2} $thispid 2>&1 >/dev/null
+		TASKSETmsg="${TASKSETmsg} ${1}:${thispid}>${2}"
+	done
+
+}
+
+
+servicecpuadjust() {
+
+	if [ -z "$gottaskset" ]; then echq "taskset:$TASKSET not available" && return 0; fi
+	tasksetpids "nlbwmon" 3
+	tasksetpids "collectd" 3
+	tasksetpids "uhttpd" 2 ### spikes@io
+	tasksetpids "odhcpd" 3 ### tasksetpids "odhcpd" 0-0
+	tasksetpids "dropbear" 3 #maxes on file transfer
+	tasksetpids "wpad" 3
+	tasksetpids "hostapd" 3
+	tasksetpids "wpa-supplicant" 3
+thispid=
+for thispid in $(pidof dnsmasq); do
+	$TASKSET -apc 3 $thispid 2>&1 >/dev/null
+done
+}
+
+
+
+
+
+
+
+hotplugsmptunemods() {
+
+if [ -f "/etc/init.d/irqbalance" ]; then
+
+	$ecmd "irqbalance [installed] [disablehotplug|enable|start]" #$ecmd "irqbalance [installed]"
+	uci -q set irqbalance.irqbalance.enabled='1'
+	uci commit irqbalance
+	/etc/init.d/irqbalance enable 2>/dev/null
+    /etc/init.d/irqbalance start
+    echo "(/etc/init.d/irqbalance start 2>/dev/null)&" >> /tmp/.kickit
+else
+	$ecmd "irqbalance [not-installed]"
+fi
+}
+
+
+
+
+
+
+
+
+[ -n "$DEBUG" ] && logger -t $SSCRIPT "init> ${*} log:$SLOG rcsleep:${RCSLEEP:-0} rcdebug:${RCDEBUG} debug:$DEBUG"
+[ -n "$DEBUG" ] && echq "init> ${*} log:$SLOG rcsleep:${RCSLEEP:-0} rcdebug:${RCDEBUG} debug:$DEBUG"
+
+
+if [ -f /etc/os-release ]; then
+	. /etc/os-release
+fi
+
+
+
+
+
+
+
+
+
+
+
+ALLPARAMS=${*}
+if [ ! -z "${ALLPARAMS}" ]; then
+	: #$ecmd "DBG paramsraw:$ALLPARAMS"; sleep 2
+else
+	: #$ecmd "DBG paramsraw:$ALLPARAMS [none]"; #sleep 2
+fi
+
+
+
+
+
+[ -z "$MODEL" ] && MODEL=$(cat /etc/board.json | jsonfilter -e '@["model"]["id"]')
+case $MODEL in
+    *4-model-b*) :; ;;
+    *) $ecmd "board unsupported" && exit 0; ;;
+esac
+
+
+
+
+
+
+
+
+OPENWRTCPUTYPE=$(uname -m)
+
+
+if [ -x "/bin/taskset-$OPENWRT_ARCH" ]; then
+	gottaskset=1
+	TASKSET="/bin/taskset-$OPENWRT_ARCH"
+elif [ -x "/usr/sbin/taskset-$OPENWRT_ARCH" ]; then
+	gottaskset=1
+    TASKSET="/usr/sbin/taskset-$OPENWRT_ARCH"
+elif [ -x "/usr/sbin/taskset-$OPENWRTCPUTYPE" ]; then
+	gottaskset=1
+    TASKSET="/usr/sbin/taskset-$OPENWRTCPUTYPE" #TASKSET="/usr/sbin/taskset-aarch64"
+else
+	echq "no [/bin||/usr/sbin]/taskset-[$OPENWRT_ARCH:$OPENWRTCPUTYPE] [no-available]"
+fi
+
+
+
+
+
+
+eval `grep '^PERFTWEAKS=' /root/wrt.ini 2>/dev/null`
+
+
+
+
+
+
+if [ -z "$PERFTWEAKS" ]; then
+	#if [ -z "$PERFTWEAKS" ]; then echo "PERFTWEAKS [off]" && exit 0; fi #willskip-prev-static-govtweak
+	echo "PERFTWEAKS [offSETACTVARS] (add PERFTWEAKS=1 to /root/wrt.ini)" && exit 0
+else
+	#if [ -z "$EXPERIMENTAL" ]; then echo "EXPERIMENTAL [off]" && exit 0; fi
+
+	if [ ! -z "${POWERPROFILE}" ] && ! grep -q '^POWERPROFILE=' /root/wrt.ini 2>/dev/null; then
+		echo "CMDVAR: POWERPROFILE=${POWERPROFILE}"
+	fi
+
+	if [ ! -z "${PFSERVICECPU}" ] && ! grep -q '^PFSERVICECPU=' /root/wrt.ini 2>/dev/null; then
+		echo "CMDVAR: PFSERVICECPU=${PFSERVICECPU}"
+	fi
+
+
+	if [ ! -z "${PFRENICE}" ] && ! grep -q '^PFRENICE=' /root/wrt.ini 2>/dev/null; then
+		echo "CMDVAR: PFRENICE=${PFRENICE}"
+	fi
+
+
+	if [ ! -z "${PFAFFINITY}" ] && ! grep -q '^PFAFFINITY=' /root/wrt.ini 2>/dev/null; then
+		echo "CMDVAR: PFAFFINITY=${PFAFFINITY}"
+	fi
+
+
+	if [ -z "${POWERPROFILE}" ]; then eval `grep '^POWERPROFILE=' /root/wrt.ini 2>/dev/null`; fi
+	if [ -z "${PFSERVICECPU}" ]; then eval `grep '^PFSERVICECPU=' /root/wrt.ini 2>/dev/null`; fi
+	if [ -z "${PFRENICE}" ]; then eval `grep '^PFRENICE=' /root/wrt.ini 2>/dev/null`; fi #="txt||path?"
+	if [ -z "${PFAFFINITY}" ]; then eval `grep '^PFAFFINITY=' /root/wrt.ini 2>/dev/null`; fi #="txt||path?"
+
+	if [ -z "${IRQMANAGEMENT}" ]; then eval `grep '^IRQMANAGEMENT=' /root/wrt.ini 2>/dev/null`; fi #="txt||path?"
+
+	if [ "$PFAFFINITY" = 1 ]; then
+		#PFAFFINITY="32:2 33:2" #PFAFFINITY="32:2 33:1" #@@@topvar PFAFFINITYd
+		PFAFFINITY="32:2 33:2" #PFAFFINITY="32:2 33:1" #@@@topvar PFAFFINITYd
+	fi
+
+
+
+fi
+
+
+
+
+
+
+if [ "${PERFTWEAKS}" = "default" ]; then #if [ "${?RPI4_PERFTWEAKS>NOPE@board-cases}" = "default" ]; then
+	$ecmd "V> using default (recommended~minimal tweaks)" #@@@ZEROnonRECOMMENDED?
+	PFRENICE="static"
+	POWERPROFILE="${POWERPROFILE:-"quick"}"
+	PFAFFINITY="${PFAFFINITY:-"32:c 33:c"}"
+	PFRENICE=1
+	PFSERVICECPU=1
+fi
+
+
+
+
+
+if [ ! -z "$PFSERVICECPU" ]; then PF_OPTS="${PF_OPTS} TASKSET"; fi
+if [ ! -z "$PFRENICE" ]; then PF_OPTS="${PF_OPTS} RENICE"; fi
+if [ ! -z "$POWERPROFILE" ]; then PF_OPTS="${PF_OPTS} POWERPROFILE[${POWERPROFILE}]"; fi #NOTE:force>'default'@postinit
+if [ ! -z "$IRQMANAGEMENT" ]; then PF_OPTS="${PF_OPTS} IRQBALANCE"; fi
+if [ ! -z "$PFAFFINITY" ]; then PF_OPTS="${PF_OPTS} AFFINITY[$PFAFFINITY]"; fi
+
+
+
+
+
+if [ ! -z "$PF_OPTS" ]; then
+	$ecmd "init> ${PF_OPTS}" #echo "$0-init> ${PF_OPTS}"
+else
+	#HACKWORKAROUND_SPOT_forLIMITEDrecommendedoptionsAKA PERFTWEAKS=1 (was in default image) > set whatever
+	POWERPROFILE="${POWERPROFILE:-"quick"}"
+	PFRENICE="static"
+
+fi
+
+
+
+
+
+
+
+
+
+
+
+if [ -z "$POWERPROFILE" ]; then [ -n "$DEBUG" ] && $ecmd "POWERPROFILE [empty>default]"; POWERPROFILE="default"; fi
+
+
+
+
+
+
+if [ "$1" = "status" ]; then
+
+	$ecmd "############### status"
+
+	for tINT in $(ls -1 /proc/irq/.); do
+		if [ "$tINT" = "default_smp_affinity" ]; then
+			AVAL=$(cat /proc/irq/$tINT 2>/dev/null)
+		else
+			AVAL=$(cat /proc/irq/$tINT/smp_affinity 2>/dev/null)
+		fi
+		AVALs="${AVALs} ${tINT}=${AVAL:-"none"}"
+	done
+	$ecmd "IRQ_AFF: ${AVALs:-"none"}"
+
+	SC_UT=$(cat /sys/devices/system/cpu/cpufreq/ondemand/up_threshold 2>/dev/null)
+	SC_DF=$(cat /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor 2>/dev/null)
+	SC_FMIN=$(cat /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq 2>/dev/null)
+	SC_FMAX=$(cat /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq 2>/dev/null)
+	echo "up_threshold:$SC_UT df:$SC_DF min_freq:$SC_FMIN max_freq:$SC_FMAX"
+
+
+	echo "#######cat /sys/devices/system/cpu/cpufreq/policy0/stats/time_in_state"
+	cat /sys/devices/system/cpu/cpufreq/policy0/stats/time_in_state
+
+
+	exit 0
+fi
+
+
+
+
+
+if [ ! -z "$PFAFFINITY" ] && [ -z "$IRQMANAGEMENT" ]; then
+	for aff_vals in $PFAFFINITY; do
+		AFF_INT=$(echo $aff_vals | cut -d':' -f1)
+		AFF_NUM=$(echo $aff_vals | cut -d':' -f2)
+		affinityalt $AFF_INT $AFF_NUM
+	done
+	$ecmd "AFFINITY: $AFFmsg"
+fi
+
+
+if [ ! -z "$PFSERVICECPU" ]; then
+	servicecpuadjust
+	$ecmd "TASKSET: ${TASKSETmsg}"
+
+fi #TASKSET some auxillary procs to core 3(4)
+	
+
+
+
+
+
+
+if [ ! -z "$PFRENICE" ]; then
+
+	if [ ! -z "$(command -v renice)" ]; then
+ 		RENICE=$(command -v renice)
+	elif [ -x /usr/bin/renice ]; then
+    		RENICE="/usr/bin/renice"
+	fi
+
+	if [ ! -z "$RENICE" ]; then
+	
+
+    RENICEmsg="${RENICEmsg} dnsmasq:7"
+    for dP in $(pidof dnsmasq 2>/dev/null ); do $RENICE 7 $dP 2>/dev/null; done
+    
+    RENICEmsg="${RENICEmsg} logd:-1"
+    for dP in $(pidof logd); do $RENICE -1 $dP; done
+    
+    RENICEmsg="${RENICEmsg} rpcd:2"
+    for dP in $(pidof rpcd); do $RENICE 2 $dP; done
+    
+    RENICEmsg="${RENICEmsg} ubusd:3"
+    for dP in $(pidof ubusd); do $RENICE 3 $dP; done
+    
+    RENICEmsg="${RENICEmsg} dropbear:1"
+    for dP in $(pidof dropbear); do $RENICE 1 $dP; done
+
+    $ecmd "RENICE: ${RENICEmsg}" #echq "renice [run]"
+
+
+ 
+
+	else
+		$ecmd "renice command not installed||found" #echq "renice command not installed||found"
+	fi #END RENICEWASAVAILABLE
+fi #END!-zPFRENICE
+
+
+
+
+
+
+if [ "${1}" = "disable" ]; then
+	POWERPROFILE="disable"
+fi
+
+
+
+
+if [ ! -z "$POWERPROFILE" ]; then
+
+	#$ecmd "Tweaking the governor: $POWERPROFILE" #600000 750000 1000000 1500000 #echq
+	#$ecmd "GOVERNOR[$governor]: $POWERPROFILE" #600000 750000 1000000 1500000 #echq
+
+
+
+
+#[root@dca632 /usbstick 43°]# cat /sys/devices/system/cpu/cpufreq/policy0/stats/time_in_state 
+#600000 368
+#700000 234134
+#800000 6324
+#900000 970
+#1000000 125
+#1100000 243
+#1200000 260
+#1300000 439
+#1400000 382
+#1500000 24436
+
+#cat /sys/devices/system/cpu/cpufreq/policy0/scaling_available_frequencies 
+#600000 700000 800000 900000 1000000 1100000 1200000 1300000 1400000 1500000
+
+
+
+
+
+	#  local governor
+	governor=$(cat /sys/devices/system/cpu/cpufreq/policy0/scaling_governor)
+	
+
+
+
+	if [ "$governor" = "ondemand" ]; then
+
+
+
+
+
+
+	case "$POWERPROFILE" in
+		default|disable) #disable=hacky-param1 switch off pre enter if ! -z POWERPROFILE above
+			GOVmsg="${GOVmsg} upthresh:95"
+			echo -n '95' > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold && sleep 2 #avoid hang
+			GOVmsg="${GOVmsg} minfreq:600000"
+            		echo -n '600000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
+			GOVmsg="${GOVmsg} maxfreq:1500000"
+			echo -n '1500000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
+		;;
+		
+
+
+
+
+
+
+
+		#echo 50000 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+		#default 1/100th/sec 10000
+
+
+		quick) #D up32downfac10700000
+
+			#GOVmsg="${GOVmsg} upthresh:32"
+			#echo -n 32 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold && sleep 2
+			#GOVmsg="${GOVmsg} downfac:10"
+			#echo -n 10 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor #sleep 2
+
+			
+
+
+			#TESTmoremidfreqs thisxrate~1/100secoftentosampledown
+			#GOVmsg="${GOVmsg} downfac:5"
+			#echo -n 5 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor #sleep 2
+			#GOVmsg="${GOVmsg} downfac:2"
+			#echo -n 2 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor #sleep 2
+			
+
+
+
+			#LOWERTHIS-HIGHERUPTHRESH~21>35?
+			GOVmsg="${GOVmsg} downfac:6"
+			echo -n 6 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor #sleep 2
+
+
+
+			#########NOTE: 750000GONE@?>syncrpifoundation?
+			#########GOVmsg="${GOVmsg} minfreq:750000"
+            		###########echo -n '750000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
+			#CURRENTishOKTEST900000 above
+			#GOVmsg="${GOVmsg} minfreq:700000"
+            		#echo -n '700000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
+			############################################try 900000 for a bit
+			GOVmsg="${GOVmsg} minfreq:900000"
+            		echo -n '900000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
+
+
+
+			GOVmsg="${GOVmsg} maxfreq:1500000"
+			echo -n '1500000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
+		
+
+
+			#TESTTHESE
+			#TESTTHESE
+			#TESTTHESE
+			
+
+			GOVmsg="${GOVmsg} upthresh:21"
+			echo -n 21 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold && sleep 2
+			#GOVmsg="${GOVmsg} upthresh:23"
+			#echo -n 23 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold && sleep 2
+			#GOVmsg="${GOVmsg} upthresh:11"
+			#echo -n 11 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold && sleep 2
+			
+
+			#GOVmsg="${GOVmsg} downfac:3"
+			#echo -n 3 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor #sleep 2
+			#NOGOVmsg="${GOVmsg} downfac:35"
+			#NOecho -n 35 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor #sleep 2
+			#GOVmsg="${GOVmsg} downfac:2"
+			#echo -n 2 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor #sleep 2
+
+
+			#GOVmsg="${GOVmsg} minfreq:900000"
+            		#echo -n '900000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
+
+
+		;;
+
+
+		quicker)
+			GOVmsg="${GOVmsg} upthresh:27"
+			echo -n '27' > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold && sleep 2
+			GOVmsg="${GOVmsg} minfreq:1000000"
+            		echo -n '1000000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
+			GOVmsg="${GOVmsg} maxfreq:1500000"
+			echo -n '1500000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
+		;;
+		quickest)
+			GOVmsg="${GOVmsg} upthresh:15" #was 55 15=guess irrelevant scale only
+			echo -n '15' > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold && sleep 2
+			GOVmsg="${GOVmsg} minfreq:1500000"
+            		echo -n '1500000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
+			GOVmsg="${GOVmsg} maxfreq:1500000"
+			echo -n '1500000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
+		;;
+		reduced)
+			GOVmsg="${GOVmsg} upthresh:90" #was 55 15=guess irrelevant scale only
+			echo -n '90' > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold && sleep 2
+			GOVmsg="${GOVmsg} minfreq:600000"
+            		echo -n '600000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
+			GOVmsg="${GOVmsg} maxfreq:1000000"
+			echo -n '1000000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
+		;;
+		*)
+			echq "unknown powerprofile: $POWERPROFILE"
+		;;
+	esac
+	
+
+
+
+	else
+		governor="${governor}-unsupported" #use this as checking z GOVmsg on action
+	fi
+
+
+
+
+
+
+
+	if [ ! -z "$GOVmsg" ]; then
+		$ecmd "GOVERNOR[$governor]: $POWERPROFILE $GOVmsg"
+	else
+		$ecmd "GOVERNOR[$governor]: $POWERPROFILE $GOVmsg [nochange-or-altgov]"
+	fi
+
+
+
+fi
+
+
+
+#600000 750000 1000000 1500000
+
+
+
+
+
+
+#######oldquicklines
+              		#echo -n 100000 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+            		###############echo -n '85' > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
+			#echo -n '76' > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
+			#SYSTEMHANGSHERE
+            		#sleep 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if [ ! -z "$IRQMANAGEMENT" ]; then
+	echo "Setting irq management: $IRQMANAGEMENT (reboot advised)"
+	case "$IRQMANAGEMENT" in
+		irqbalance)
+			if [ -x "/etc/init.d/irqbalance" ]; then
+				/etc/init.d/irqbalance enable >/dev/null
+				/etc/init.d/irqbalance start >/dev/null
+			else
+				echo "irqbalance not installed"
+			fi
+		;;
+		none)
+			if [ -x "/etc/init.d/irqbalance" ]; then
+				/etc/init.d/irqbalance stop >/dev/null
+				/etc/init.d/irqbalance disable >/dev/null
+			fi
+		;;
+		*)
+			echo "unknown irqmanagement: $IRQMANAGEMENT"
+		;;
+	esac
+fi
+
+
+
+
+
+
+
+
+
+
+if [ ! -z "$PACKETSTEERINGPROFILE" ]; then
+	$ecmd "steering-at-hplug_net_20-smp"
+	#@reimportheremaybe
+fi
+
+
+
+
+
+exit 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#THEREALBASE
+
+
+
+
+
+

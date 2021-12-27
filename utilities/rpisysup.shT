@@ -768,6 +768,13 @@ Bname="rpi4.64-snapshot-27153-3.5.317-15-r18370-ext4-sys.img.gz"
 ###########20211225 usb 1.2 exits
 ###########20211225 usb 1.2 exits
 ###########20211225 usb 1.2 exits
+
+
+
+### grep '^raspberry' /tmp/sysinfo/board_name
+
+
+
 #####################################NOTE false positive no-flavour-given@ini> FLAVOUR=stable useroutputandlocaltest
 #well misleading message
 #grep UPGRADEs /root/wrt.ini; rm -rf /tmp/.update* ; rpi-sysup-online.sh -v check
