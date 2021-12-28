@@ -6,12 +6,16 @@ if [ -x /etc/custom/custfunc.sh ]; then . /etc/custom/custfunc.sh; ecmd="echm ${
 
 
 
+##########################################################################
+#NOTE: this is a cut down simplified version so its deliberately clunky
+#special thanks to @SubZero @rhester72 @mint and others TBA for input
+#@dlakelan
 
 
-
-
-
-
+##########################################################################
+#the Gbs option is tested without SQM further tweaks to steering or
+#service removal / affinity et. al. may be required depending on
+#goal is latency VS max throughput
 
 
 
@@ -44,6 +48,7 @@ eval `grep '^EEE_DISABLE=' /root/wrt.ini 2>/dev/null`
 
 #20211226_@SubZero
 eval `grep '^PERFTWEAKS_Gbs=' /root/wrt.ini 2>/dev/null`
+
 
 
 
