@@ -5,13 +5,14 @@
 
     ___________________________________________________   CHANGELOG
         
-        3.5.next
+        3.5.331
                 -BADgpu-fw update to: 56f1b8bbc888ba9e527f4ef6b003f2d397987d48 > 536baf33ae9007d027bffc8f42cb603664ecb5c4
                  kernel: Bump to 5.10.87>88 - 2021-12-23-ish
                  12bc6e3677348adaffd155e7a04761e2661d4bff
                 -pkgs) kmod-sdhci might be needed ext readers?
-                -
-                -
+                -@SubZero re-introduce/introduce PERFTWEAKS_Gbs=1 (cpu affinity + steering)
+                 also globally re-add TASKSET for nlbwmon
+                 https://forum.openwrt.org/t/rpi4-community-build/69998/1864
                 -
                 -
                 -
