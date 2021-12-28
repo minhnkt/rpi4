@@ -42,6 +42,8 @@ fi #this is needed to make sure services are started before renice
 
 
 
+
+
 eval `grep '^PERFTWEAKS=' /root/wrt.ini 2>/dev/null`
 eval `grep '^POWERPROFILE=' /root/wrt.ini 2>/dev/null`
 eval `grep '^EEE_DISABLE=' /root/wrt.ini 2>/dev/null`
@@ -303,24 +305,11 @@ echo -n 7 > /sys/class/net/eth1/queues/rx-0/rps_cpus #012
 
 
 
-
-
 findRUPT() {
-
 	#mmc
 	fgrep ${1} /proc/interrupts  | sed 's|^ ||g' | cut -d':' -f1 | \
 		tr -s '\n' ' '
-
 }
-
-
-
-#echo "fgrep eth0 /proc/interrupts  | sed 's|^ ||g' | cut -d':' -f1 | \
-#		tr -s '\n' ' '"
-#findRUPT eth0
-#exit 0
-
-
 
 
 
@@ -345,8 +334,6 @@ if [ ! -z "$mmcINTs" ]; then
 else
 	echo "$0 nommcirqfound" >/dev/console
 fi
-
-
 
 
 
@@ -380,10 +367,6 @@ if [ ! -z "$eth0INTs" ]; then
 else
 	echo "$0 eth0_no-irqfound" >/dev/console
 fi
-
-
-
-
 
 
 
@@ -464,6 +447,8 @@ fi
 
 
 #make maintainer second to check dmsg detection
+
+
 
 
 
