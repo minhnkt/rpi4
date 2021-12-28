@@ -534,29 +534,6 @@ fi
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     TASKSET="$(command -v taskset-aarch64)"
 	for thispid in $(pidof nlbwmon); do
 		$TASKSET -apc 3 $thispid 2>&1 >/dev/null
@@ -575,6 +552,8 @@ fi
 
 
 ###################################################################################
+
+
 
 if [ ! -z "$PERFTWEAKS_Gbs" ]; then
 
@@ -601,9 +580,6 @@ fi
 
 
 
-
-
-
 echo -n 1 > /sys/class/net/eth0/queues/tx-0/xps_cpus
 echo -n 2 > /sys/class/net/eth0/queues/tx-1/xps_cpus
 echo -n 4 > /sys/class/net/eth0/queues/tx-2/xps_cpus
@@ -612,8 +588,7 @@ echo -n 2 > /sys/class/net/eth0/queues/tx-4/xps_cpus
 echo -n 7 > /sys/class/net/eth0/queues/rx-0/rps_cpus
 echo -n 7 > /sys/class/net/eth1/queues/rx-0/rps_cpus
 
-
-#SET steering all f's for now for hotplug
+###########################################################SET steering all f's for now for hotplug
 if [ -z "$(uci -q show network | grep "network.globals.packet_steering='1'")" ]; then
 	uci set network.globals.packet_steering='1'
 	uci commit network
@@ -623,8 +598,6 @@ fi
 
 
 #echo SQM use untested
-
-
 
 
 
