@@ -279,10 +279,16 @@ if [ ! -z "$eth0INTs" ]; then
 
 		if [ "$coreSET" -ne "$intPREV" ]; then
 			echo -n $coreSET > /proc/irq/$tRU/smp_affinity #echo -n 1 > /proc/irq/$tRU/smp_affinity
+			eth0INTmsg="$eth0INTmsg $tRU:${intPREV}>${coreSET}"		
+		else
+			eth0INTmsg="$eth0INTmsg $tRU:${intPREV}=${coreSET}"
 		fi
+		#eth0INTmsg="$eth0INTmsg $tRU:${intPREV}>${coreSET}"
 
 
-		eth0INTmsg="$eth0INTmsg $tRU:${intPREV}>${coreSET}"
+
+
+
 
 		if [ ! -z "$PERFTWEAKS_Gbs" ]; then #FOR Gbs 2nd interrupt to core 2 may effect latency
 			coreSET=$((coreSET + 1))
