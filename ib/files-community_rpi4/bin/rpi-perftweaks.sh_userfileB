@@ -8,6 +8,13 @@
 
 
 
+#set -x
+
+
+
+
+
+
 
 
 wanifinfo() {
@@ -301,7 +308,9 @@ if [ -x /etc/custom/custfunc.sh ]; then . /etc/custom/custfunc.sh; ecmd="echm ${
 
 
 
-SNAME="rpi-perftweaks.sh"; SSCRIPT="/bin/$SNAME"; SLOG="/DEBUG-$SNAME.debug"
+SNAME="$(basename $0)"; SSCRIPT="$0"
+SLOG="/DEBUG-$SNAME.debug"
+########################SNAME="rpi-perftweaks.sh"; SSCRIPT="/bin/$SNAME"; SLOG="/DEBUG-$SNAME.debug"
 
 
 
@@ -407,6 +416,13 @@ die() { echq "$1"; exit 1; } #die() { echo "$1"; exit 1; } die() { $ecmd "$1"; e
 
 
 
+userfile_report() {
+
+	grep -Ev '(^$|^#)' /etc/perftweaks.txt
+
+}
+
+
 
 
 
@@ -418,7 +434,6 @@ die() { echq "$1"; exit 1; } #die() { echo "$1"; exit 1; } die() { $ecmd "$1"; e
 IAM=$(basename $0)
 
 #echo "IAM: $IAM"; exit 0
-
 
 
 if [ "$1" = "update" ]; then
@@ -434,9 +449,10 @@ if [ "$1" = "update" ]; then
 
 
 
-	echo "TBA paths logic changed"
-	exit 0
+	exit 0 ### echo "TBA paths logic changed"
 fi
+
+
 
 
 #URL_PS="https://raw.githubusercontent.com/wulfy23/rpi4/master/utilities/20-smp-packet-steering"
@@ -446,8 +462,6 @@ fi
 #URL_PT="https://raw.githubusercontent.com/wulfy23/rpi4/master/utilities/rpi-perftweaks.sh"
 #curl -f -sSL "${URL_PT}" 2>/dev/null > /bin/rpi-perftweaks.sh || die "oops"
 	
-
-
 
 
 
@@ -483,19 +497,47 @@ fi
 
 
 
+usage() {
+	echo "$0 [boot|htplug|user~start?|status|stop|update|help|report]"
+
+cat <<CCC
+	Settings are stored in /etc/perftweaks.txt
+CCC
+
+}
+#echo "$0 [boot|sqm?20211227?????????????|htplug|user~start?|status|stop|update]"; sleep 2
 
 
 
 
 
+case "$1" in
+	"help"|"-h"|"--help")
+		usage; exit 0
+	;;
+
+	report)
+		userfile_report
+		$0 status
+		exit 0
+	;;
+
+esac
 
 
 
-if [ -z "$1" ]; then #echo "$0 [boot|sqm|htplug|user~start?|status|stop|update]"; exit 0
-	echo "$0 [boot|sqm|htplug|user~start?|status|stop|update]"; sleep 2
-	#echo "PART0.0.0CALLSTATUS"; sleep 2 ################# DICE
-	$0 status; exit 0 #|| status exit
+
+if [ -z "$1" ]; then
+	usage
+	$0 status; exit 0
 fi
+
+
+
+
+
+
+
 
 
 
@@ -524,6 +566,8 @@ affinityalt() {
 	echo -n "${aff_val_set}" > /proc/irq/${1}/smp_affinity || aff_fail=fail
 	AFFmsg="${AFFmsg} ${1}:$aff_val_pre>${aff_val_set}[$aff_fail]"
 }
+
+
 
 
 
@@ -578,6 +622,9 @@ tasksetpids() {
 #/bin/sleep 36; sh $TASKSET -apc ${P_VAL} \$(pidof $P_NAME) 2>&1 >/dev/null) &
 #echo "(sh /bin/sleep 36; sh $TASKSET -apc ${P_VAL} $thispid 2>&1 >/dev/null) &" > /dev/console
 #$TASKSET -apc ${P_VAL} \$(pidof $P_NAME) 2>&1 >/dev/null
+
+
+
 
 
 
@@ -645,6 +692,8 @@ servicecpuadjust() {
 
 
 
+
+
 #echo "PART0.1"; sleep 2 ################# DICE
 
 
@@ -667,6 +716,10 @@ servicecpuadjust() {
 [ -n "$DEBUG" ] && logger -t $SSCRIPT "init> ${*} log:$SLOG rcsleep:${RCSLEEP:-0} rcdebug:${RCDEBUG} debug:$DEBUG"
 [ -n "$DEBUG" ] && echq "init> ${*} log:$SLOG rcsleep:${RCSLEEP:-0} rcdebug:${RCDEBUG} debug:$DEBUG"
 #[ -n "$DEBUG" ] && [ -z "$RCDEBUG" ] && echq "DEBUG-LOCAL"
+
+
+
+
 
 
 
@@ -3666,6 +3719,56 @@ sysctl -w net.core.optmem_max=25165824 #???high
 
 
 
+
+
+
+
+
+
+shumm() {
+
+cat <<'TTT'
+
+../_PERFTWEAKS-2021_12 57° grep -Ev '(^$|^#)' /etc/perftweaks.txt
+govenor ondemand up_threshold 13
+govenor ondemand sampling_down_factor 7
+govenor ondemand scaling_min_freq 900000
+govenor ondemand scaling_max_freq 1500000
+rps eth0 rx-0 7
+xps eth0 rx-0 7
+rps eth0 tx-0 7
+xps eth0 tx-0 7
+rps eth0 tx-1 7
+xps eth0 tx-1 7
+rps eth0 tx-2 7
+xps eth0 tx-2 7
+rps eth0 tx-3 7
+xps eth0 tx-3 7
+rps eth0 tx-4 7
+xps eth0 tx-4 7
+rps eth1 rx-0 7
+xps eth1 rx-0 7
+rps ifb4eth1 rx-0 7
+xps ifb4eth1 rx-0 7
+ethtool ifb4eth1 offload on
+taskset rngd 1,2
+renice rngd -2
+taskset dnsmasq 1,2
+renice dnsmasq -5
+renice 2 httpd
+sysctl net.core.netdev_budget 600
+sysctl net.netfilter.nf_conntrack_tcp_timeout_established 2480
+sysctl net.ipv4.tcp_keepalive_time 70
+sysctl net.netfilter.nf_conntrack_udp_timeout_stream 70
+sysctl net.netfilter.nf_conntrack_tcp_timeout_max_retrans 70
+sysctl net.netfilter.nf_conntrack_tcp_timeout_close_wait 35
+sysctl net.netfilter.nf_conntrack_tcp_timeout_syn_sent 70
+sysctl net.netfilter.nf_conntrack_tcp_timeout_time_wait 70
+
+
+TTT
+
+}
 
 
 
