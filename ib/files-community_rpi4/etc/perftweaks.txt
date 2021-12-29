@@ -1,0 +1,409 @@
+#####################################################################################
+############### govenor <ondemand> <name> <value>
+#####################################################################################
+govenor ondemand up_threshold 13
+govenor ondemand sampling_down_factor 7
+govenor ondemand scaling_min_freq 900000
+govenor ondemand scaling_max_freq 1500000
+##########################################################
+######################## #govenor ondemand up_threshold 20
+
+
+
+#####################################################################################
+############### renice <program> <reniceval>
+#####################################################################################
+renice rngd -2
+renice dnsmasq -5
+renice 2 httpd
+
+
+
+
+
+#####################################################################################
+############### irqaffintiy <irq> <affinityval> #!NEEDS CHANGING PARAM1 to NAME i.e. cpu||mmc||xyz
+#####################################################################################
+
+
+
+
+
+#####################################################################################
+############### taskset <program> <cpu_0-3> ### taskset uhttpd 2,3 #uses 2 mostly
+#####################################################################################
+taskset rngd 1,2
+taskset dnsmasq 1,2
+############# testingbelow
+taskset uhttpd 3
+
+
+
+
+
+
+
+
+
+#####################################################################################
+################ rps eth0 rx-0 c################ xps eth1 tx-3 4
+#####################################################################################
+########################################## steering as below
+rps eth0 rx-0 7
+xps eth0 rx-0 7
+rps eth0 tx-0 7
+xps eth0 tx-0 7
+rps eth0 tx-1 7
+xps eth0 tx-1 7
+rps eth0 tx-2 7
+xps eth0 tx-2 7
+rps eth0 tx-3 7
+xps eth0 tx-3 7
+rps eth0 tx-4 7
+xps eth0 tx-4 7
+################NA rps eth0 tx-5 7
+################NA xps eth0 tx-5 7
+########################################
+rps eth1 rx-0 7
+xps eth1 rx-0 7
+################UNSETTABLE rps eth1 tx-0 7 #NArps eth1 tx-1 7
+###############UNSETTABLE xps eth1 tx-0 7 #NA xps eth1 tx-1 7
+################################## ifb meh?
+rps ifb4eth1 rx-0 7
+xps ifb4eth1 rx-0 7
+###################UNSETTABLE rps ifb4eth1 tx-0 7
+######################UNSETTABLE xps ifb4eth1 tx-0 7
+
+
+
+##############################################################
+##############################################################
+##############################################################
+#rps eth0 rx-0 c
+#rps ifb4eth1 rx-0 c
+################################## NOPE xps eth1 tx-3 #
+#xps eth0 tx-3 4
+#################### invalid
+#xps eth1 tx-3 4
+#################### wtfstickseth1
+#xps eth30 tx-3 4
+#xps eth2 tx-3 4
+##############################################################
+##############################################################
+##############################################################
+
+
+
+
+
+
+#####################################################################################
+############################## ethtool <iface> <section> <val>
+#####################################################################################
+#########meh? example only
+ethtool ifb4eth1 offload on
+
+
+
+
+
+#####################################################################################
+############################################# sysctl <leaf> <value>
+#####################################################################################
+################################## default 300 sysctl -w net.core.netdev_budget=600 #sysctl net.core.netdev_budget 150
+sysctl net.core.netdev_budget 600
+sysctl net.netfilter.nf_conntrack_tcp_timeout_established 2480
+#############################################sysctl vm.swappiness 60
+###sysctl vm.swappiness 10
+###################/etc/sysctl.d/11-nf-conntrack.conf:net.netfilter.nf_conntrack_max=16384
+################### net.netfilter.nf_conntrack_max 16384
+################### sysctl net.netfilter.nf_conntrack_max 16384
+###sysctl net.netfilter.nf_conntrack_max 65536
+###sysctl rubbish.something 232
+###########################################################
+## sysctl net.core.optmem_max 61440
+#####sysctl net.ipv4.tcp_timestamps 0
+#####sysctl net.netfilter.nf_conntrack_tcp_timeout_established 3720
+#####sysctl net.netfilter.nf_conntrack_tcp_timeout_time_wait 90
+################################## x5
+###sysctl vm.min_free_kbytes 81920
+###sysctl net.netfilter.nf_conntrack_max 65536
+
+
+
+
+
+
+
+
+
+
+
+#####################################################################################
+
+#####################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+####################################################
+#ethtool eth0 adaptive-rx on
+#######ethtool eth0 adaptive-tx on
+#ethtool eth0 adaptive-tx on
+###################################################
+#ethtool eth1 adaptive-rx on
+#ethtool eth1 adaptive-tx on
+#########
+#ethtool eth1 offload on
+########################################### eth0
+###tcp-segmentation-offload: off
+###generic-segmentation-offload: off [requested on]
+###>>>generic-receive-offload: on
+###################################
+###ethtool eth0 offload on
+#############ethtool eth5 offload off
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#govenor ondemand up_threshold 13
+#govenor ondemand sampling_down_factor 7
+#govenor ondemand scaling_min_freq 900000
+#govenor ondemand scaling_max_freq 1500000
+
+
+
+
+
+
+
+#######################################
+#irqaffinity 32 7
+#irqaffinity 33 7
+################################## x5
+#sysctl vm.min_free_kbytes 81920
+#sysctl net.netfilter.nf_conntrack_max 65536
+#sysctl net.core.optmem_max 61440
+#######################################
+#govenor ondemand up_threshold 20
+#?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#ethtool ifb4eth1 offload on
+#############?doesnotwork ###ethtool ifb4eth1 adaptive-rx on ###ethtool ifb4eth1 adaptive-tx on
+#############3#?ethtool -K ifb4eth1 tso off gso off gro off #works>makesslower dload
+######ethtool ifb4eth1 offload off
+#ethtool ifb4eth1 offload on
+#####################echo -n 1 > /sys/class/net/ifb4eth1/queues/tx-0/xps_rxqs ???
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#rps ifb4eth1 rx-0 c
+################################## NOPE xps eth1 tx-3 #
+#xps eth0 tx-3 4
+#################### invalid
+#xps eth1 tx-3 4
+#################### wtfstickseth1
+#xps eth30 tx-3 4
+#xps eth2 tx-3 4
+
+#############################################sysctl vm.swappiness 60
+#sysctl vm.swappiness 10
+#rps ifb4eth1 rx-0 c
+################################## NOPE xps eth1 tx-3 #
+#xps eth0 tx-3 4
+#################### invalid
+#xps eth1 tx-3 4
+#################### wtfstickseth1
+#xps eth30 tx-3 4
+#xps eth2 tx-3 4
+
+
+
+#############################################sysctl vm.swappiness 60
+#sysctl vm.swappiness 10
+
+
+
+
+
+
+
+
+
+
+###############irqaffintiy <irq> <affinityval>
+###############
+#irqaffintiy 32 7
+#irqaffintiy 33 7
+
+
+
+
+
+
+#taskset rngd 1,2
+###taskset rngd 0,1,2
+#taskset dnsmasq 1,2
+###taskset dnsmasq 0,1,2
+
+
+
+
+
+
+
+
+
+#sysctl net.core.netdev_budget 600
+#sysctl net.netfilter.nf_conntrack_tcp_timeout_established 2480
+####### sysctl net.core.netdev_budget 600
+####### sysctl net.netfilter.nf_conntrack_tcp_timeout_established 2480
+
+
+
+
+
+
+
+
+##################################### qdisc time default 64 net.core.dev_weight
+#########? ifconfig eth0 txqueuelen 10000 (1000)
+
+
+
+
+
+
+
+
+
+
+
+
+
+########### grep -r . /etc/sysctl.*
+#############sysctl -a 2>/dev/null | grep net
+
+
+
+
+#######~ #sysctl net.ipv4.tcp_timestamps 0
+
+
+
+
+
+
+####################120
+###sysctl net.ipv4.tcp_keepalive_time 70
+#####################120
+#sysctl net.netfilter.nf_conntrack_udp_timeout_stream 70
+#######################300
+#sysctl net.netfilter.nf_conntrack_tcp_timeout_max_retrans 70
+######################60
+#sysctl net.netfilter.nf_conntrack_tcp_timeout_close_wait 35
+######################120
+#sysctl net.netfilter.nf_conntrack_tcp_timeout_syn_sent 70
+#######################120
+#sysctl net.netfilter.nf_conntrack_tcp_timeout_time_wait 70
+##########################?
+#1 sysctl net.ipv4.tcp_slow_start_after_idle 0
+##########################?
+#net.core.netdev_budget_usecs 20000
+###########sysctl -w net.core.rmem_max=8388608 #default 212992
+#!!!!!!!!!!!!!!!!
+#########net.core.wmem_default=65536
+#########net.core.wmem_max=16777216
+#########net.ipv4.tcp_wmem=4096 65536 16777216
+
+
+
+
+
+
+
+
+
+
+
+
