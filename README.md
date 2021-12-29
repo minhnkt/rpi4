@@ -11,15 +11,13 @@ see: https://forum.openwrt.org/t/rpi4-community-build/69998 to request packages,
 
 
 <sup>github https://github.com for a solid and open platform</sup><br>
-<sup>pi-foundation for a mostly open platform</sup><br>
+<sup>pi-foundation for a mostly open platform - committers do good things</sup><br>
 <sup>Special thanks: vgaetera jeff jow slh trendy and lleachii for guru skillsharing and support... </sup><br>
-<sup>@PaulFertser, @dibdot, @trendy, @moodyblue, @neil1, @jayanta525, @poodad, @syntaxterror, @bigfat, @gpuyy, @krazeh, @jcejohnson, @cesarvog, @malikshi, @stargeizer, @mint, @johnd2, @BenjaminBeichler, @cricalix, @toasterdev, @masaq, @
-synapse, @Phase1 and @geerlingguy for contributions to the build</sup><br>
-<sup>@dangowrt, @noltari, @oskari.rauta, @mhei mainline code</sup><br>
+<sup>@PaulFertser, @dibdot, @trendy, @moodyblue, @neil1, @jayanta525, @poodad, @syntaxterror, @bigfat, @gpuyy, @krazeh, @jcejohnson, @cesarvog, @malikshi, @stargeizer, @mint, @johnd2, @BenjaminBeichler, @cricalix, @toasterdev, @masaq, @synapse, @Phase1, @SubZero and @geerlingguy for contributions to the build</sup><br>
+<sup>@dangowrt, @noltari, @oskari.rauta, @nbd, @bkpepe, @mhei mainline code</sup><br>
 <sup>@lynx, @moeller0, @dlakelan + others sqm-autorate (lte/3g/variable-bw-links)</sup><br>
 <sup>@hnyman build system insight and official repo fixing</sup><br>
 <sup>@bobafetthotmail nicmove/macmatch</sup><br>
-<sup>@dairyman and the rooter peoples</sup><br>
 <sup>@stangri vpn-pbr and other apps</sup><br>
 <sup>[@damianperera github_action_sidebuilds](https://github.com/damianperera/openwrt-rpi)</sup><br>
 <sup>[@jerrykuku luci-theme-argon](https://github.com/jerrykuku/luci-theme-argon)</sup><br>
@@ -29,6 +27,7 @@ synapse, @Phase1 and @geerlingguy for contributions to the build</sup><br>
 <sup>[Van Tech Corner](https://www.youtube.com/channel/UCczXrZ5r1nCMACiaipGqbtw)</sup><br>
 <sup>[MaroonMed](https://www.maroonmed.com/berry-on-a-bush-router-on-a-stick-raspberry-pi-4-inter-vlan-openwrt-router/)</sup><br>
 <sup>qm-dscp-logic: hisham2630(ultimate-sqm-settings-layer-cake-dscp-marks) (and others) @ldir @dlakelan</sup><br>
+<sup>@dairyman and the rooter peoples</sup><br>
 <sup>plenty-of-others: if i have learnt or borrowed something from you thankyou...</sup><br>
 
 

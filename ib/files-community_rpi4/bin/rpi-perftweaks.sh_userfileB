@@ -557,6 +557,14 @@ fi
 
 affinityalt() {
 
+
+
+#echo "DBGaffinityalt() ${*}"; sleep 2
+
+
+
+
+
 	local aff_val_pre=$(cat /proc/irq/${1}/smp_affinity 2>/dev/null)
 	local aff_val_set="${2}"
 	local aff_fail=ok
@@ -565,7 +573,12 @@ affinityalt() {
 
 	echo -n "${aff_val_set}" > /proc/irq/${1}/smp_affinity || aff_fail=fail
 	AFFmsg="${AFFmsg} ${1}:$aff_val_pre>${aff_val_set}[$aff_fail]"
+
+
 }
+
+
+
 
 
 
@@ -1171,6 +1184,8 @@ if [ -z "$PERFTWEAKS_Gbs" ] && [ "${uciSQMdlVAL:-0}" -gt 523551 ]; then
 fi
 
 #########################################################################################################
+
+
 
 
 
@@ -1839,6 +1854,10 @@ fi
 
 
 
+
+
+
+
 #####################################
 #    PFAFFINITY aka IRQAFFINITY 2
 #####################################
@@ -2161,6 +2180,35 @@ VVV
 
 
 
+
+
+
+
+
+################################### 20211227 was irqaffinity <irqnum> <val> >>> irqaffinity <matchname> <val>
+findRUPT() {
+	fgrep ${1} /proc/interrupts  | sed 's|^ ||g' | cut -d':' -f1 | \
+		tr -s '\n' ' '
+}
+#mmcINTs="$(findRUPT mmc)"
+#eth0INTs="$(findRUPT eth0)"
+
+
+
+
+
+################### ok if the same using the old logic nothing happens (not even printed)
+### half half old vs new logic... move new into old
+#??? [110940.937853] ./rpi-perftweaks.sh_userfileB: USERAFFINITY:  33:c>7[ok]
+#@irqaffinity eth0 7
+#@irqaffinity mmc 7
+
+
+
+
+
+
+
 	if [ "${U_IRQAFFINITYcnt:-0}" -gt 0 ]; then #@@!default || override
 
 
@@ -2172,18 +2220,151 @@ while read rLINE; do
 	if [ -z "$2" ] || [ -z "$3" ]; then echq "irqaffinity-invalid ${*}"; continue; fi
 	
 	AFF_INT=$2
-	AFF_NUM=$3
-	#IRQ/CPUisvalid?
-	#$ecmd "DBGY [ $AFF_INT $AFF_NUM ]" #+AFF_CUR&&||@funcMSG
-	#@@@Z||invalid
+	#@20211227mightbeakeywordsearchformmceth0
 
-	echq "userfile: irqaffinity $AFF_INT $AFF_NUM"; #sleep 2
-	affinityalt $AFF_INT $AFF_NUM
-	#sleep 1
+	AFF_NUM=$3
+	##############IRQ/CPUisvalid?
+	##############$ecmd "DBGY [ $AFF_INT $AFF_NUM ]" #+AFF_CUR&&||@funcMSG
+	##############@@@Z||invalid
+
+	########### ORIGINAL val2 WAS the ACTUAL IRQNUM echq "userfile: irqaffinity $AFF_INT $AFF_NUM"; #sleep 2
+	#echq "ORIGINAL OFF userfile: irqaffinity $AFF_INT $AFF_NUM"; #sleep 2
+	#affinityalt $AFF_INT $AFF_NUM
+	################sleep 1
+
+
+
+	#case "${2}" in
+	case "${AFF_INT}" in #TESTTHISfirstoneOVERWRITTEN?
+			#eth0INTs="$(findRUPT eth0)"
+			###### affinityalt $AFF_INT $AFF_NUM
+
+			#"eth0"*|"mmc"*) #specialnames?
+
+
+
+
+
+
+
+		"mmc"*) #specialnames?
+
+
+mmcINTs="$(findRUPT mmc)"
+mmcNEWVAL="c"
+
+tRU=
+if [ ! -z "$mmcINTs" ]; then
+	for tRU in $mmcINTs; do
+		
+
+
+		####################BETTERUSEBUILTINFORABIT@echos #?affinityalt $tRU $AFF_NUM
+		#!RE-ENABLEME
+		#affinityalt $tRU $mmcNEWVAL
+
+		intPREV=
+		intPREV=$(grep . /proc/irq/$tRU/smp_affinity 2>/dev/null)
+		if [ "$intPREV" = "$mmcNEWVAL" ]; then
+			mmcINTmsg="${mmcINTmsg} ${mmcNEWVAL}:$intPREV=$tRU"
+		else
+			echo -n ${mmcNEWVAL} > /proc/irq/$tRU/smp_affinity
+			mmcINTmsg="${mmcINTmsg} ${mmcNEWVAL}:$intPREV>$tRU"
+		fi
+
+	done
+else
+	mmcINTmsg="noMMCintFOUND" #echo "$0 nommcirqfound" >/dev/console
+fi
+
+if [ ! -z "$mmcINTmsg" ]; then
+	#$ecmd "MMCINTs: ${mmcINTmsg}"
+	echq "MMCINTs: ${mmcINTmsg}"
+	AFFmsg="${AFFmsg} MMCINTs:${mmcINTmsg}"
+fi
+
+		;;
+
+
+		"eth0"*) #specialnames?
+
+
+
+
+eth0INTs="$(findRUPT eth0)"
+
+
+tRU=
+if [ ! -z "$eth0INTs" ]; then
+	for tRU in $eth0INTs; do
+
+		coreSET=${coreSET:-1}		
+		
+		intPREV=
+		intPREV=$(grep . /proc/irq/$tRU/smp_affinity 2>/dev/null)
+
+		if [ "$coreSET" -ne "$intPREV" ]; then
+			#############################REENABLEME
+			#affinityalt $tRU $coreSET
+
+			echo -n $coreSET > /proc/irq/$tRU/smp_affinity #echo -n 1 > /proc/irq/$tRU/smp_affinity
+			eth0INTmsg="$eth0INTmsg $tRU:${intPREV}>${coreSET}"		
+		else
+			eth0INTmsg="$eth0INTmsg $tRU:${intPREV}=${coreSET}"
+		fi
+		#eth0INTmsg="$eth0INTmsg $tRU:${intPREV}>${coreSET}"
+
+
+		if [ ! -z "$PERFTWEAKS_Gbs" ]; then #FOR Gbs 2nd interrupt to core 2 may effect latency
+			coreSET=$((coreSET + 1))
+		fi
+	
+	done
+else
+	eth0INTmsg="$0 eth0_no-irqfound" >/dev/console #echo "$0 eth0_no-irqfound" >/dev/console
+fi
+
+if [ ! -z "$eth0INTmsg" ]; then
+	#$ecmd "ETH0INT: $eth0INTmsg"
+	#echq "ETH0INTs: $eth0INTmsg"
+	AFFmsg="${AFFmsg} ETH0INTs:$eth0INTmsg"
+fi
+
+
+
+
+
+
+
+
+		;;
+
+
+
+		*) #[num] old support?
+			### $ecmd "not mmc or eth0 $AFF_INT $AFF_NUM use old logic"
+			############echq "ORIGINAL OFF userfile: irqaffinity $AFF_INT $AFF_NUM"; #sleep 2
+			echq "not mmc or eth0 $AFF_INT $AFF_NUM use old logic"
+			affinityalt $AFF_INT $AFF_NUM
+
+
+		;;
+
+
+
+
+	esac
+
+
+
+
+
+
 
 done <<VVV
 $(grep '^irqaffinity ' ${PT_TXT} 2>/dev/null)
 VVV
+
 
 
 

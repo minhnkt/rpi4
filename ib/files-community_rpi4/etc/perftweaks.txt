@@ -19,9 +19,20 @@ renice httpd 2
 
 
 
+
+
 #####################################################################################
+###############OLDMOVETOKEYWORDish irqaffintiy <irq> <affinityval> #!NEEDS CHANGING PARAM1 to NAME i.e. cpu||mmc||xyz
 ############### irqaffintiy <irq> <affinityval> #!NEEDS CHANGING PARAM1 to NAME i.e. cpu||mmc||xyz
 #####################################################################################
+####################### second value not honoured here yet TBA
+irqaffinity eth0 7
+####################### second val not too sure
+irqaffinity mmc 7
+###OLDirqaffinity 32 7
+###OLDirqaffinity 33 7
+
+
 
 
 
