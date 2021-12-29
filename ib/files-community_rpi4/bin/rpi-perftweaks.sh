@@ -49,6 +49,27 @@ eval `grep '^PERFTWEAKS_Gbs=' /root/wrt.ini 2>/dev/null`
 
 
 
+uciSQMdlVAL=$(uci show sqm | grep download= | head -n1 | cut -d"'" -f2)
+if [ -z "$PERFTWEAKS_Gbs" ] && [ "${uciSQMdlVAL:-0}" -gt 523551 ]; then
+	$ecmd "fast wan detected set PERFTWEAKS_Gbs=1 in /root/wrt.ini"
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
