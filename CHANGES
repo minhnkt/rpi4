@@ -16,7 +16,7 @@
                 -re-introduce WIP perftweaks userfile parser @ rpi-perftweaks.sh_userfileB
                  (for advanced users still probably manual testing or PERFTWEAKS_SCRIPT="/bin/perftweaks_userfileB"
                  (only had /etc/perftweaks.txt.sample also put in runtime location + clean a little)
-                -
+                -regen21.02.1-11here for wifi fix test
                 -
                 -
                 -

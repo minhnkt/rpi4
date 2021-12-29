@@ -530,6 +530,12 @@ Fsub="builds/rpi-4_21.02.1_1.0.10-3_r16325_extra"
 Bname="rpi4.64-21.02.1-27133-1.0.10-3-r16325-ext4-sys.img.gz"
 
 
+
+
+#REGENLATE10bboxbump
+Fsub="builds/rpi-4_21.02.1_1.0.11-3_r16325_extra"
+Bname="rpi4.64-21.02.1-27167-1.0.11-3-r16325-ext4-sys.img.gz"
+
 	
 		#echo "no release build available"; exit 0
 		;;
@@ -546,6 +552,9 @@ Fsub="builds/rpi-4_21.02.1_1.0.10-3_r16325_extra"
 Bname="rpi4.64-21.02.1-27133-1.0.10-3-r16325-ext4-sys.img.gz"
 
 
+#REGENagainSHOULDhaveWIFIfix20211227
+Fsub="builds/rpi-4_21.02.1_1.0.11-3_r16325_extra"
+Bname="rpi4.64-21.02.1-27167-1.0.11-3-r16325-ext4-sys.img.gz"
 
 
 		#echo "no release build available"; exit 0
