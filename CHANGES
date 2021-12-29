@@ -13,10 +13,15 @@
                 -@SubZero re-introduce/introduce PERFTWEAKS_Gbs=1 (cpu affinity + steering)
                  also globally re-add TASKSET for nlbwmon
                  https://forum.openwrt.org/t/rpi4-community-build/69998/1864
+                -re-introduce WIP perftweaks userfile parser @ rpi-perftweaks.sh_userfileB
+                 (for advanced users still probably manual testing or PERFTWEAKS_SCRIPT="/bin/perftweaks_userfileB"
                 -
                 -
                 -
                 -
+                -
+                -
+
 
         3.5.317
                 -odd sysuponline bug... > wip > minor dbg tweaks (-T DONTREALLYFLASH) etc. etc.
