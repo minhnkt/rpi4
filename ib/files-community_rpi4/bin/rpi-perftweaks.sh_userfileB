@@ -1,0 +1,3675 @@
+#!/bin/sh
+
+#cp /usbstick/_PERFTWEAKS-2021_12/_rpi-perftweaks.sh_202105/rpi-perftweaks.sh rpi-perftweaks.sh__rpi-perftweaks.sh_202105_NOEXTENSION
+
+
+
+
+
+
+
+
+
+wanifinfo() {
+	local iface
+	local iface_dev
+	. /lib/functions/network.sh
+	#network_find_wan iface
+	network_find_wan iface #wan
+	if [ -n "$iface" ]; then
+		#echo "WANis: $iface" >&2
+		iface_dev=$(ubus call network.interface.${iface} status | jsonfilter -e '@.device')
+		if [ ! -z "${iface_dev}" ]; then
+			#echo "WANdevis: $iface_dev" >&2
+			echo "$iface_dev"
+		fi
+	fi
+}
+
+
+
+
+
+
+
+#dca632 ../_rpi-perftweaks.sh_202105 53°# ubus call network.interface.lan status | jsonfilter -e '@.device'
+#br-lan #>case in br-lan > br-ctl tr -s ...
+
+
+
+
+
+
+
+
+#		procd_add_interface_trigger "interface.*" "$iface" "/etc/init.d/${packageName}" restart
+#	procd_add_config_trigger "config.change" "$packageName" "/etc/init.d/${packageName}" restart
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#wanifinfo
+#exit 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#1 find what was pinning rpi-throttlewatch.sh -P -C 2 to a single core
+#2 find an absolute minimim either PFAFFINITY or 20-smp (kindaneedsfakeiperfwan)
+#~3stdalone try to reschesule 'boot' > whole script
+
+
+
+#TESTCMD (sleep 5; /usbstick/rpi-perftweaks.sh)& #>INTERNAL boot|rerun logic ok for now
+#echo "||||||||||||| \$\$ $(cat /proc/$$/cmdline >/dev/kmsg)" >/dev/console #Z
+#echo "|||||||||||||PPI $(cat /proc/$PPID/cmdline >/dev/kmsg)" >/dev/console #[ 4693.352876] /bin/sh
+#sleep 15
+
+
+
+#for dns in $(pidof dnsmasq); do prlimit -p $dns; done
+#prlimit -n8196 -p 27794
+#prlimit -u10000 -p 27794 #nproc
+#cat /proc/27794/limit
+
+
+#find /sys/class/net/?an*/|grep -i lower
+
+
+
+
+
+
+
+
+######################################## recall hooks@20-smp||sqm~@?> rpi4.qos-start param1 = "hplug|sqm"
+######################################## recall hooks@20-smp||sqm~@?> rpi4.qos-start param1 = "hplug|sqm"
+######################################## recall hooks@20-smp||sqm~@?> rpi4.qos-start param1 = "hplug|sqm"
+#rc.custom boot
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+recentMESSAROUND() {
+
+
+
+
+
+
+bQval="6056"
+bQval="$((6056 * 10))"
+bQval="$((6056 * 30))" #181680
+bQval="$((6056 * 10))"
+
+
+
+#ALL rpidefault? 1879048192
+#for f in /sys/class/net/eth*/queues/*/byte_queue_limits/;do
+for f in /sys/class/net/*/queues/*/byte_queue_limits/;do
+	#echo 6056 > $f/limit_max;
+	echo "echo $bQval > $f/limit_max"
+	echo $bQval > $f/limit_max
+	echo "cat $f/limit_max"
+	cat $f/limit_max
+done
+
+
+
+
+
+
+
+
+for i in $(ls /sys/class/net | awk '/eth/');do
+
+	#ethtool -K $i tso off gso off gro off
+	#ORIGINAL to LOWER CPU?
+	#echo "ethtool -K $i tso off gso off gro off"
+	#ethtool -K $i tso off gso off gro off
+	
+	
+	#ethtool -k $i #ethtool -k $i | grep -E '(gso|gro)'
+	############# ethtool -k eth1
+	#generic-segmentation-offload: on
+	#generic-receive-offload: on
+
+
+	echo "############# ethtool -k $i"
+	ethtool -k $i | grep -E '(offload)'
+	
+
+
+	#BACKONAGAIN APPLIES to ETH1
+	#ethtool -K $i tso on gso on gro on #ethtool -K $i tso >SLOW?on gso on gro on
+	ethtool -K $i tso off gso on gro on
+
+
+	sleep 1
+done
+
+exit 0
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#sysctl -w net.core.optmem_max=$((20480 * 2))
+
+
+
+
+############### netstat -an | grep -c SYN_RECV ; nonopenwrt netstat -s
+
+
+#sysctl net.core.netdev_max_backlog
+#sysctl -w net.core.netdev_max_backlog='65536' #1000
+#sysctl -w net.core.netdev_max_backlog='2000'
+
+
+#sysctl -w net.core.netdev_budget=$((300 * 2))
+
+
+
+#sysctl -w net.core.somaxconn=$((4096 * 3))
+
+
+
+#echo -n $((128 * 3)) > /proc/sys/net/ipv4/tcp_max_syn_backlog
+
+#exit 0 #see _ring
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#/etc/init.d/wpad stop; wifi down
+#rmmod brcmfmac; rmmod cfg80211; rmmod compat
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ecmd="echo "; i=$(basename $0)
+if [ -x /etc/custom/custfunc.sh ]; then . /etc/custom/custfunc.sh; ecmd="echm ${i} "; fi
+#!!! if [ -f /root/wrt.ini ]; then . /root/wrt.ini; fi #20210331 eval 1 at a time to support cmdline set
+
+
+
+
+
+SNAME="rpi-perftweaks.sh"; SSCRIPT="/bin/$SNAME"; SLOG="/DEBUG-$SNAME.debug"
+
+
+
+
+
+
+
+
+
+
+
+
+
+#DEBUG=1					#wrt.ini RCDEBUG enables... or > enable-per-script
+#RCSLEEP=0					#wrt.ini or DEBUG enables... set default to 0EDIT>dolaterifz
+#OPENWRT_ARCH="aarch64_cortex-a72"
+#set -x
+
+
+
+
+
+
+
+
+
+[ -n "$RCDEBUG" ] && DEBUG=1
+[ -n "$DEBUG" ] && [ -z "$RCSLEEP" ] && RCSLEEP=2
+[ -z "$RCSLEEP" ] && RCSLEEP=0
+
+
+
+
+
+echq() { #logger notso useful for startup scripts NOTE: $ecmd@rerun()&doesnotdetectconsole
+
+	DL=`date +%Y%m%d-%H%M`
+
+
+	if [ -z "$sMETHOD" ]; then
+		$ecmd "USER: ${1}"
+	fi #NOT boot or rerun so ecmd also
+
+
+	echo "$SSCRIPT: ${*}" > /dev/kmsg #echo "$SSCRIPT-$DL-kmsg: ${*}" > /dev/kmsg
+	[ -n "$DEBUG" ] && echo "$SSCRIPT-$DL: ${*}" >> $SLOG
+	sleep ${RCSLEEP:-0}
+
+
+}
+
+
+
+
+
+#$ecmd "DBGTMPONecmdALL-$SSCRIPT: ${*}" #was ()&@rc.custom
+########### FORCEECMDONBACKGROUND DEBUG$ecmd "SPECIALTXT-FINDBACKGROUNDDETECTCMDLINE: ${1}"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#NOTE backgrounding broke ecmd
+die() { echq "$1"; exit 1; } #die() { echo "$1"; exit 1; } die() { $ecmd "$1"; exit 1; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#echo "PART0.0"; sleep 2 ################# DICE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+IAM=$(basename $0)
+
+#echo "IAM: $IAM"; exit 0
+
+
+
+if [ "$1" = "update" ]; then
+
+	#URL_PS="https://raw.githubusercontent.com/wulfy23/rpi4/master/utilities/20-smp-packet-steering"
+	#echo "updating... /etc/hotplug.d/net/20-smp-packet-steering"
+	#curl -f -sSL "${URL_PS}" 2>/dev/null > /etc/hotplug.d/net/20-smp-packet-steering || die "oops"
+
+
+	echo "updating... /bin/${IAM}"
+	URL_PT="https://raw.githubusercontent.com/wulfy23/rpi4/master/ib/files-community_rpi4/bin/${IAM}"
+	curl -f -sSL "${URL_PT}" 2>/dev/null > /bin/${IAM} || die "oops"
+
+
+
+	echo "TBA paths logic changed"
+	exit 0
+fi
+
+
+#URL_PS="https://raw.githubusercontent.com/wulfy23/rpi4/master/utilities/20-smp-packet-steering"
+#echo "updating... /etc/hotplug.d/net/20-smp-packet-steering"
+#curl -f -sSL "${URL_PS}" 2>/dev/null > /etc/hotplug.d/net/20-smp-packet-steering || die "oops"
+#echo "updating... /bin/rpi-perftweaks.sh"
+#URL_PT="https://raw.githubusercontent.com/wulfy23/rpi4/master/utilities/rpi-perftweaks.sh"
+#curl -f -sSL "${URL_PT}" 2>/dev/null > /bin/rpi-perftweaks.sh || die "oops"
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if [ "$1" = "boot" ]; then #if [ "$sMETHOD" = "boot" ]; then
+	(sleep 35; /bin/sh $0 rerun) &
+	: #DBG no$ecmd echq "boot backgrounding (sleep 35; $0 rerun) & $(ps w | grep -v grep | grep $0)" #sleep 3
+	exit 0
+else
+	: #echq "payload $(ps w | grep -v grep | grep $0)" #sleep 3
+fi
+########################RERUN@echq>ifZthenECMDok
+############################################CMDLINEASUSER
+#custfunc first echo is $PPID /bin/sh second echo is /bin/bash /usbs/rpi @(sleep; /usb..)&
+#(sleep 35; $0 rerun) &
+########################################### TRY (sleep; /bin/sh x)&
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if [ -z "$1" ]; then #echo "$0 [boot|sqm|htplug|user~start?|status|stop|update]"; exit 0
+	echo "$0 [boot|sqm|htplug|user~start?|status|stop|update]"; sleep 2
+	#echo "PART0.0.0CALLSTATUS"; sleep 2 ################# DICE
+	$0 status; exit 0 #|| status exit
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+affinityalt() {
+
+	local aff_val_pre=$(cat /proc/irq/${1}/smp_affinity 2>/dev/null)
+	local aff_val_set="${2}"
+	local aff_fail=ok
+
+	#@-z_pre &&
+
+	echo -n "${aff_val_set}" > /proc/irq/${1}/smp_affinity || aff_fail=fail
+	AFFmsg="${AFFmsg} ${1}:$aff_val_pre>${aff_val_set}[$aff_fail]"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+tasksetpids() {
+
+	local FN="tasksetpids"
+	local P_NAME="${1}"
+	local P_VAL="${2}"
+
+	
+	#echo "$FN-dbg> $TASKSET $1 $2"; sleep 1 #HMM... not working for USERFILE@vsftpd?
+
+	[ -z "$P_NAME" ] && $ecmd "$FN 1:no_name" && return 1
+	[ -z "$P_VAL" ] && $ecmd "$FN 1:no_cpuvalue" && return 1
+
+	#[   26.078172] rpi-perftweaks.sh> collectd notfound @ reboot_26 backgroundit
+
+	if [ -z "$(pidof $P_NAME)" ]; then
+		TASKSETmsg="${TASKSETmsg} ${P_NAME}@nopid!>${P_VAL}" && return 1
+	fi #ENDWASNOPID
+
+
+	local thispid=
+	local curcpu=
+	for thispid in $(pidof ${P_NAME}); do #oneonlybutmeh
+
+		#fails curcpu=$($TASKSET -c -p $thispid | cut -d':' -f2 | sed 's!^[[:space:]]!!g')
+		#echo "$TASKSET -apc ${P_VAL} $thispid"
+		#$TASKSET -apc ${P_VAL} $thispid
+		
+		$TASKSET -apc ${P_VAL} $thispid 2>&1 >/dev/null
+		TASKSETmsg="${TASKSETmsg} ${P_NAME}@${thispid}${curcpu}>${P_VAL}"
+
+	done
+
+}
+
+#/bin/sleep 36; sh $TASKSET -apc ${P_VAL} \$(pidof $P_NAME) 2>&1 >/dev/null) &
+#echo "(sh /bin/sleep 36; sh $TASKSET -apc ${P_VAL} $thispid 2>&1 >/dev/null) &" > /dev/console
+#$TASKSET -apc ${P_VAL} \$(pidof $P_NAME) 2>&1 >/dev/null
+
+
+
+
+servicecpuadjust() {
+
+	if [ -z "$gottaskset" ]; then echq "taskset:$TASKSET not available" && return 0; fi
+
+
+	#echo|q|$ecmd "Adjusting service cpu affinity"
+	################################### singles
+	tasksetpids "nlbwmon" "2" #tasksetpids "nlbwmon" "2,3" #tasksetpids "nlbwmon" 3
+	tasksetpids "collectd" "2" #tasksetpids "collectd" 3
+
+	###@@@MOVED to 3 for rrdtool PNG@www tasksetpids "uhttpd" 2 ### spikes@io
+	#~?~
+	tasksetpids "uhttpd" "2,3" ### spikes@io #tasksetpids "uhttpd" 3 ### spikes@io
+	tasksetpids "odhcpd" 3 ### tasksetpids "odhcpd" 0-0
+	#notagoodidea@alltaskspinned tasksetpids "dropbear" 3 #maxes on file transfer
+
+	#allcomeunderwpad?
+	tasksetpids "wpad" 3
+	tasksetpids "hostapd" 3
+	tasksetpids "wpa_supplicant" 3
+	
+
+
+	tasksetpids "rngd" "1,2,3" ### spikes@io #tasksetpids "uhttpd" 3 ### spikes@io
+
+
+	thispid=
+	for thispid in $(pidof dnsmasq); do
+		$TASKSET -apc 2 $thispid 2>&1 >/dev/null
+		TASKSETmsg="${TASKSETmsg} dnsmasq@${thispid}${curcpu}>2"
+	done #TASKSETmsg="${TASKSETmsg} dnsmasq@${thispid}${curcpu}>${P_VAL}"
+	
+	#$TASKSET -apc 0,1 $thispid 2>&1 >/dev/null
+	#TASKSETmsg="${TASKSETmsg} dnsmasq@${thispid}${curcpu}>0,1"
+	
+	#$TASKSET -apc 0 $thispid 2>&1 >/dev/null
+	#$TASKSET -apc 3 $thispid 2>&1 >/dev/null
+	#$TASKSET -apc 2 $thispid 2>&1 >/dev/null
+	#$TASKSET -apc 2,3 $thispid 2>&1 >/dev/null
+	#$TASKSET -apc 3 $thispid 2>&1 >/dev/null
+
+}
+
+
+#################################### masq testing with a
+#tasksetpids "dnsmasq" 3 #DBG echo "dnsmasq-pids: $(pidof dnsmasq) > cpu-3"
+
+#taskset-aarch64 -pc 2,3 $(pidof uhttpd)
+###################taskset-aarch64 -pc 0,1,2,3 $(pidof uhttpd)
+#[root@dca632 /usbstick 44°]# taskset-aarch64 -p $(pidof nlbwmon) 
+#pid 666's current affinity mask: c
+#[root@dca632 /usbstick 43°]# taskset-aarch64 -cp $(pidof nlbwmon) 
+#pid 666's current affinity list: 2,3
+
+
+
+
+
+
+
+
+
+
+#echo "PART0.1"; sleep 2 ################# DICE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#DEBUG=1
+
+[ -n "$DEBUG" ] && logger -t $SSCRIPT "init> ${*} log:$SLOG rcsleep:${RCSLEEP:-0} rcdebug:${RCDEBUG} debug:$DEBUG"
+[ -n "$DEBUG" ] && echq "init> ${*} log:$SLOG rcsleep:${RCSLEEP:-0} rcdebug:${RCDEBUG} debug:$DEBUG"
+#[ -n "$DEBUG" ] && [ -z "$RCDEBUG" ] && echq "DEBUG-LOCAL"
+
+
+
+
+
+
+ALLPARAMS=${*}
+if [ ! -z "${ALLPARAMS}" ]; then #$ec|q|md "DBG paramsraw:$ALLPARAMS"; sleep 2 #@@@20210331@>~ minfreq 750000 etc?
+
+	sMETHOD="${1}"
+	case "$sMETHOD" in
+		boot|rerun) #boot@rc.local>top(sleep X; $0 rerun)& aka... automated>no$ecmd @ echq
+			:
+		;;
+
+
+
+
+
+
+
+
+		userfile) #NOTE needs shiftout@extraparamsandor$ecmd>consolestdout
+
+
+			if [ -z "${2}" ]; then
+				echo "$0 userfile <file>"
+				exit 0
+			fi
+			if [ ! -f "${2}" ]; then
+				echo "$0 userfile $2 [nofile]"
+				exit 0
+			fi
+			PT_TXT="${2}"
+
+		;;
+
+
+
+
+
+
+
+
+
+
+		*)
+			sMETHOD="user"
+		;;
+	esac
+else
+	: #$ecmd "DBG paramsraw:$ALLPARAMS [none]"; #sleep 2
+fi
+
+
+
+###########FROMTOP boot + nothing + update exit pre functions
+#if [ -z "$1" ]; then #echo "$0 [boot|sqm|htplug|user~start?|status|stop|update]"; exit 0
+#	echo "$0 [boot|sqm|htplug|user~start?|status|stop|update]"; sleep 3
+#	$0 status; exit 0 #|| status exit
+#fi
+
+
+
+
+
+
+
+
+
+[ -z "$MODEL" ] && MODEL=$(cat /etc/board.json | jsonfilter -e '@["model"]["id"]')
+case $MODEL in
+    *4-model-b*) :; ;;
+    *) echq "board unsupported" && exit 0; ;; #*) $ecmd "board unsupported" && exit 0; ;;
+esac
+
+
+
+
+if [ -f /etc/os-release ]; then . /etc/os-release; fi #elechq "/etc/os-release [no-avail]"; exit 0 #elynomount-un
+#"[bin/||/usr/sbin/]taskset-$OPENWRT_ARCH"
+
+
+
+
+OPENWRTCPUTYPE=$(uname -m)
+NPROCS="$(grep -c "^processor.*:" /proc/cpuinfo)"
+[ -n "$DEBUG" ] && echo "nprocs: $NPROCS" && sleep 2
+#exit 0
+
+
+
+eval `grep '^PERFTWEAKS=' /root/wrt.ini 2>/dev/null`
+
+
+
+
+
+
+
+
+
+#echo "PART0.2"; sleep 2 ################# DICE
+
+
+
+if [ -x "/bin/taskset-$OPENWRT_ARCH" ]; then
+	gottaskset=1
+	TASKSET="/bin/taskset-$OPENWRT_ARCH"
+elif [ -x "/usr/sbin/taskset-$OPENWRT_ARCH" ]; then
+	gottaskset=1
+	TASKSET="/usr/sbin/taskset-$OPENWRT_ARCH"
+elif [ -x "/usr/sbin/taskset-$OPENWRTCPUTYPE" ]; then #OPENWRTCPUTYPE=$(uname -m)
+	gottaskset=1
+	TASKSET="/usr/sbin/taskset-$OPENWRTCPUTYPE" #TASKSET="/usr/sbin/taskset-aarch64"
+else
+	echq "no [/bin||/usr/sbin]/taskset-[$OPENWRT_ARCH:$OPENWRTCPUTYPE] [no-available]"
+fi
+
+
+
+
+
+
+
+
+
+#if [ ! -z "$EXPERIMENTAL" ]; then
+#@@@if [ ! -z "${PERFTWEAKS}" ] && ! grep '^PERFTWEAKS=' /root/wrt.ini 2>/dev/null; then ... fi
+#@@@IFNOPARAMSorENVIRONOPTS->THEN>check ini (meh for now make it manual also@fwcustom total disable OPT)
+
+if [ -z "$PERFTWEAKS" ]; then
+	#if [ -z "$PERFTWEAKS" ]; then echo "PERFTWEAKS [off]" && exit 0; fi #willskip-prev-static-govtweak
+	#echo "PERFTWEAKS [offSETACTVARS] (add PERFTWEAKS=1 to /root/wrt.ini)" && exit 0
+	echq "PERFTWEAKS [offSETACTVARS] (add PERFTWEAKS=1 to /root/wrt.ini)" && exit 0
+else
+	#if [ -z "$EXPERIMENTAL" ]; then echo "EXPERIMENTAL [off]" && exit 0; fi
+
+
+
+	#@@@!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! || grep XYZ $$ /cmdline #@@@ 'off' easier???
+	##### cat /proc/$$/environ #cat /proc/$$/cmdline
+	
+
+
+	#@@@FORNOWSPITOUTWHENACMDLINEVARISPREFFERED
+	#if [ ! -z "${POWERPROFILE}" ]; then #&& ! grep '^POWERPROFILE
+	#@@@?if grep "POWERPROFILE" /proc/$$/environ
+	#@@@?if grep "POWERPROFILE" /proc/$$/environ
+	#@@@?if grep "POWERPROFILE" /proc/$$/environ
+	
+	#@@@@@@@ THISWILLGETWAYTOOCOMPLEXsoIFfind1VARthenignoreINItotally||move to params for one off
+
+
+
+	if [ ! -z "${POWERPROFILE}" ] && ! grep -q '^POWERPROFILE=' /root/wrt.ini 2>/dev/null; then
+		echo "CMDVAR: POWERPROFILE=${POWERPROFILE}"
+	fi
+
+
+	if [ ! -z "${PFSERVICECPU}" ] && ! grep -q '^PFSERVICECPU=' /root/wrt.ini 2>/dev/null; then
+		echo "CMDVAR: PFSERVICECPU=${PFSERVICECPU}"
+	fi #if [ ! -z "${PFSERVICECPU}" ]; then
+
+	if [ ! -z "${PFRENICE}" ] && ! grep -q '^PFRENICE=' /root/wrt.ini 2>/dev/null; then
+		echo "CMDVAR: PFRENICE=${PFRENICE}"
+	fi #if [ ! -z "${PFRENICE}" ]; then
+
+
+
+	if [ ! -z "${PFAFFINITY}" ] && ! grep -q '^PFAFFINITY=' /root/wrt.ini 2>/dev/null; then
+		echo "CMDVAR: PFAFFINITY=${PFAFFINITY}"
+	fi #if [ ! -z "${PFAFFINITY}" ]; then
+
+
+
+
+
+
+
+	#################&& ! grep '^PFSERVICECPU=' /root/wrt.ini 2>/dev/null; then
+
+
+
+
+	###@@@from TOP single parms only now if blank
+	###@@@DOWEWANT-optstring?@> PFENOPTS="service affinity" #probablynotastxtl0adinfutureperfuncopts
+	if [ -z "${POWERPROFILE}" ]; then eval `grep '^POWERPROFILE=' /root/wrt.ini 2>/dev/null`; fi
+	if [ -z "${PFSERVICECPU}" ]; then eval `grep '^PFSERVICECPU=' /root/wrt.ini 2>/dev/null`; fi
+	if [ -z "${PFRENICE}" ]; then eval `grep '^PFRENICE=' /root/wrt.ini 2>/dev/null`; fi #="txt||path?"
+	if [ -z "${PFAFFINITY}" ]; then eval `grep '^PFAFFINITY=' /root/wrt.ini 2>/dev/null`; fi #="txt||path?"
+
+
+	############# PF_OPTS@OFF+CMD??="${PF_OPTSOFF+CMD?} ..."
+
+
+	if [ -z "${IRQMANAGEMENT}" ]; then eval `grep '^IRQMANAGEMENT=' /root/wrt.ini 2>/dev/null`; fi #="txt||path?"
+	#NOTE: THIS CONFLICTS WITH PFAFFINITY?
+	#PACKETSTEERINGPROFILE
+
+
+
+	if [ "$PFAFFINITY" = 1 ]; then
+		#PFAFFINITY="32:2 33:2" #PFAFFINITY="32:2 33:1" #@@@topvar PFAFFINITYd
+		PFAFFINITY="32:2 33:2" #PFAFFINITY="32:2 33:1" #@@@topvar PFAFFINITYd
+	fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	#echo -n "Max open files=20:20" > /proc/$pid/limits
+
+
+
+
+
+	#####@@@@@@@@@@@@ OLD SET EM ALL
+	### if ALLSINGLEPARAMSareZyetPERFTWEAKS=1 then set defaults?
+
+
+
+	#if [ -z "$PERFTWEAKS" ]; then
+
+	#if [ -z "$XYZ" ] && \
+	#	[ -z "$XYZ" ] && \
+
+	#|| PERFTWEAKS="default" ???
+
+
+	#@@@> ONACTifPERFTWEAKS=1 and Z then set defaultYES
+
+
+
+
+
+
+	#PFSERVICECPU="static" #20210330 force this on for a few builds TWICEABOVEFUNCBELOWTOO
+	#PFRENICE="static" #20210330 force this on for a few builds TWICEABOVEFUNCBELOWTOO
+	#PFAFFINITY="static" #20210330 force this on for a few builds TWICEABOVEFUNCBELOWTOO
+	#POWERPROFILE="${POWERPROFILE:-"quick"}"
+
+
+
+
+
+
+
+
+
+
+
+
+
+	#nope 1 i think IRQMANAGEMENT="statix"
+
+
+fi #willskip-prev-static-govtweak
+
+
+
+#PFSERVICECPU="static" #20210330 force this on for a few builds TWICEABOVEFUNCBELOWTOO
+#PFRENICE="static" #20210330 force this on for a few builds TWICEABOVEFUNCBELOWTOO
+#PFAFFINITY="static" #20210330 force this on for a few builds TWICEABOVEFUNCBELOWTOO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#echo "PART0.3"; sleep 2 ################# DICE
+
+
+
+#echo "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEXIT"; exit 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if [ "${PERFTWEAKS}" = "default" ]; then #if [ "${?RPI4_PERFTWEAKS>NOPE@board-cases}" = "default" ]; then
+	#exit 0
+
+	#$ecmd "V> using default (recommended~minimal tweaks)" #@@@ZEROnonRECOMMENDED?
+	
+	PF_OPTS="${PF_OPTS} DEFAULTOPTS"
+
+
+
+	#@@@NOTE: where is static really checked@> really needed?initially for internal !1>ON?
+
+
+
+	POWERPROFILE="${POWERPROFILE:-"quick"}"
+
+	PFRENICE="static"
+	PFRENICE=1
+
+	PFSERVICECPU=1
+	#PFAFFINITY="${PFAFFINITY:-"32:c 33:c"}"
+
+	#steer~1 f
+	#PFAFFINITY="32:1 33:2 26:f"
+	
+
+	#steer a-0>3-f/0/4?
+	#PFAFFINITY="32:3 33:3 26:4"
+	PFAFFINITY="32:c 33:c"
+
+
+	#@@@~!ZEROOUT-NONDEFAULTVARS
+
+
+
+
+
+
+
+fi
+
+
+
+
+#PFSERVICECPU="static" #TASKSET
+#PFAFFINITY="static"
+#POWERPROFILE="${POWERPROFILE:-"quick"}"
+
+
+#PFAFFINITY="${PFAFFINITY:-"32:f 33:f 26:c"}"
+#??? PFAFFINITY="${PFAFFINITY:-"32:c 33:c 26:c"}"
+
+#PFSERVICECPU=1 #SUBOPTIMALWITHAFFINITY PFAFFINITY="${PFAFFINITY:-"32:f 33:f 26:c"}"
+############################ does not detect -ZcmdPARAM POWERPROFILE=SHELL=/bin/
+##############################@@@?if grep "POWERPROFILE" /proc/$$/environ
+#if [ ! -z "$RCDEBUG" ]; then cat /proc/$$/environ; echo "DBG PAUSE5"; sleep 3; fi
+#exit 0
+
+
+
+
+
+
+
+
+
+
+
+if [ ! -z "$PFSERVICECPU" ]; then PF_OPTS="${PF_OPTS} TASKSET"; fi
+if [ ! -z "$PFRENICE" ]; then PF_OPTS="${PF_OPTS} RENICE"; fi
+
+#!backported-to-allokifabovePERFTWEAKSexit in place!
+if [ ! -z "$POWERPROFILE" ]; then PF_OPTS="${PF_OPTS} POWERPROFILE[${POWERPROFILE}]"; fi #NOTE:force>'default'@postinit
+
+if [ ! -z "$PFAFFINITY" ]; then PF_OPTS="${PF_OPTS} AFFINITY[$PFAFFINITY]"; fi
+
+if [ ! -z "$IRQMANAGEMENT" ]; then PF_OPTS="${PF_OPTS} IRQBALANCE"; fi #enables-and-starts-irqbalanceandvalidatescfclt?
+
+
+
+
+#smpminitest
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if ps w | grep -v grep | grep -q irqbalance && [ "$IRQMANAGEMENT" != "irqbalance" ]; then
+	echq "IRQBALANCE [detected]" #$ecmd "IRQBALANCE [detected]"
+fi
+
+
+
+
+
+
+
+
+
+if [ ! -z "$PF_OPTS" ]; then
+	echq "init-${sMETHOD:-nada}> ${PF_OPTS}" #echo "$0-init> ${PF_OPTS}"
+else	
+	#WORKAROUND@LIMITEDrecmdoptionsAKAPERFTWEAKS=1 (was in default image) > set whatever
+	echq "INFO-check-init> PF_OPTS>[none] usingdefaults"
+	POWERPROFILE="${POWERPROFILE:-"quick"}"
+	PFRENICE="static"
+
+fi
+
+
+#$ecmd "init> [offMAIN] (please set PERFTWEAKS=1||default?" && exit 0 #echq||o "$0-init> [off]" && exit 0
+#$ecmd "init> [MAIN] PF_OPTS are empty (CONTINUEforCOMPLEXlogicTESTS)"; sleep 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#if [ -z "$POWERPROFILE" ]; then [ -n "$DEBUG" ] && $ecmd "POWERPROFILE [empty>default]"; POWERPROFILE="default"; fi
+if [ -z "$POWERPROFILE" ]; then [ -n "$DEBUG" ] && echq "POWERPROFILE [empty>default]"; POWERPROFILE="default"; fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+affinityprint() {
+	case "$1" in
+		6) echo "1,2"; ;;
+		c) echo "2,3"; ;;
+		f) echo "0,1,2,3"; ;;
+		7) echo "0,1,2"; ;; #0-2
+		b) echo "0,1,3"; ;;
+		d) echo "0,2,3"; ;;
+		#echo -n e > /proc/irq/26/smp_affinity mmc0-1 get off cpu0 for other interrupts
+		#NOPE e selected 1 > c = 2,3 or just 3
+		e) echo "1,2,3"; ;; #1-3
+		1) echo "0"; ;;
+		2) echo "1"; ;;
+		4) echo "2"; ;;
+	esac
+
+}
+#taskset-aarch64 -cp $(pidof ubusd)
+#taskset-aarch64 -cp $(pidof ubusd) #pid 541's current affinity list: 0-3
+#taskset-aarch64 -p $(pidof ubusd) #pid 541's current affinity mask: f
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+####################################################################### CHANGEtoGETbyNAMEfromIPQ
+set_irq_affinityTEMPLATE() {
+	local name="$1" val="$2"
+	local irq
+	case "$name" in
+		wifi0)  irq=`grep -E 'qcom-pcie-msi' /proc/interrupts | sed "1q;d" | cut -d: -f1 | tr -d ' '` ;;
+		wifi1)  irq=`grep -E 'qcom-pcie-msi' /proc/interrupts | sed "2q;d" | cut -d: -f1 | tr -d ' '` ;;
+		*)      irq=`grep -E "$name"         /proc/interrupts | sed "1q;d" | cut -d: -f1 | tr -d ' '` ;;
+	esac
+
+	[ -n "$irq" ] || echo "$name irq not found."
+	echo "$val" > "/proc/irq/$irq/smp_affinity"
+}
+bootTEMPLATE() {
+	set_irq_affinity wifi0 2
+	set_irq_affinity wifi1 1
+	set_irq_affinity eth0 1
+	set_irq_affinity eth1 2
+}
+########################################################################################################
+
+
+
+
+
+
+
+
+getIRQnumsNG() {
+	grep -E "${1}" /proc/interrupts | cut -d: -f1 | tr -d ' ' | tr -s '\n' ' '
+}
+#grep -E "${1}" /proc/interrupts | sed "1q;d" | cut -d: -f1 | tr -d ' '
+##########grep -E 'qcom-pcie-msi' /proc/interrupts | sed "1q;d" | cut -d: -f1 | tr -d ' '
+
+#getIRQnumsNG "eth"
+#exit 0
+
+
+
+
+
+
+
+#for ... in
+#if [ ! -z "$(getIRQnumsNG "eth")" ]; then
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if [ "$1" = "status" ]; then #@@@!MAYNEEDWAITLOOPFORSERVICESTUFF
+
+
+	#$ecmd "############### status" #grep * /proc/irq/*/smp_affinity
+	echq "############### status" #grep * /proc/irq/*/smp_affinity
+
+
+
+
+
+
+echo "######## steeringuci"
+uci show network | grep steering
+#network.globals.packet_steering='1'
+#network.globals.packet_steering_val_eth0='a'
+
+
+
+
+
+
+
+
+ETH0_IRQs=`awk -F: '/eth0/ {print $1}' </proc/interrupts | tr -d ' ' | tr -s '\n' ' '`
+echo "ETH0_IRQs: $ETH0_IRQs"
+
+
+
+
+
+
+
+
+
+
+################################### ifaces="eth0 eth1"
+#ifaces="eth0"
+
+
+
+
+ifaces="eth0 $(wanifinfo)"
+
+
+
+
+
+
+
+
+
+
+
+for iface in $ifaces; do
+	#ifaceirq=`awk -F: '/eth0/ {print $1}' </proc/interrupts | tr -d ' ' | tr -s '\n' ' '`
+	ifaceirq=`awk -F: "/${iface}/ {print $1}" </proc/interrupts | tr -d ' ' | tr -s '\n' ' '`
+	#echo "iface:$iface ifaceirq:$ifaceirq"
+	for irq in $ifaceirq; do
+		irqval=$(cat /proc/irq/$irq/smp_affinity)
+		irqvalh=$(affinityprint "${irqval:-"fish"}")
+		#echo "################ translated"; affinityprint "${irqval:-"fish"}"
+		echo "$iface[$irq:$irqvalh:$irqval] /proc/irq/$irq/smp_affinity"
+		#echo "$iface[$irq:$(cat /proc/irq/$irq/smp_affinity)] /proc/irq/$irq/smp_affinity"
+	done #echo "$iface[$irq] /proc/irq/$irq/smp_affinity:$(cat /proc/irq/$irq/smp_affinity)"
+done
+
+
+
+
+
+
+
+
+
+
+	#echo "/proc/irq/default_smp_affinity: $(cat /proc/irq/default_smp_affinity)"
+	for tINT in $(ls -1 /proc/irq/.); do
+
+		if [ "$tINT" = "default_smp_affinity" ]; then
+			AVAL=$(cat /proc/irq/$tINT 2>/dev/null)
+		else
+			AVAL=$(cat /proc/irq/$tINT/smp_affinity 2>/dev/null)
+		fi
+		#$ecmd "$tINT ${AVAL:-"none"}"
+		AVALs="${AVALs} ${tINT}=${AVAL:-"none"}"
+
+	done
+	echq "IRQ_AFF: ${AVALs:-"none"}" #$ecmd "IRQ_AFF: ${AVALs:-"none"}"
+	echo "IRQ_AFF: ${AVALs:-"none"}" #$ecmd "IRQ_AFF: ${AVALs:-"none"}"
+
+
+
+
+	SC_UT=$(cat /sys/devices/system/cpu/cpufreq/ondemand/up_threshold 2>/dev/null)
+	SC_DF=$(cat /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor 2>/dev/null)
+	SC_FMIN=$(cat /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq 2>/dev/null)
+	SC_FMAX=$(cat /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq 2>/dev/null)
+	echo "up_threshold:$SC_UT df:$SC_DF min_freq:$SC_FMIN max_freq:$SC_FMAX"
+
+
+	while read PAIR; do
+		[ -z "$PAIR" ] && continue
+		if [ "$(echo $PAIR | cut -d' ' -f2)" -lt 1000 ]; then
+			continue
+		fi
+		TSTATES="${TSTATES} $PAIR"
+	done <<LLL
+$(cat /sys/devices/system/cpu/cpufreq/policy0/stats/time_in_state)
+LLL
+	echo "### time_in_state: ${TSTATES}"
+
+#echo "#######cat /sys/devices/system/cpu/cpufreq/policy0/stats/time_in_state"
+#cat /sys/devices/system/cpu/cpufreq/policy0/stats/time_in_state | while read PAIR; do
+
+
+
+
+
+
+
+
+
+echo "############################################ rps/xps_cpus"
+grep . /sys/class/net/eth?/queues/?x-?/?ps_cpus
+###################################grep . /sys/class/net/eth?/queues/?x-0/?ps_cpus
+
+######The dump below shows that RPS/XPS queues for eth0/eth1 are already set up to be processed on CPU1 (decimal 2 = bitmask 10).
+########root@R7800:~# grep . /sys/class/net/eth?/queues/?x-0/?ps_cpus
+#/sys/class/net/eth0/queues/rx-0/rps_cpus: 2
+
+
+
+
+
+#find /sys/devices -name "[x|r]ps_cpus" | awk '/eth1/' | while read q; do echo 2 > $q; done
+#find /sys/devices -name "[x|r]ps_cpus" | awk '/eth2/' | while read q; do echo 4 > $q; done
+#find /sys/devices -name "[x|r]ps_cpus" | awk '/eth3/' | while read q; do echo 8 > $q; done
+
+
+
+
+
+#for n in $(cat /proc/interrupts | awk '/eth1/ { print $1}' | tr -d \:); do echo 2 > /proc/irq/$n/smp_affinity;done
+#for n in $(cat /proc/interrupts | awk '/eth2/ { print $1}' | tr -d \:);do echo 4 > /proc/irq/$n/smp_affinity;done
+#for n in $(cat /proc/interrupts | awk '/eth3/ { print $1}' | tr -d \:);do echo 8 > /proc/irq/$n/smp_affinity;done
+#for f in /sys/class/net/*/queues/*/byte_queue_limits/;do echo 6056 > $f/limit_max;done
+#for c in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor;do echo performance > $c;done
+#for i in $(ls /sys/class/net | awk '/eth/');do ethtool -K $i tso off gso off gro off;done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+################# @@@202107NEWFUNCTION-PRINTIRQ
+#find /sys/devices -name "[x|r]ps_cpus" | awk '/eth0/' | while read q; do echo $q; done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+echo "############################################ steering"
+
+for dev in /sys/class/net/*; do
+
+	[ -d "$dev" ] || continue
+
+	# ignore virtual interfaces
+	[ -n "$(ls "${dev}/" | grep '^lower_')" ] && continue
+	[ -d "${dev}/device" ] || continue
+	device="$(readlink "${dev}/device")"
+	device="$(basename "$device")"
+	devI=$(basename $dev)
+
+	subsys="$(readlink "${dev}/device/subsystem")"
+	subsys="$(basename "$subsys")"
+
+	echo "$devI DEVICE1:$device DEVICE2:$device IRQCPU:$irq_cpu IRQCPUMASK:$irq_cpu_mask subsys: $subsys"
+	sleep 2
+
+
+	#SETVALS=1
+	for q in ${dev}/queues/tx-*; do
+		Tval="$(cat $q/xps_cpus 2>/dev/null)" #||invalid
+		[ -z "$Tval" ] && continue
+		echo "$q/xps_cpus $Tval"
+		#[ -z "$Tval" ] && continue
+		if [ ! -z "$SETVALS" ]; then
+		[ "$devI" = "eth0" ] && echo -n 1 > "$q/xps_cpus"
+		[ "$devI" = "eth1" ] && echo -n 3 > "$q/xps_cpus" #0,1	
+
+
+		fi
+
+	done
+
+
+	for q in ${dev}/queues/rx-*; do
+		Tval="$(cat $q/rps_cpus 2>/dev/null)" #||invalid
+		[ -z "$Tval" ] && continue
+		echo "$q/rps_cpus $Tval" #[ -z "$Tval" ] && continue
+		
+		if [ ! -z "$SETVALS" ]; then
+			[ "$devI" = "eth0" ] && echo -n 1 > "$q/rps_cpus" #0
+			[ "$devI" = "eth1" ] && echo -n 3 > "$q/rps_cpus" #0,1	
+		fi
+	done
+
+
+
+
+
+done
+
+
+
+
+
+
+
+
+
+
+	
+	#DEVICE1: ../../../fd580000.ethernet DEVICE2: fd580000.ethernet IRQCPU: 0 platform
+	#DEVICE1: ../../../2-2:1.0 DEVICE2: 2-2:1.0 IRQCPU: 0 usb
+	#DEVICE1: ../../../mmc1:0001:1 DEVICE2: mmc1:0001:1 IRQCPU: 0 sdio
+
+
+
+		#echo -n 7 > "$q/xps_cpus" #echo -n 3 > "$q/xps_cpus"
+
+
+
+
+
+
+	#echo "ENDSTATUS"; sleep 2 ################ DICE PART
+
+
+
+
+
+	exit 0
+fi #best to dump oneline@renice etc result to tmp... then source...?NOPE...
+######### END STATUS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#####################################
+#    POWERPROFILE aka SCALING 1
+#####################################
+
+
+if [ "${1}" = "disable" ]; then
+	POWERPROFILE="disable"
+fi
+
+
+
+
+
+
+
+
+
+if [ ! -z "$POWERPROFILE" ]; then
+
+	governor=$(cat /sys/devices/system/cpu/cpufreq/policy0/scaling_governor)
+	#$ecmd "GOVERNOR[$governor]: $POWERPROFILE" #600000 750000 1000000 1500000 #echq
+	
+	if [ "$governor" = "ondemand" ]; then
+	
+		case "$POWERPROFILE" in
+		
+		default|disable) #disable=hacky-param1 switch off pre enter if ! -z POWERPROFILE above
+			GOVmsg="${GOVmsg} upthresh:95"
+			echo -n '95' > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold && sleep 2 #avoid hang
+			GOVmsg="${GOVmsg} minfreq:600000"
+            		echo -n '600000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
+			GOVmsg="${GOVmsg} maxfreq:1500000"
+			echo -n '1500000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
+		;;
+		
+
+		quick) #D up32downfac107[0/5]0000
+			
+			GOVmsg="${GOVmsg} upthresh:21"
+			echo -n 21 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold && sleep 2
+
+			GOVmsg="${GOVmsg} downfac:6" #10
+			echo -n 6 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor #sleep 2
+
+			GOVmsg="${GOVmsg} minfreq:900000"
+            		echo -n '900000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
+
+			GOVmsg="${GOVmsg} maxfreq:1500000"
+			echo -n '1500000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
+		;;
+
+		quicker)
+			GOVmsg="${GOVmsg} upthresh:27"
+			echo -n '27' > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold && sleep 2
+			GOVmsg="${GOVmsg} minfreq:1000000"
+            		echo -n '1000000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
+			GOVmsg="${GOVmsg} maxfreq:1500000"
+			echo -n '1500000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
+		;;
+		
+
+		quickest)
+			GOVmsg="${GOVmsg} upthresh:15" #was 55 15=guess irrelevant scale only
+			echo -n '15' > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold && sleep 2
+			GOVmsg="${GOVmsg} minfreq:1500000"
+            		echo -n '1500000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
+			GOVmsg="${GOVmsg} maxfreq:1500000"
+			echo -n '1500000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
+		;;
+		
+
+		reduced)
+			GOVmsg="${GOVmsg} upthresh:90" #was 55 15=guess irrelevant scale only
+			echo -n '90' > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold && sleep 2
+			GOVmsg="${GOVmsg} minfreq:600000"
+            		echo -n '600000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
+			GOVmsg="${GOVmsg} maxfreq:1000000"
+			echo -n '1000000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
+		;;
+		
+
+		*)
+			echq "unknown powerprofile: $POWERPROFILE"
+		;;
+
+		esac
+	
+
+	else
+		governor="${governor}-unsupported"
+	fi
+
+
+
+	if [ ! -z "$GOVmsg" ]; then
+		echq "GOVERNOR[$governor]: $POWERPROFILE $GOVmsg"
+	else
+		echq "GOVERNOR[$governor]: $POWERPROFILE $GOVmsg [nochange-or-altgov]"
+	fi
+
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+#####################################
+#    PFAFFINITY aka IRQAFFINITY 2
+#####################################
+#@@@ ENABLEDSERVICES="irqbalance" will sneak in here... ok for now below needs "none" to turn off
+#@@@ ps w | grep -v grep | grep irqbalance && warning... || skip
+if [ ! -z "$PFAFFINITY" ] && [ -z "$IRQMANAGEMENT" ]; then #if [ ! -z "$PFAFFINITY" ]; then
+	#if [ "$PFAFFINITY" = 1 ]; then
+	#	PFAFFINITY="32:2 33:2" #PFAFFINITY="32:2 33:1" #@@@topvar PFAFFINITYd
+	#fi
+
+	for aff_vals in $PFAFFINITY; do
+		AFF_INT=$(echo $aff_vals | cut -d':' -f1)
+		AFF_NUM=$(echo $aff_vals | cut -d':' -f2)
+		#$ecmd "AFFVAL: $aff_vals [ $AFF_INT $AFF_NUM ]"
+		#@@@Z||invalid
+		affinityalt $AFF_INT $AFF_NUM
+	done
+	echq "AFFINITY: $AFFmsg"
+
+fi
+
+#if [ ! -z "$PFAFFINITY" ] && [ ! -z "$IRQMANAGEMENT" ]; then
+#	$ecmd "AFFINITY + IRQBALANCE not a good idea"
+#fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if [ ! -z "$IRQMANAGEMENT" ]; then
+	echq "Setting irq management: $IRQMANAGEMENT" #(reboot advised)"
+	case "$IRQMANAGEMENT" in
+		irqbalance)
+			if [ -x "/etc/init.d/irqbalance" ]; then
+				/etc/init.d/irqbalance enable >/dev/null
+				/etc/init.d/irqbalance start >/dev/null
+			else
+				echq "irqbalance not installed"
+			fi
+		;;
+		none)
+			if [ -x "/etc/init.d/irqbalance" ]; then
+				/etc/init.d/irqbalance stop >/dev/null
+				/etc/init.d/irqbalance disable >/dev/null
+			fi
+		;;
+		*)
+			echq "unknown irqmanagement: $IRQMANAGEMENT"
+		;;
+	esac
+fi
+
+
+
+
+
+
+
+#WAITFORTIMESET()WASHERE
+
+
+
+
+
+reniceprocess() {
+
+	local P_NAME="${1}"
+	local P_VAL="${2}"
+
+	RENICEmsg="${RENICEmsg} ${P_NAME}:${P_VAL}"
+    	for dP in $(pidof ${P_NAME} 2>/dev/null ); do $RENICE ${P_VAL} $dP 2>/dev/null; done
+
+}
+
+
+
+
+
+
+
+
+
+runrenice() { #    PFRENICE aka RENICE-PID 3
+
+
+
+	if [ -z "$PFRENICE" ]; then echq "RENICE-${1} [PFRENICE-off]"; return 0; fi
+	if [ -z "$1" ]; then echq "RENICE-nocmd [PFRENICE-off]"; return 0; fi
+
+
+
+	RENICE_METHOD="$1"
+
+
+
+	if [ ! -z "$(command -v renice)" ]; then
+ 		RENICE=$(command -v renice)
+	elif [ -x /usr/bin/renice ]; then
+    		RENICE="/usr/bin/renice"
+	fi
+
+	#if [ -z "$RENICE" ]; then $ecmd "RENICE-${1} [cmd-unavailable]"; return 0; fi
+	if [ -z "$RENICE" ]; then echq "RENICE-${1} [cmd-unavailable]"; return 0; fi
+
+
+	#if [ ! -z "$RENICE" ]; then
+
+
+	case "$RENICE_METHOD" in
+		1|default)
+
+
+		reniceprocess "dnsmasq" -7 #7 23 -9
+		reniceprocess "logd" "-1" #reniceprocess "logd" "-1"
+		reniceprocess "uhttpd" "5" # ###"-11" #"11" #was 20 w-udhcpnstuffrrdtool>cpu3@taskset
+		reniceprocess "nlbwmon" "3" #10
+		reniceprocess "dropbear" "1" #reniceprocess "dropbear" "-1" #reniceprocess "dropbear" "1"
+
+		#reniceprocess "collectd" "-5" #was nice5 prio25 -7 #@()&?
+		#reniceprocess "rpcd" "-2" #reniceprocess "rpcd" "2"
+		#reniceprocess "ubusd" "-3" #reniceprocess "ubusd" "3"
+		
+
+		############################################# TESTING2_202103100
+		reniceprocess "wpad" "7" #shouldget>"hostapd"+"wpa-supplicant"
+		
+
+
+
+		reniceprocess "rngd" -2 #7 23 -9
+
+		;;
+
+		*)
+			echq "RENICE unknown METHOD"
+		;;
+
+	esac
+
+    	echq "RENICE-${RENICE_METHOD}: ${RENICEmsg}"
+
+
+
+	#else
+	#	$ecmd "renice command not installed||found" #echq "renice command not installed||found"
+	#fi #END RENICEWASAVAILABLE
+
+
+#fi #END!-zPFRENICE #else debug norenice@topprint
+
+}
+
+
+
+
+
+
+
+
+runrenice "${PFRENICE}" #@@@${x:-y}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#####################################
+#    PFSERVICECPU aka TASKSET-PID 5
+#####################################
+
+
+if [ ! -z "$PFSERVICECPU" ]; then #PFSERVICECPU="static" #20210330 #echq "taskset [run]"
+	servicecpuadjust #TASKSET some auxillary procs to core 3(4)
+	echq "TASKSET: ${TASKSETmsg}"
+fi
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###########################
+# perftweaks.txt renice(2), irqaffinity(2), taskset(1-2,x) 7
+###########################
+
+####################################TBA
+#ethtool -C eth0 tx-usecs 0
+#ethtool -C eth1 tx-usecs 0
+#ethtool -C eth0 rx-usecs 31
+#ethtool -C eth1 rx-usecs 31
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#THEUSERFILE PT_TXT="/etc/perftweaks.txt"
+PT_TXT="${PT_TXT:-"/etc/perftweaks.txt"}"
+
+if [ -f "${PT_TXT}" ]; then
+
+	U_IRQAFFINITYcnt=$(grep '^irqaffinity ' ${PT_TXT} 2>/dev/null | wc -l)
+	U_RENICEcnt=$(grep '^renice ' ${PT_TXT} 2>/dev/null | wc -l)
+	U_TASKSETcnt=$(grep '^taskset ' ${PT_TXT} 2>/dev/null | wc -l)
+
+	echq "userfile: ${PT_TXT} renice[${U_RENICEcnt:-0}] irqaffinity[${U_IRQAFFINITYcnt:-0}] taskset[${U_TASKSETcnt:-0}]"
+
+
+else
+	echq "userfile: ${PT_TXT} [no]"
+
+fi
+#?MOVE TO AND OF LOAD CMDS fi ###$ecmd "$(cat /etc/perftweaks.txt 2>/dev/null | grep -Ev '(^$|^#)')"
+
+
+
+
+
+
+
+
+	if [ "${U_TASKSETcnt:-0}" -gt 0 ]; then
+
+while read rLINE; do
+	#echo "LINE: $rLINE" #@!z1&&2
+	set -- $rLINE
+	if [ -z "$2" ] || [ -z "$3" ]; then echq "taskset-invalid ${*}"; continue; fi
+
+	[ -z "$(pidof $2)" ] && echo "$2 notfound"
+	[ -z "$(pidof $2)" ] && continue
+
+	#echq " pre: $($TASKSET -c -p $(pidof $2))"
+	echq "userfile: taskset $2 $3"; #sleep 2
+	tasksetpids "$2" "$3"
+	#echq "post: $($TASKSET -c -p $(pidof $2))"
+	#sleep 1
+done <<VVV
+$(grep '^taskset ' ${PT_TXT} 2>/dev/null)
+VVV
+
+	else
+		: #echq "userfile-taskset: $U_TASKSETcnt DBGZERO"
+	fi
+
+
+
+
+
+
+
+
+
+
+
+	if [ "${U_IRQAFFINITYcnt:-0}" -gt 0 ]; then #@@!default || override
+
+
+
+AFFmsg=
+while read rLINE; do
+	#echo "LINE: $rLINE"
+	set -- $rLINE
+	if [ -z "$2" ] || [ -z "$3" ]; then echq "irqaffinity-invalid ${*}"; continue; fi
+	
+	AFF_INT=$2
+	AFF_NUM=$3
+	#IRQ/CPUisvalid?
+	#$ecmd "DBGY [ $AFF_INT $AFF_NUM ]" #+AFF_CUR&&||@funcMSG
+	#@@@Z||invalid
+
+	echq "userfile: irqaffinity $AFF_INT $AFF_NUM"; #sleep 2
+	affinityalt $AFF_INT $AFF_NUM
+	#sleep 1
+
+done <<VVV
+$(grep '^irqaffinity ' ${PT_TXT} 2>/dev/null)
+VVV
+
+
+
+
+
+	echq "USERAFFINITY: $AFFmsg"
+	else
+		: #echq "userfile-irqaffinity: $U_IRQAFFINITYcnt DBGZERO"
+	fi
+
+
+
+
+
+
+
+
+	if [ "${U_RENICEcnt:-0}" -gt 0 ]; then
+
+while read rLINE; do
+	#echo "LINE: $rLINE"
+	set -- $rLINE
+	#@!z1&&2
+	if [ -z "$2" ] || [ -z "$3" ]; then echq "renice-invalid ${*}"; continue; fi
+
+	if [ ! -z "$RENICE" ]; then
+		echq "userfile: renice $2 $3"; #sleep 2
+		reniceprocess "$2" "$3" #echo "reniceprocess \"$2\" \"$3\""; sleep 2
+	fi
+
+	#sleep 1
+done <<VVV
+$(grep '^renice ' ${PT_TXT} 2>/dev/null)
+VVV
+
+
+
+
+
+
+	else
+		: #$ecmd "userfile-renice: $U_RENICEcnt DBGZERO"
+	fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if [ -f "${PT_TXT}" ]; then
+	U_RPSCPUcnt=$(grep '^rps ' ${PT_TXT} 2>/dev/null | wc -l)
+	U_XPSCPUcnt=$(grep '^xps ' ${PT_TXT} 2>/dev/null | wc -l)
+	echq "userfile: ${PT_TXT} rps[${U_RPSCPUcnt:-0}] xps[${U_XPSCPUcnt:-0}]"
+else
+	echq "userfile: ${PT_TXT} [no]"
+fi
+
+
+
+
+findrpsxps() {
+
+	(find /sys/class/net/*/queues -name "[x|r]ps_cpus" | awk '/\/eth/'; \
+		find /sys/devices/virtual/net/br* -name "[x|r]ps_cpus"; \
+		find /sys/devices/virtual/net/ifb* -name "[x|r]ps_cpus") | \
+		grep "/${1}/" | grep "${2}"
+
+}
+
+
+#DEBUG=1
+
+
+	if [ "${U_RPSCPUcnt:-0}" -gt 0 ]; then
+
+while read rLINE; do
+
+	#echo "LINE: $rLINE" #@!z1&&2
+	set -- $rLINE
+	if [ -z "$2" ] || [ -z "$3" ] || [ -z "$4" ]; then
+		echq "rps-invalid ${*}"; continue
+	fi
+
+	[ -n "$DEBUG" ] && echq "userfile: rps $2 $3"; sleep 2
+	if ! ip a | grep "^[0-9]" | cut -d' ' -f2 | grep -v NONE | grep -q "^${2}"; then
+		echq "rps_cpus: no-interface:$2" && continue
+	fi
+
+	RPSCNT=$(echo $(findrpsxps "$2" "$3") | wc -l)
+	#echo "RPSCNT: $RPSCNT"; sleep 3
+
+
+	if [ "${RPSCNT:-0}" -eq 0 ]; then #if [ -z "$(findrpsxps "$2" "$3")" ]; then
+		echq "$1 no $2 notfound"
+	elif [ "${RPSCNT:-0}" -gt 1 ]; then #elif [ "$(findrpsxps "$2" "$3")" -gt 1 ]; then
+		echq "$1 no $2 manyfound[$RPSCNT]"
+	else
+		RPSout="$(findrpsxps "$2" "$3")"
+		if [ -z "$RPSout" ]; then
+			echq "rps_cpu: $2 $3 $RPSout [norpsfound]"
+		else
+
+
+		RPSold=$(grep . $RPSout)
+		if [ "$RPSold" = "$4" ]; then
+			echq "rps_cpus: $2 $3 $RPSout [ok:${RPSold}=${4}]"
+		elif [ -z "$RPSold" ]; then
+			echq "rps_cpus: $2 $3 $RPSout [unsettable]"
+		else
+			echq "rps_cpus: $2 $3 $RPSout [ok:${RPSold}>${4}]" #echo "echo $4 > $RPSout"
+			echo -n $4 > $RPSout #||
+		fi
+
+fi #noRPSout
+
+
+
+	fi
+
+done <<VVV
+$(grep '^rps ' ${PT_TXT} 2>/dev/null)
+VVV
+
+	else
+		: #echq "userfile-taskset: $U_TASKSETcnt DBGZERO"
+	fi
+
+
+
+
+
+	
+
+
+	if [ "${U_XPSCPUcnt:-0}" -gt 0 ]; then
+while read rLINE; do
+	#echo "LINE: $rLINE"; sleep 2  #@!z1&&2
+	set -- $rLINE
+	if [ -z "$2" ] || [ -z "$3" ] || [ -z "$4" ]; then
+		echq "xps-invalid ${*}"; continue
+	fi
+	[ -n "$DEBUG" ] && echq "userfile: xps $2 $3"; sleep 2
+	
+	if ! ip a | grep "^[0-9]" | cut -d' ' -f2 | grep -v NONE | grep -q "^${2}"; then
+		echq "xps_cpus: no-interface:$2" && continue
+	fi
+
+	XPSCNT=$(echo $(findrpsxps "$2" "$3") | wc -l)
+	#echo "XPSCNT: $XPSCNT"; sleep 3
+
+	if [ "${XPSCNT:-0}" -eq 0 ]; then #if [ -z "$(findrpsxps "$2" "$3")" ]; then
+		echq "$1 no $2 notfound"
+	elif [ "${XPSCNT:-0}" -gt 1 ]; then #elif [ "$(findrpsxps "$2" "$3")" -gt 1 ]; then
+		echq "$1 no $2 manyfound[$XPSCNT]"
+	else
+		XPSout="$(findrpsxps "$2" "$3")"
+		if [ -z "$XPSout" ]; then
+			echq "xps_cpus: $2 $3 [noxpsfound]"
+		else
+
+
+		XPSold=$(grep . $XPSout)
+		if [ "$XPSold" = "$4" ]; then
+			echq "xps_cpus: $2 $3 $XPSout [ok:${XPSold}=${4}]"
+		elif [ -z "$XPSold" ]; then
+			echq "xps_cpus: $2 $3 $XPSout [unsettable~invalid]"
+			#echo "############## findrpsxps $2 $3"
+			#exit 0
+			#set -x
+			#echo $(findrpsxps "$2" "$3")
+			#echo "############## grep . $XPSout"
+			#echo $(grep . $XPSout)
+		else
+			echq "xps_cpus: $2 $3 $XPSout [ok:${XPSold}>${4}]" #echo "echo $4 > $RPSout"
+			echo -n $4 > $XPSout #||
+		fi
+
+
+		fi #NOEXPSFOUND
+
+
+
+	fi
+
+done <<VVV
+$(grep '^xps ' ${PT_TXT} 2>/dev/null)
+VVV
+#$(cat ${PT_TXT} 2>/dev/null | grep '^xps ')
+#$(grep '^xps ' ${PT_TXT} 2>/dev/null)
+
+	else
+		: #echq "userfile-taskset: $U_TASKSETcnt DBGZERO"
+	fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if [ -f "${PT_TXT}" ]; then
+	U_SYSCTLcnt=$(grep '^sysctl ' ${PT_TXT} 2>/dev/null | wc -l)
+	echq "userfile: ${PT_TXT} sysctl[${U_SYSCTLcnt:-0}]"
+else
+	echq "userfile: ${PT_TXT} [sysctl-no]"
+fi
+
+
+
+
+
+	if [ "${U_SYSCTLcnt:-0}" -gt 0 ]; then
+
+while read rLINE; do
+
+	#echo "LINE: $rLINE" #@!z1&&2
+	set -- $rLINE
+	if [ -z "$2" ] || [ -z "$3" ]; then
+		echq "syctl-invalid ${*}"; continue
+	fi
+	[ -n "$DEBUG" ] && echq "userfile: sysctl $2 $3"; #sleep 2
+
+	SYSctlCURRENT=
+	SYSctlSYSfile=
+	SYSctlSYSval=
+	SYSctlSYSall=
+	SYSctlSYSretval=
+
+	########################@getretval SYSctlCURRENT=$(sysctl $2 | cut -d' ' -f3)
+	SYSctlCURRENT=$(sysctl $2 2>/dev/null)
+	SYSretval=$?
+	#echo "retval: $SYSretval"
+	if [ -z "$SYSctlCURRENT" ]; then echq "${2} [nocurrent-or-faulty]"; continue; fi
+	SYSctlCURRENT=$(echo $SYSctlCURRENT | cut -d' ' -f3)
+
+	if [ ! -z "$(grep -r "${2}" /etc/sysctl.*)" ]; then
+		
+		if [ "$(grep -r "${2}" /etc/sysctl.* | wc -l)" -gt 1 ]; then
+			#@@@uniq
+			echq "multisetfiles: $(grep -r "${2}" /etc/sysctl.* | tr -s '\n' ' ')"
+		fi
+
+		SYSctlSYSall=$(grep -r "${2}" /etc/sysctl.* | head -n 1)
+		SYSctlSYSfile=$(echo $SYSctlSYSall | cut -d':' -f1)
+		SYSctlSYSval=$(echo $SYSctlSYSall | cut -d':' -f2 | cut -d'=' -f2)
+	fi
+
+
+
+	if [ -z "$SYSctlSYSall" ]; then SYSctlSYSfile="none"; SYSctlSYSval="none"; fi
+
+	if [ "$SYSctlCURRENT" = "$3" ]; then
+		echq "$2 [$SYSctlCURRENT=$3] sysfile:[$SYSctlSYSfile:$SYSctlSYSval]"
+	else
+		echq "$2 [$SYSctlCURRENT>$3] sysfile:[$SYSctlSYSfile:$SYSctlSYSval]"
+
+		[ -n "$DEBUG" ] && echq "sysctl -w ${2}=${3}"
+		SYSctlSYSretval=
+		sysctl -w ${2}=${3} 1>/dev/null 2>/dev/null #sysctl $2
+		SYSctlSYSretval=$?
+		if [ "$SYSretval" -ne 0 ]; then #if [ -z "$SYSctlCURRENT" ]; then
+			echq "oops"
+		fi
+
+
+	fi
+
+
+done <<VVV
+$(grep '^sysctl ' ${PT_TXT} 2>/dev/null)
+VVV
+
+	else
+		: #echq "userfile-taskset: $U_TASKSETcnt DBGZERO"
+	fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if [ -f "${PT_TXT}" ]; then
+	U_GOVENORcnt=$(grep '^govenor ' ${PT_TXT} 2>/dev/null | wc -l)
+	echq "userfile: ${PT_TXT} govenor[${U_GOVENORcnt:-0}]"
+else
+	echq "userfile: ${PT_TXT} [govenor-no]"
+fi
+
+
+
+
+
+
+
+setgovenorval() {
+
+	local gSTYLE="${1}"
+
+	#local gFILE="${2}"
+	local gNAME="${2}"
+	local gVAL="${3}"
+	local cval
+	
+
+
+	#CASESTYLE
+	#local gFILE="/sys/devices/system/cpu/cpufreq/ondemand/${gNAME}"
+
+
+	#echo "################ 1:$1 2:$2 3:$3"
+
+
+	case "$gNAME" in
+		up_threshold|sampling_down_factor)
+			local gFILE="/sys/devices/system/cpu/cpufreq/ondemand/${gNAME}"
+		;;
+		scaling_min_freq|scaling_max_freq)
+			local gFILE="/sys/devices/system/cpu/cpufreq/policy0/${gNAME}"
+		;;
+	esac
+
+	#-n return
+
+
+
+
+
+
+
+	cval=$(grep . ${gFILE})
+	if [ -z "$cval" ]; then
+		echq "seems-invalid"
+		return 1
+	fi
+
+
+
+
+	case "${gNAME}" in
+		up_threshold)
+			#if [ "$cval" = "$gVAL" ] || [ "$cval" = "$(($gVAL + 1))" ]; then
+			#	echo "$(basename $gFILE) [${cval}=~${gVAL}]"; return 0
+			if [ "$cval" = "$gVAL" ]; then
+				echq "$(basename $gFILE) [${cval}=${gVAL}]"; return 0
+			else
+				[ -n "$DEBUG" ] && echo "UNDO govenor $gSTYLE $(basename $gFILE) $cval"
+				echq "$(basename $gFILE) [${cval}>${gVAL}]"
+				#echo "DBG APPLY echo -n $gVAL > $gFILE"
+				echo -n $gVAL > $gFILE
+			fi
+	
+		;;
+
+
+
+	sampling_down_factor)
+			cval=$(grep . ${gFILE})
+			if [ "$cval" = "$gVAL" ]; then
+				echq "$(basename $gFILE) [${cval}=${gVAL}]"; return 0
+			else
+				#@@@undofile echo govenor $gSTYLE $(basename $gFILE) $cval >> $UNDOFILE
+				[ -n "$DEBUG" ] && echo "UNDO govenor $gSTYLE $(basename $gFILE) $cval"
+				echq "$(basename $gFILE) [${cval}>${gVAL}]"
+				#echo "DBG APPLY echo -n $gVAL > $gFILE"
+				echo -n $gVAL > $gFILE
+			fi
+		;; #echo -n 6 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
+
+
+
+
+	scaling_min_freq)
+			cval=$(grep . ${gFILE})
+			if [ "$cval" = "$gVAL" ]; then
+				echq "$(basename $gFILE) [${cval}=${gVAL}]"; return 0
+			else
+				#@@@undofile echo govenor $gSTYLE $(basename $gFILE) $cval >> $UNDOFILE
+				[ -n "$DEBUG" ] && echo "UNDO govenor $gSTYLE $(basename $gFILE) $cval"
+				echq "$(basename $gFILE) [${cval}>${gVAL}]"
+				echo -n $gVAL > $gFILE
+			fi
+		;; #/sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
+
+	
+
+
+
+	scaling_max_freq)
+			cval=$(grep . ${gFILE})
+			if [ "$cval" = "$gVAL" ]; then
+				echq "$(basename $gFILE) [${cval}=${gVAL}]"; return 0
+			else
+				#@@@undofile echo govenor $gSTYLE $(basename $gFILE) $cval >> $UNDOFILE
+				[ -n "$DEBUG" ] && echo "UNDO govenor $gSTYLE $(basename $gFILE) $cval"
+				echq "$(basename $gFILE) [${cval}>${gVAL}]"
+				echo -n $gVAL > $gFILE
+			fi
+		;; #echo -n '1500000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
+	#scaling_max_freq
+
+
+
+	*)
+			echq "unknown: $gNAME"
+		;;
+
+	esac
+
+
+
+}
+
+
+
+#DEBUG=1
+
+
+
+	if [ "${U_GOVENORcnt:-0}" -gt 0 ]; then
+
+while read rLINE; do
+
+	#echo "LINE: $rLINE" #@!z1&&2
+	set -- $rLINE
+	if [ -z "$2" ] || [ -z "$3" ] || [ -z "$4" ]; then
+		echq "govenor-invalid ${*}"; continue
+	fi
+
+
+	[ -n "$DEBUG" ] && echq "userfile: govenor $2 $3 $4"; #sleep 2
+	
+
+
+
+	case "${2}" in
+		ondemand)
+			:
+		;;
+		*)
+		echo "${2} [unsupported]"; continue 
+		;;
+	esac
+
+
+
+
+	setgovenorval "$2" ${3} ${4}
+
+
+
+done <<VVV
+$(grep '^govenor ' ${PT_TXT} 2>/dev/null)
+VVV
+#$(grep '^govenor ondemand ' ${PT_TXT} 2>/dev/null)
+
+	else
+		: #echq "userfile-taskset: $U_TASKSETcnt DBGZERO"
+	fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+exit 0
+
+
+
+
+
+
+
+
+
+MOVETOrccustomPROBABLY() {
+
+eval `grep '^WIFIREMOVE=' /root/wrt.ini 2>/dev/null`
+
+if [ ! -z "$WIFIREMOVE" ]; then
+
+	(wifi down)&
+	#echo "endingwireless... WIFIREMOVE@ini"; sleep 1
+	echq "endingwireless... WIFIREMOVE@ini"; sleep 1
+
+	/etc/init.d/wpad stop 2>/dev/null
+	/etc/init.d/wpad disable 2>/dev/null
+
+	sleep 3
+	rmmod brcmfmac; rmmod cfg80211; rmmod compat
+
+fi
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##################################################################### ORIGINAL INLINEBASELOGIC
+
+
+
+
+
+
+###########################
+# perftweaks.txt renice(2), irqaffinity(2), taskset(1-2,x) 7
+###########################
+
+
+
+
+PT_TXT="/etc/perftweaks.txt"
+if [ -f "${PT_TXT}" ]; then
+	
+	###### echq "userfile: ${PT_TXT} [experimental]"
+	##############echq "$(cat /etc/perftweaks.txt 2>/dev/null | grep -Ev '(^$|^#)')"
+	###############@?> if [ "$PERFTWEAKS" = "default" ]; then PT_TXTmode="inherit"; fi
+
+
+	U_IRQAFFINITYcnt=$(grep '^irqaffinity ' ${PT_TXT} 2>/dev/null | wc -l)
+	U_RENICEcnt=$(grep '^renice ' ${PT_TXT} 2>/dev/null | wc -l)
+	U_TASKSETcnt=$(grep '^taskset ' ${PT_TXT} 2>/dev/null | wc -l)
+
+	#echq "userfile-renice: $U_RENICEcnt"
+	#echq "userfile-irqaffinity: $U_IRQAFFINITYcnt"
+	#echq "userfile-taskset: $U_TASKSETcnt"
+
+	echq "userfile: ${PT_TXT} renice[${U_RENICEcnt:-0}] irqaffinity[${U_IRQAFFINITYcnt:-0}] taskset[${U_TASKSETcnt:-0}]"
+
+
+else
+	#$ecmd "userfile: ${PT_TXT} [no]"
+	echq "userfile: ${PT_TXT} [no]"
+fi
+
+
+###$ecmd "$(cat /etc/perftweaks.txt 2>/dev/null | grep -Ev '(^$|^#)')"
+#cat /etc/perftweaks.txt 2>/dev/null | grep -Ev '(^$|^#)'
+
+
+
+
+
+
+
+
+
+
+	if [ "${U_TASKSETcnt:-0}" -gt 0 ]; then
+	
+	#$ecmd "userfile-taskset: $U_TASKSETcnt"
+
+
+while read rLINE; do
+	#echo "LINE: $rLINE" #@!z1&&2
+	set -- $rLINE
+	if [ -z "$2" ] || [ -z "$3" ]; then echq "taskset-invalid ${*}"; continue; fi
+
+	[ -z "$(pidof $2)" ] && echo "$2 notfound"
+	[ -z "$(pidof $2)" ] && continue
+
+	#echq " pre: $($TASKSET -c -p $(pidof $2))"
+	echq "userfile: taskset $2 $3"; #sleep 2
+	tasksetpids "$2" "$3"
+	
+	#echq "post: $($TASKSET -c -p $(pidof $2))"
+
+	#sleep 1
+done <<VVV
+$(grep '^taskset ' ${PT_TXT} 2>/dev/null)
+VVV
+
+	else
+		: #echq "userfile-taskset: $U_TASKSETcnt DBGZERO"
+	fi
+
+
+
+
+
+
+	if [ "${U_IRQAFFINITYcnt:-0}" -gt 0 ]; then #@@!default || override
+
+		#echq "userfile-irqaffinity: $U_IRQAFFINITYcnt"
+
+AFFmsg=
+
+while read rLINE; do
+
+	#echo "LINE: $rLINE"
+	set -- $rLINE
+	if [ -z "$2" ] || [ -z "$3" ]; then echq "irqaffinity-invalid ${*}"; continue; fi
+
+	AFF_INT=$2
+	AFF_NUM=$3
+
+	#IRQ/CPUisvalid?
+
+
+	#$ecmd "DBGY [ $AFF_INT $AFF_NUM ]" #+AFF_CUR&&||@funcMSG
+	#@@@Z||invalid
+
+	echq "userfile: irqaffinity $AFF_INT $AFF_NUM"; #sleep 2
+	affinityalt $AFF_INT $AFF_NUM
+
+	#sleep 1
+done <<VVV
+$(grep '^irqaffinity ' ${PT_TXT} 2>/dev/null)
+VVV
+
+	echq "USERAFFINITY: $AFFmsg"
+
+	else
+		: #echq "userfile-irqaffinity: $U_IRQAFFINITYcnt DBGZERO"
+	fi
+
+
+
+
+
+
+
+	if [ "${U_RENICEcnt:-0}" -gt 0 ]; then
+	
+	#echq "userfile-renice: $U_RENICEcnt"
+
+while read rLINE; do
+	#echo "LINE: $rLINE"
+
+	set -- $rLINE
+	#@!z1&&2
+	if [ -z "$2" ] || [ -z "$3" ]; then echq "renice-invalid ${*}"; continue; fi
+
+
+	if [ ! -z "$RENICE" ]; then
+		echq "userfile: renice $2 $3"; #sleep 2
+		reniceprocess "$2" "$3" #echo "reniceprocess \"$2\" \"$3\""; sleep 2
+	fi
+
+
+	#sleep 1
+done <<VVV
+$(grep '^renice ' ${PT_TXT} 2>/dev/null)
+VVV
+
+	else
+		: #$ecmd "userfile-renice: $U_RENICEcnt DBGZERO"
+	fi
+
+
+
+
+
+
+
+exit 0
+if [ ! -z "$PACKETSTEERING" ]; then echq "steering-at-hplug_net_20-smp"; fi #@reimportheremaybe
+
+
+
+
+
+
+
+
+
+######################## MOVE /tmp/booted.timeset(collectd)after non-serviceaction/s>basesleepon'boot'>'rerun
+#WASABOVErenice/tasksets
+
+
+WAITFORTIMESET() { #didnotwork@collectdwaitfortime23seconds #backgrounding whole thing now
+
+########################## WAIT FOR TIME aka COLLECTD #########################
+######################## TECHNICALLY THIS IS ONLY FOR PROCESS/SERVICE ACTIONS
+
+
+WAITFILE="/tmp/.booted.timeset"
+if [ ! -f "$WAITFILE" ]; then 
+	WAITCNT=35
+	#WAITFILE="/tmp/.booted.timeset"
+	while [ ! -f "$WAITFILE" ] && [ "$WAITCNT" -ne 0 ]; do
+		case "$WAITCNT" in
+			35|15|10|5|3|2|1|0)
+				#$ecmd "$(date) waiting for $WAITFILE $WAITCNT"
+				echo "CONSOLE $(date) waiting for $WAITFILE $WAITCNT" > /dev/console
+			;;
+		esac
+		sleep 1; WAITCNT=$((WAITCNT-1))
+	done
+	#$ecmd "$(date) waitisover: $WAITCNT"
+	echq "$(date) waitisover: $WAITCNT"
+
+else
+	echo "CONSOLE $(date) time-isset-nowaitfor ${WAITFILE}[ok] $WAITCNT" > /dev/console #@wrongspot
+	: #@debug $ecmd "$WAITFILE [ok]"
+fi #else $ecmd "$WAITFILE [ok]"
+
+
+
+
+}
+
+
+
+
+
+#[root@dca632 /usbstick 43�°]# fgrep -r START /etc/init.d/ | grep collec
+#/etc/init.d/collectd:START=99
+#[root@dca632 /usbstick 42�°]# fgrep -r START /etc/init.d/ | grep done
+#/etc/init.d/done:START=95 #rc.local
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#/etc/sysctl.d/11-nf-conntrack.conf
+#disabled ipv6 (placed ipv6.disable=1) in the cmdline.txt?
+#######################################################################################
+# @rhester72 https://forum.openwrt.org/t/rpi4-community-build/69998/756?u=wulfy23
+#######################################################################################
+# I find packet steering to actually result in slightly lower performance on FiOS 1G/1G.
+# It shouldn't help, as with an USB-based WAN there's only one queue, so there isn't 
+# really anything to steer. irqbalance (or manual redistribution of interrupts), however,
+# is absolutely critical.
+####################################
+# Note to testers: You won't see any payoff with iperf. Queue hashing is done by IP/port
+# modulo queue slot, so unless you have at least 5 separate network streams going, you 
+# won't see any potential benefit
+#######################################################################################
+# PERFTWEAKS=1 #MAY GLOBAL ENABLE FORTHEOPTION BELOW
+# IRQMANAGEMENT="irqbalance" #ON
+# #PACKETSTEERING= #OFF
+#######################################################################################
+
+
+
+#opkg-key-gengood>100%@dropbearcpu3(4)>lucistat=sqm@lucistatissues
+#	'a' packetsteering no good? || 100%fordropbear(anything)nogood
+#@@@probable>rc.local&&(sleep 45; $0 -R(renice+taskset) & @ some procs not running yet (collectd|timeset)
+#NOTES
+### if pulling this down from git... or running a sysupgraded OS... check your /root/wrt.ini has
+#PERFTWEAKS="default"
+### to enable recommended/current tweaks
+
+
+#NOTE: set PERFTWEAKS=1 to just enable one option at a time otherwise you get default||yourcustomoption if a default one
+############################################################################
+### you can set custom AFFINITY per IRQ with
+# PFAFFINITY="32:2 22:2"
+### etc. etc.
+############################################################################
+
+############################################################################
+### you can set packet steering on newer releases with 20-smp@config/network
+# option packet_steering '1'
+# option packet_steering_val 'c' #or other #EDIT: this is TEMPORARILY oFF PARAM ABOVE+z-PACKETSTEERING=1=defaultlogic
+############################################################################
+#commenting out PERFTWEAKS will disable all tweaks except packet_steering@PACKETSTEERING=1
+
+
+
+
+
+#@@@ 'status' = show derived vars and sys current values &&||what the default was?ifchanged
+#taskset from alpy maybe linux-utils | apk search cpu
+
+
+###@@@MOVEWAYDOWN-POSTFUNCTIONS-TO-INTEGRATE-altLOGIC
+###if [ -z "${POWERPROFILE}" ]; then eval `grep '^POWERPROFILE=' /root/wrt.ini 2>/dev/null`; fi
+#|| ${1} != disable [technically now its stop not disable]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#THEBASEBITS
+
+
+
+
+
+
+
+
+
+
+tasksetpidsWITHSINGLEBACKGROUND() {
+
+	local FN="tasksetpids"
+	local P_NAME="${1}"
+	local P_VAL="${2}"
+
+	
+	#echo "$FN-dbg> $TASKSET $1 $2"; sleep 1 #HMM... not working for USERFILE@vsftpd?
+
+	[ -z "$P_NAME" ] && $ecmd "$FN 1:no_name" && return 1
+	[ -z "$P_VAL" ] && $ecmd "$FN 1:no_cpuvalue" && return 1
+
+	#[   26.078172] rpi-perftweaks.sh> collectd notfound @ reboot_26 backgroundit
+
+	if [ -z "$(pidof $P_NAME)" ]; then
+
+
+
+if [ "$sMETHOD" = "boot" ]; then
+
+
+		#@@@if ${CMDLINEPARAM1} = boot then ...
+		#@@@taskset!renice&&||>cumulativescript_at_end-bg
+		#@@@clean.tmpsh.output+~while!pidof(txt-read)||timeoutAKAactions@txt<->logic@sh<bin?||$0 "tmptxt"?
+
+
+
+		#ORG [ -z "$(pidof $P_NAME)" ] && TASKSETmsg="${TASKSETmsg} ${P_NAME}@nopid!>${P_VAL}" && return 1
+		##################################################################### ORIG
+		#TASKSETmsg="${TASKSETmsg} ${P_NAME}@nopid!>${P_VAL}" && return 1
+		##########################################################################
+
+
+
+		TASKSETmsg="${TASKSETmsg} ${P_NAME}@nopid-bg>${P_VAL}" #&& return 1
+
+
+cat << VVV > /tmp/taskset_${P_NAME}.sh
+#!/bin/sh
+
+#/bin/sleep 36
+/bin/sleep 123
+if [ -z "\$(pidof $P_NAME)" ]; then
+	echo "\$0 $P_NAME not-running" >/dev/console
+	exit 0
+fi
+
+
+
+echo "$0@\$0 TASKSET $P_NAME ${P_VAL}" > /dev/kmsg
+$TASKSET -apc ${P_VAL} \$(pidof $P_NAME) 2>/dev/null 1>/dev/null
+
+
+
+
+VVV
+#$TASKSET -apc ${P_VAL} \$(pidof $P_NAME) >/dev/kmsg
+#VERBOSE echo "\$($TASKSET -apc ${P_VAL} \$(pidof $P_NAME))" >/dev/kmsg
+####################FAIL $TASKSET -apc ${P_VAL} \$(pidof $P_NAME)
+
+
+chmod +x /tmp/taskset_${P_NAME}.sh
+(sh /tmp/taskset_${P_NAME}.sh) &
+
+
+		######################################################################DBG
+		#cat /tmp/renice_${P_NAME}.sh >/dev/console
+		#echo "BGCHKthispidISBLANK: $(ps www | grep ${thispid:-VOID})" > /dev/console
+		#echo "BGCHKP_NAMEBACKQUOTE: $(ps www | grep ${P_NAME:-VOIDPNAME})" > /dev/console
+		
+
+		return 1
+		
+
+
+
+		else #we are not boot dont background if no pid
+
+			TASKSETmsg="${TASKSETmsg} ${P_NAME}@nopid!>${P_VAL}" && return 1
+
+		fi #ENDsMETHODwasBOOTelse
+
+
+
+
+
+	fi #ENDWASNOPID
+
+
+
+
+
+
+
+
+	local thispid=
+	local curcpu=
+	for thispid in $(pidof ${P_NAME}); do #oneonlybutmeh
+
+		#fails curcpu=$($TASKSET -c -p $thispid | cut -d':' -f2 | sed 's!^[[:space:]]!!g')
+		#echo "$TASKSET -apc ${P_VAL} $thispid"
+		#$TASKSET -apc ${P_VAL} $thispid
+		
+		$TASKSET -apc ${P_VAL} $thispid 2>&1 >/dev/null
+		TASKSETmsg="${TASKSETmsg} ${P_NAME}@${thispid}${curcpu}>${P_VAL}"
+
+	done
+
+}
+
+
+
+#/bin/sleep 36; sh $TASKSET -apc ${P_VAL} \$(pidof $P_NAME) 2>&1 >/dev/null) &
+#echo "(sh /bin/sleep 36; sh $TASKSET -apc ${P_VAL} $thispid 2>&1 >/dev/null) &" > /dev/console
+#$TASKSET -apc ${P_VAL} \$(pidof $P_NAME) 2>&1 >/dev/null
+
+
+
+
+
+
+
+exit 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#eval `grep '^PERFTWEAKS=' /root/wrt.ini 2>/dev/null`
+#eval `grep '^POWERPROFILE=' /root/wrt.ini 2>/dev/null`
+
+
+
+if [ "${PERFTWEAKS}" = "default" ] || [ "${POWERPROFILE}" = "quick" ]; then
+
+	governor=$(cat /sys/devices/system/cpu/cpufreq/policy0/scaling_governor)
+	#$ecmd "GOVERNOR[$governor]: $POWERPROFILE" #600000 750000 1000000 1500000 #echq
+	
+	if [ "$governor" = "ondemand" ]; then
+	
+
+GOVmsg="${GOVmsg} upthresh:21"
+echo -n 21 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold && sleep 2
+
+GOVmsg="${GOVmsg} downfac:6" #10
+echo -n 6 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor #sleep 2
+
+GOVmsg="${GOVmsg} minfreq:900000"
+echo -n '900000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
+
+GOVmsg="${GOVmsg} maxfreq:1500000"
+echo -n '1500000' > /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
+
+
+
+	fi
+
+
+	if [ ! -z "$GOVmsg" ]; then
+		$ecmd "GOVERNOR[$governor]: $POWERPROFILE $GOVmsg"
+	else
+		$ecmd "GOVERNOR[$governor]: $POWERPROFILE $GOVmsg [nochange-or-altgov]"
+	fi
+
+
+
+fi
+
+
+
+
+
+
+
+2reniceprocess() {
+
+	local P_NAME="${1}"
+	local P_VAL="${2}"
+
+	RENICEmsg="${RENICEmsg} ${P_NAME}:${P_VAL}"
+    	for dP in $(pidof ${P_NAME} 2>/dev/null ); do $RENICE ${P_VAL} $dP 2>/dev/null; done
+
+}
+
+
+reniceprocess "dnsmasq" -7 #7 23 -9
+
+
+
+
+
+
+
+
+
+#MEH
+#  154  cat /proc/sys/net/ipv4/tcp_allowed_congestion_control 
+#  156  echo -n reno > /proc/sys/net/ipv4/tcp_congestion_control
+#  161  echo -n cubic > /proc/sys/net/ipv4/tcp_congestion_cont
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#find /sys/devices -name "[x|r]ps_cpus" | awk '/eth1/' | while read q; do echo 2 > $q; done
+#find /sys/devices -name "[x|r]ps_cpus" | awk '/eth2/' | while read q; do echo 4 > $q; done
+#find /sys/devices -name "[x|r]ps_cpus" | awk '/eth3/' | while read q; do echo 8 > $q; done
+
+#for n in $(cat /proc/interrupts | awk '/eth1/ { print $1}' | tr -d \:); do echo 2 > /proc/irq/$n/smp_affinity;done
+#for n in $(cat /proc/interrupts | awk '/eth2/ { print $1}' | tr -d \:);do echo 4 > /proc/irq/$n/smp_affinity;done
+#for n in $(cat /proc/interrupts | awk '/eth3/ { print $1}' | tr -d \:);do echo 8 > /proc/irq/$n/smp_affinity;done
+#for f in /sys/class/net/*/queues/*/byte_queue_limits/;do echo 6056 > $f/limit_max;done
+#for c in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor;do echo performance > $c;done
+#for i in $(ls /sys/class/net | awk '/eth/');do ethtool -K $i tso off gso off gro off;done
+
+
+
+bQval="6056"
+bQval="$((6056 * 10))"
+bQval="$((6056 * 30))" #181680
+bQval="$((6056 * 10))"
+
+
+
+#ALL rpidefault? 1879048192
+#for f in /sys/class/net/eth*/queues/*/byte_queue_limits/;do
+for f in /sys/class/net/*/queues/*/byte_queue_limits/;do
+	#echo 6056 > $f/limit_max;
+	echo "echo $bQval > $f/limit_max"
+	echo $bQval > $f/limit_max
+	echo "cat $f/limit_max"
+	cat $f/limit_max
+done
+
+
+
+
+
+
+
+
+for i in $(ls /sys/class/net | awk '/eth/');do
+
+	#ethtool -K $i tso off gso off gro off
+	#ORIGINAL to LOWER CPU?
+	#echo "ethtool -K $i tso off gso off gro off"
+	#ethtool -K $i tso off gso off gro off
+	
+	
+	#ethtool -k $i #ethtool -k $i | grep -E '(gso|gro)'
+	############# ethtool -k eth1
+	#generic-segmentation-offload: on
+	#generic-receive-offload: on
+
+
+	echo "############# ethtool -k $i"
+	ethtool -k $i | grep -E '(offload)'
+	
+
+
+	#BACKONAGAIN APPLIES to ETH1
+	#ethtool -K $i tso on gso on gro on #ethtool -K $i tso >SLOW?on gso on gro on
+	ethtool -K $i tso off gso on gro on
+
+
+	sleep 1
+done
+
+exit 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#sysctl -w net.core.optmem_max=$((20480 * 2))
+
+
+
+
+############### netstat -an | grep -c SYN_RECV ; nonopenwrt netstat -s
+
+
+#sysctl net.core.netdev_max_backlog
+#sysctl -w net.core.netdev_max_backlog='65536' #1000
+#sysctl -w net.core.netdev_max_backlog='2000'
+
+
+#sysctl -w net.core.netdev_budget=$((300 * 2))
+
+
+
+#sysctl -w net.core.somaxconn=$((4096 * 3))
+
+
+
+#echo -n $((128 * 3)) > /proc/sys/net/ipv4/tcp_max_syn_backlog
+
+#exit 0 #see _ring
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sysctlsettings() {
+
+
+#ethtool -C eth0 rx-usecs 100
+#ethtool -C eth1 rx-usecs 100
+
+
+
+
+
+
+#KONG
+sysctl -w vm.min_free_kbytes=65536
+sysctl -w net.netfilter.nf_conntrack_max=32768
+
+
+
+
+
+
+
+
+
+
+
+sysctl -w net.netfilter.nf_conntrack_tcp_timeout_close_wait=30
+sysctl -w net.netfilter.nf_conntrack_tcp_timeout_fin_wait=60
+sysctl -w net.netfilter.nf_conntrack_tcp_timeout_time_wait=60
+sysctl -w net.netfilter.nf_conntrack_tcp_timeout_established=500
+sysctl -w net.ipv4.tcp_fin_timeout=15
+sysctl -w net.ipv4.tcp_keepalive_intvl=15
+sysctl -w net.ipv4.tcp_rfc1337=1 #timewait something
+
+#?half? #sysctl -w net.core.rmem_max=4194304
+
+sysctl -w net.ipv4.udp_mem='65536 131072 262144'
+sysctl -w net.ipv4.tcp_mem='65536 131072 262144'
+
+
+sysctl -w net.ipv4.tcp_rmem='8192 87380 16777216'
+sysctl -w net.ipv4.udp_rmem_min='16384'
+
+sysctl -w net.ipv4.tcp_wmem='8192 65536 16777216'
+sysctl -w net.ipv4.udp_wmem_min='16384'
+
+
+sysctl -w net.core.netdev_max_backlog='65536' #1000
+sysctl -w net.ipv4.tcp_max_syn_backlog=64 #? D128>256>512
+
+
+
+#net.core.rmem_max=4194304
+
+
+
+
+sysctl -w net.core.dev_weight=64 #?
+###################sysctl -w net.core.dev_weight=96 #32
+####################sysctl -w net.core.dev_weight_rx_bias=2
+
+
+
+
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! w-sqm no effect? wo=6ms
+sysctl -w net.ipv4.tcp_timestamps=0
+
+
+#D20480
+sysctl -w net.core.optmem_max=25165824 #???high
+
+
+#WO#sysctl -w net.core.busy_poll=50
+
+
+}
+
+
+
+
+#sysctlsettings 1>/dev/null 2>/dev/null
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#/etc/hotplug.d/iface/11-sqm
+
+
+
+#ecn No idea. It doesn't matter that much for openwrt, though, as that setting only affects TCP connections terminated on the router, not traffic from clients behind it (which, presumably, is most of the traffic) :slight_smile:
+
+
+
+
+
+#./filterethtool.sh  | grep dapt
+#ethtool -C eth0 adaptive-rx on #NO ethtool -C eth0 adaptive-tx on
+#ethtool -C eth1 adaptive-rx on; ethtool -C eth1 adaptive-tx on
+
+
+
+
+
+
+
+
+#grep -r . /etc/sysctl.*
+
+
+
+
+
+
+#cat /proc/net/netstat | grep IpExt
+
+
+
+
+
+
+
+
+
+
+
+#taskset-aarch64 -cp $(pidof ubusd)
+#taskset-aarch64 -cp $(pidof ubusd) #pid 541's current affinity list: 0-3
+#taskset-aarch64 -p $(pidof ubusd) #pid 541's current affinity mask: f
+
+
+
+
+
+
+
+
+
+
+#The default behavior is to run a new command:
+#    taskset-aarch64 03 sshd -b 1024
+#You can retrieve the mask of an existing task:
+#    taskset-aarch64 -p 700
+#Or set it:
+#    taskset-aarch64 -p 03 700
+#List format uses a comma-separated list instead of a mask:
+##    taskset-aarch64 -pc 0,3,7-11 700
+#Ranges in list format can take a stride argument:
+#    e.g. 0-31:2 is equivalent to mask 0x55555555
+
+#For more details see taskset(1).
+#dca632 ../_rpi-perftweaks.sh_202105 53°# taskset-aarch64 -p $(pidof dnsmasq)
+#pid 28122's current affinity mask: 6
+#pid 28122's new affinity mask: 2
+#dca632 ../_rpi-perftweaks.sh_202105 52°# taskset-aarch64 -p $(pidof dnsmasq)
+#pid 28122's current affinity mask: 2
+#pid 28122's new affinity mask: 2
+
+
+
+
+
+
+
+
+#GETbyLIST dca632 ../_rpi-perftweaks.sh_202105 52°# taskset-aarch64 -cp $(pidof uhttpd)
+#pid 5268's current affinity list: 0
+
+
+#SETbyLIST !!!!!!!!!!!!!!!!!!!!! LOOPpidOFLASTvalISPID!!!!!!!!!
+#taskset-aarch64 -p c $(pidof uhttpd)
+
+
+
+#dca632 ../_rpi-perftweaks.sh_202105 53°# taskset-aarch64 -p c $(pidof uhttpd)
+#pid 5268's current affinity mask: 1
+#pid 5268's new affinity mask: c
+#dca632 ../_rpi-perftweaks.sh_202105 53°# taskset-aarch64 -cp $(pidof uhttpd)
+#pid 5268's current affinity list: 2,3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
