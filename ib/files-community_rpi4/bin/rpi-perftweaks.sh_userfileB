@@ -1160,6 +1160,32 @@ fi
 
 
 
+
+
+#########################################################################################################
+
+eval `grep '^PERFTWEAKS_Gbs=' /root/wrt.ini 2>/dev/null`
+uciSQMdlVAL=$(uci show sqm | grep download= | head -n1 | cut -d"'" -f2)
+if [ -z "$PERFTWEAKS_Gbs" ] && [ "${uciSQMdlVAL:-0}" -gt 523551 ]; then
+	echq "fast wan detected set PERFTWEAKS_Gbs=1 in /root/wrt.ini [WARNINGONLY no logic in userfileB]"
+fi
+
+#########################################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 if [ ! -z "$PF_OPTS" ]; then
 	echq "init-${sMETHOD:-nada}> ${PF_OPTS}" #echo "$0-init> ${PF_OPTS}"
 else	
@@ -1900,6 +1926,8 @@ reniceprocess() {
     	for dP in $(pidof ${P_NAME} 2>/dev/null ); do $RENICE ${P_VAL} $dP 2>/dev/null; done
 
 }
+
+
 
 
 
