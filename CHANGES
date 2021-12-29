@@ -15,6 +15,7 @@
                  https://forum.openwrt.org/t/rpi4-community-build/69998/1864
                 -re-introduce WIP perftweaks userfile parser @ rpi-perftweaks.sh_userfileB
                  (for advanced users still probably manual testing or PERFTWEAKS_SCRIPT="/bin/perftweaks_userfileB"
+                 (only had /etc/perftweaks.txt.sample also put in runtime location + clean a little)
                 -
                 -
                 -
