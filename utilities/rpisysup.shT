@@ -598,6 +598,13 @@ Bname="rpi4.64-snapshot-27132-3.5.317-5-r18370-ext4-sys.img.gz"
 
 
 
+Fsub="builds/rpi-4_snapshot_3.5.331-7_r18436_extra"
+Bname="rpi4.64-snapshot-27167-3.5.331-7-r18436-ext4-sys.img.gz"
+
+
+
+
+
 
 
 
@@ -686,6 +693,12 @@ Bname="rpi4.64-snapshot-27153-3.5.317-15-r18370-ext4-sys.img.gz"
 
 Fsub="builds/devel/rpi-4_snapshot_3.5.317-25_r18370_extra"
 Bname="rpi4.64-snapshot-27162-3.5.317-25-r18370-ext4-sys.img.gz"
+
+
+#fixedwifistraighttostablealso_hasnewertestingperftweaksshiz
+Fsub="builds/rpi-4_snapshot_3.5.331-7_r18436_extra"
+Bname="rpi4.64-snapshot-27167-3.5.331-7-r18436-ext4-sys.img.gz"
+
 
 
 
