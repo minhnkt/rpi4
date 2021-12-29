@@ -12,6 +12,10 @@
 
 
 
+
+        ##### 21.02.1-11(v3) and r18436 should contain a fix for onboard wifi (21.02.1-3/r17600ish was last known good)
+
+
         ##### 21.02.1   rebuild(1.0.10) seems to have probable wifi issues
                         https://forum.openwrt.org/t/enabling-integrated-adapter-usb-wi-fi-adapter-for-raspberry-pi-4-b-simultaneously-does-not-work-after-upgrading-to-latest-current/115300?u=wulfy23
 
