@@ -2237,7 +2237,7 @@ if [ -f "${PT_TXT}" ]; then
 	U_XPSCPUcnt=$(grep '^xps ' ${PT_TXT} 2>/dev/null | wc -l)
 	echq "userfile: ${PT_TXT} rps[${U_RPSCPUcnt:-0}] xps[${U_XPSCPUcnt:-0}]"
 else
-	echq "userfile: ${PT_TXT} [no]"
+	echq "userfile-steering: ${PT_TXT} [no]"
 fi
 
 
@@ -2810,8 +2810,10 @@ if [ -f "${PT_TXT}" ]; then
 
 else
 	#$ecmd "userfile: ${PT_TXT} [no]"
-	echq "userfile: ${PT_TXT} [no]"
+	echq "userfile-summary: ${PT_TXT} [no]"
 fi
+
+
 
 
 ###$ecmd "$(cat /etc/perftweaks.txt 2>/dev/null | grep -Ev '(^$|^#)')"
