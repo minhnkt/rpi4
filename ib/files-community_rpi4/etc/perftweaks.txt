@@ -15,9 +15,7 @@ govenor ondemand scaling_max_freq 1500000
 #####################################################################################
 renice rngd -2
 renice dnsmasq -5
-renice 2 httpd
-
-
+renice httpd 2
 
 
 
