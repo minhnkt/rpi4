@@ -305,6 +305,74 @@ fi
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WANIFACE=$(ubus call network.interface.wan status | jsonfilter -e '@.device')
+#$ecmd "WANIFACE: $WANIFACE"
+
+
+
+LANIFACE=$(ubus call network.interface.lan status | jsonfilter -e '@.device')
+case "$LANIFACE" in
+	"br-"*)
+		LANIFACE="$(brctl show br-lan | grep -v '^bridge name' | head -n1 | tr -s '\t' ' ' | cut -d' ' -f4)"
+	;;
+esac
+#$ecmd "LANIFACE: $LANIFACE"
+
+
+$ecmd "LANIFACE:$LANIFACE WANIFACE:$WANIFACE"
+
+
+
+
+
+
+
+setAsysval() {
+
+	local sysVAL="${1}"
+	local sysPATH="${2}"
+	local sysVALprev=
+
+
+	if [ ! -e "${sysPATH}" ]; then
+		$ecmd "sysPATHinvalid: $sysPATH"
+		return 1
+	fi
+
+
+	sysVALprev=$(grep . $sysPATH 2>/dev/null)
+
+	if [ "$sysVALprev" = "$sysVAL" ]; then
+		$ecmd "sysval: $(echo $sysPATH | sed 's|/sys/class/net/||g')[${sysVALprev}=${sysVAL}]"
+	else
+		echo -n $sysVAL > ${sysPATH}
+		$ecmd "sysval: $(echo $sysPATH | sed 's|/sys/class/net/||g')[${sysVALprev}>${sysVAL}]"
+	fi
+
+
+}
+#echo -n $sysVAL > /sys/class/net/eth0/queues/tx-0/xps_cpus
+
+
+
+
+
 #if [ "${PERFTWEAKS}" = "default" ]; then
 
 
@@ -319,16 +387,41 @@ if [ "${PERFTWEAKS}" = "default" ] || [ ! -z "$PERFTWEAKS_Gbs" ]; then
 ################## TEMPORARY LOGIC! 20211227 ##########################
 
 
-echo -n 1 > /sys/class/net/eth0/queues/tx-0/xps_cpus #0
-echo -n 2 > /sys/class/net/eth0/queues/tx-1/xps_cpus #1
-echo -n 4 > /sys/class/net/eth0/queues/tx-2/xps_cpus #2
-#echo -n 1 > /sys/class/net/eth0/queues/tx-3/xps_cpus #0
-echo -n 4 > /sys/class/net/eth0/queues/tx-3/xps_cpus #0
-echo -n 2 > /sys/class/net/eth0/queues/tx-4/xps_cpus #1
+setAsysval "1" "/sys/class/net/eth0/queues/tx-0/xps_cpus"
+#echo -n 1 > /sys/class/net/eth0/queues/tx-0/xps_cpus #0
 
-#ORIGINAL echo -n 1 > /sys/class/net/eth0/queues/rx-0/rps_cpus #0
-echo -n 7 > /sys/class/net/eth0/queues/rx-0/rps_cpus #0
-echo -n 7 > /sys/class/net/eth1/queues/rx-0/rps_cpus #012
+setAsysval "2" "/sys/class/net/eth0/queues/tx-1/xps_cpus"
+#echo -n 2 > /sys/class/net/eth0/queues/tx-1/xps_cpus #1
+
+
+setAsysval "4" "/sys/class/net/eth0/queues/tx-2/xps_cpus"
+#echo -n 4 > /sys/class/net/eth0/queues/tx-2/xps_cpus #2
+
+
+setAsysval "4" "/sys/class/net/eth0/queues/tx-3/xps_cpus"
+#echo -n 4 > /sys/class/net/eth0/queues/tx-3/xps_cpus #0 ###echo -n 1 > /sys/class/net/eth0/queues/tx-3/xps_cpus #0
+
+
+
+
+
+setAsysval "2" "/sys/class/net/eth0/queues/tx-4/xps_cpus"
+#echo -n 2 > /sys/class/net/eth0/queues/tx-4/xps_cpus #1
+
+
+setAsysval "7" "/sys/class/net/eth0/queues/rx-0/rps_cpus"
+#echo -n 7 > /sys/class/net/eth0/queues/rx-0/rps_cpus #0 #ORIGINAL echo -n 1 > /sys/class/net/eth0/queues/rx-0/rps_cpus #0
+
+
+
+setAsysval "7" "/sys/class/net/${WANIFACE}/queues/rx-0/rps_cpus"
+#echo -n 7 > /sys/class/net/${WANIFACE}/queues/rx-0/rps_cpus #012 #echo -n 7 > /sys/class/net/eth1/queues/rx-0/rps_cpus #012
+
+
+
+
+
+
 
 ############################################## 20211207 NEEDS TO GET REAL IFACES
 ############################################## is old/tmpoff code for this
@@ -585,6 +678,21 @@ exit 0
 
 
 
+
+
+
+
+#getwaniface() {
+#	local iface
+#	. /lib/functions/network.sh
+#	network_find_wan iface
+#	if [ -n "$iface" ]; then
+#		echo "$iface"; return 0
+#	fi
+#	return 1
+#}
+
+#$ecmd "waniface: $(getwaniface)" #waniface: wan
 
 
 
