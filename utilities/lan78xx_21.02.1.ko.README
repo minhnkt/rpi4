@@ -1,0 +1,23 @@
+
+
+#CREDITS: https://github.com/sergey-brutsky/openwrt-seeed-carrier-board
+
+
+Download the driver to your carrier board (remember it's compatible only with the release 21.02.1)
+
+Copy to the /lib/modules/5.4.154/lan78xx.ko
+
+Create a file /etc/modules.d/lan78 with one line lan78xx
+
+Reboot and check dmesg
+
+
+
+
+
+
+
+
+
+
+
